@@ -31,7 +31,7 @@ function Header() {
               <Button className=" me-4 signUp-button button-color">Sign In</Button>
             </Nav.Link>
 
-            <Nav.Link as={NavLink} to="/registration">
+            <Nav.Link as={NavLink} to="/pricing">
               <Button className=" me-4 signUp-button" variant="outline-dark">
                 Sign Up
               </Button>
