@@ -14,6 +14,11 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           <h1 className="font6 text-center">Join our SIMF Network</h1>
         </div>
 
+
+<div className="text-center fw-bold fs-4 mb-4 d-md-none">
+  <h1>Steps</h1>
+</div>
+
         <Nav activeKey="/registration" className="d-flex justify-content-center">
           <div className=" mx-0">{step1 ? <NumberCheck number="1" /> : <NumberUncheck number="1" />}</div>
           {step2 ? (
@@ -36,7 +41,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           <div className="mx-0">{step4 ? <NumberCheck number="4" /> : <NumberUncheck number="4" />}</div>
         </Nav>
 
-        <Nav activeKey="/registration" className="d-flex justify-content-between">
+        <Nav activeKey="/registration" className="d-md-flex justify-content-between d-none d-md-block">
           <div className="">{step1 ? <StepCheck name="Registration" /> : <StepUncheck name="Registration" />}</div>
           <div className="">
             {step2 ? <StepCheck name="Email Verification" /> : <StepUncheck name="Email Verification" />}

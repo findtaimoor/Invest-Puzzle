@@ -1,24 +1,53 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import FormContainer from "../components/FormContainer";
 import { Form, Button } from "react-bootstrap";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const [cardNumber, setcardNumber] = useState("");
-  const [expiryDate, setexpiryDate] = useState("");
-  const [nameofCard, setNameofCard] = useState("");
-
-  const [cvv, setCvv] = useState("");
-  const [billingCycle, setbillingCycle] = useState("");
-  const [plan, setPlan] = useState("");
+  let CardnameRef = useRef();
+  let CardNumberRef = useRef();
+  let ExpiryDateRef = useRef();
+  let CvvRef = useRef();
+  let BillingCycleRef = useRef();
+  let PlanRef = useRef();
 
   const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    let cardName = CardnameRef.current.value;
+    let cardNumber = CardNumberRef.current.value;
+    let expiryYear = new Date(ExpiryDateRef.current.value).getFullYear();
+    console.log(expiryYear)
+    let expiryMonth = new Date(ExpiryDateRef.current.value).getMonth();
+    let cvv = CvvRef.current.value;
+    let billingCycle = BillingCycleRef.current.value;
+    let plan = PlanRef.current.value;
 
-    navigate("/accessCode");
+    try {
+      let res = await fetch("http://localhost:9000/users/chargepayment", {
+        method: "POST",
+        body: JSON.stringify({
+          nameOnCard: cardName,
+          cardNumber: cardNumber,
+          expiryYear: expiryYear,
+          expiryMonth: expiryMonth,
+          CVC: cvv,
+          billingCycle: billingCycle,
+          planType: plan,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      let data = await res.json();
+      console.log(data);
+      navigate("/accessCode");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -33,8 +62,7 @@ const Payment = () => {
                 <Form.Control
                   type="text"
                   required
-                  value={nameofCard}
-                  onChange={(e) => setNameofCard(e.target.value)}
+                  ref={CardnameRef}
                   className="form-cells1 mb-5"
                 />
               </Form.Group>
@@ -43,8 +71,7 @@ const Payment = () => {
                 <Form.Control
                   type="number"
                   required
-                  value={cardNumber}
-                  onChange={(e) => setcardNumber(e.target.value)}
+                  ref={CardNumberRef}
                   className="form-cells1 mb-5"
                 />
               </Form.Group>
@@ -56,8 +83,7 @@ const Payment = () => {
                     <Form.Control
                       type="date"
                       required
-                      value={expiryDate}
-                      onChange={(e) => setexpiryDate(e.target.value)}
+                      ref={ExpiryDateRef}
                       className="form-cells1 mb-5"
                     />
                   </Form.Group>
@@ -68,8 +94,7 @@ const Payment = () => {
                     <Form.Control
                       type="number"
                       required
-                      value={cvv}
-                      onChange={(e) => setCvv(e.target.value)}
+                      ref={CvvRef}
                       className="form-cells1 mb-5"
                     />
                   </Form.Group>
@@ -82,14 +107,12 @@ const Payment = () => {
                 <div className="d-grid">
                   <select
                     type="text"
-                    value={billingCycle}
-                    onChange={(e) => setbillingCycle(e.target.value)}
+                    ref={BillingCycleRef}
                     className="form-cells2 mb-5"
                     required
                   >
                     <option value="Semester">Semester</option>
-                    <option value="value2">Text 2</option>
-                    <option value="value3">Text 3</option>
+                    <option value="value2">Yearly</option>
                   </select>
                 </div>
               </Form.Group>
@@ -101,14 +124,13 @@ const Payment = () => {
                 <div className="d-grid">
                   <select
                     type="text"
-                    value={plan}
-                    onChange={(e) => setPlan(e.target.value)}
+                    ref={PlanRef}
                     className="form-cells2 mb-5"
                     required
                   >
                     <option value="smallCap">Small Cap</option>
-                    <option value="value2">Text 2</option>
-                    <option value="value3">Text 3</option>
+                    <option value="value2">Mid Cap</option>
+                    <option value="value3">Large Cap</option>
                   </select>
                 </div>
               </Form.Group>

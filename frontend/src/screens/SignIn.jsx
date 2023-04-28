@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
+import Message from "../components/Message";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(null);
+  const [message, setMessage] = useState(null);
+
   let Emailref = useRef();
   let Passwordref = useRef();
 
@@ -19,6 +22,8 @@ function SignIn() {
 
     console.log(email, password);
     try {
+
+      ///http://wafflestock.com/auth/login
       let res = await fetch("http://localhost:9000/auth/login", {
         method: "POST",
         body: JSON.stringify({
@@ -29,29 +34,36 @@ function SignIn() {
           "Content-type": "application/json",
         },
       });
-
       let data = await res.json();
       console.log(data);
+
+      if(data.status == 400){
+        setMessage('Username or password is wrong.')
+      }else{
+      navigate("/adminDashboard");
+    }
     } catch (err) {
       console.error(err);
     }
-    navigate("/payment");
+    
   };
 
   return (
     <>
       <div className="container-fluid app-main1">
         <div className="row ">
-          <div className="offset-md-3 col-md-6 column1">
-            <Form className="signUp-form" onSubmit={submitHandler}>
-              <div>
-                <h1 className=" text-center fw-bold font1">Sign in to your account</h1>
-                <p className="text-center font">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-              </div>
+          <div className="offset-md-4 col-md-4 column1 ">
+          <div className="border-form my-5">
+                <h1 className=" text-center fw-bold font1 mt-3">Sign in to your account</h1>
+                
+              
+            <Form className="signUp-form " onSubmit={submitHandler}>
+              
 
-              <div className="form1">
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
+              <div className="px-5 py-4">
+              {message ? <Message>{message}</Message> : null}
+                <Form.Group className="mb-3 ">
+                  <Form.Label className="fw-bold fs-6" >Email</Form.Label>
                   <Form.Control
                     type="email"
                     ref={Emailref}
@@ -62,7 +74,7 @@ function SignIn() {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label className="fw-bold fs-6" >Password</Form.Label>
                   <div className="position-relative">
                     <Form.Control
                       ref={Passwordref}
@@ -92,7 +104,9 @@ function SignIn() {
                   </span>
                 </p>
               </div>
+             
             </Form>
+            </div>
           </div>
         </div>
       </div>

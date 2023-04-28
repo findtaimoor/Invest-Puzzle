@@ -6,8 +6,9 @@ body {
   box-sizing: border-box;
 }
 .app-main1 {
-  background-color: #f0f2f6;
+  /* background-color: #f0f2f6; */
   height: 100%;
+  margin-bottom: 5em;
 }
 
 .header-main {
@@ -21,7 +22,7 @@ body {
 }
 
 .column1 {
-  margin-top: 3em;
+  margin-top: 4em;
 }
 
 .signUp-button {
@@ -49,7 +50,7 @@ body {
   background-color: white;
   padding: 1em 0em;
   border-radius: 30px;
-  margin: 20px 0px 60px 0px;
+  margin: 20px 0px 0px 0px;
 }
 .last-cell {
   margin-bottom: 5em;
@@ -61,9 +62,7 @@ body {
   border-radius: 6px;
   border: 1px solid #8a8a8a;
 }
-.form1 {
-  padding: 2em 8em;
-}
+
 
 .btn1 {
   background-color: #ffaa4d;
@@ -117,6 +116,42 @@ body {
   gap: 10px;
   border-radius: 10px;
 }
+
+.btn14 {
+  border-color: #ffaa4d;
+  background-color: inherit;
+  color: #ffaa4d;
+  padding: 12px 10px;
+  gap: 10px;
+  border-radius: 10px;
+}
+.btn14:hover {
+  border-color: #ffaa4d;
+  background-color: inherit;
+  color: #ffaa4d;
+  padding: 12px 10px;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.btn15 {
+  border: none;
+  background-color: inherit;
+  color: #ffaa4d;
+  padding: 12px 10px;
+  gap: 10px;
+
+}
+.btn15:hover {
+ 
+  background-color: inherit;
+  color: #ffaa4d;
+  padding: 12px 10px;
+  gap: 10px;
+
+}
+
+
 
 .btn2:hover {
   background-color: #ffaa4d;
@@ -217,6 +252,8 @@ a:hover {
   right: 5.14%;
   top: 32.61%;
   bottom: 32.61%;
+  color: 
+  #A4A4A4;
 }
 
 .showpass1 {
@@ -673,4 +710,34 @@ ul li:before {
   background-color: #cdcdcd;
   top: 50%;
   left: 50%;
+}
+
+.video-class{
+  margin-top: 10em;
+
+}
+.admin-main{
+  margin-top: 3em;
+}
+
+.border-form{
+  border: 1px solid #CBCBCB;
+  border-radius: 20px;
+}
+
+.validate-label{
+  color: 
+  #A4A4A4;
+}
+
+.otp-input{
+  border: 1px solid #8A8A8A;
+  width: 3em;
+  height: 3em;
+  border-radius: 6px;
+}
+
+.otp-input:focus{
+  border: 2px solid #8A8A8A;
+
 }

@@ -3,8 +3,15 @@ import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+
+
   return (
-    <Navbar collapseOnSelect expand="lg" fixed="top" className="header-main  bg-light ">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      fixed="top"
+      className="header-main  bg-light "
+    >
       <Container className="py-3 ">
         <Navbar.Brand href="/" className=" text-color brand">
           Invest Puzzle
@@ -12,7 +19,7 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto ">
-            <Nav.Link href="/home" className="text-color pe-5">
+            <Nav.Link href="/" className="text-color pe-5">
               Home
             </Nav.Link>
             <Nav.Link href="/whatWeDo" className="text-color pe-5">
@@ -28,7 +35,12 @@ function Header() {
 
           <div className="d-flex">
             <Nav.Link as={NavLink} to="/signIn">
-              <Button className=" me-4 signUp-button button-color">Sign In</Button>
+              <Button
+                className=" me-4 signUp-button button-color text-light"
+                variant="outline-dark"
+              >
+                Sign In
+              </Button>
             </Nav.Link>
 
             <Nav.Link as={NavLink} to="/pricing">
