@@ -741,3 +741,16 @@ ul li:before {
   border: 2px solid #8A8A8A;
 
 }
+
+.step1-padding{
+  padding-left: 9em;
+}
+.step2-padding{
+  padding-left: 5.5em;
+}
+.step3-padding{
+  padding-left: 7em;
+}
+.step4-padding{
+  padding-left: 5.2em;
+}

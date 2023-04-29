@@ -8,6 +8,8 @@ import Message from "../components/Message";
 const AccessCode = () => {
   const [message, setMessage] = useState(null);
 
+  const ACodebyLocalStorage = localStorage.getItem('accessCode');
+
   const [text, setText] = useState("");
 
   const inputHandler = (event) => {
@@ -38,10 +40,10 @@ const AccessCode = () => {
                   <div className="col-8">
                     <Form.Control
                       type="text"
-                      value={text}
+                      
                       onChange={inputHandler}
                       className="form-cells3"
-                      placeholder="CHSDFUSDIF"
+                      value={ACodebyLocalStorage}
                     />
                   </div>
                   <div className="col-4">

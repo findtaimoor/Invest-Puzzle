@@ -23,18 +23,10 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(null);
   const [showConfirmPassword, setShowConfirmPassword] = useState(null);
   const [message, setMessage] = useState(null);
+  const [usernametemp, setusernametemp] = useState('');
 
   const navigate = useNavigate();
 
-  // const getValue = () =>{
-  //   let txt = document.getElementById("autoEmail");
-  //   let txtValue = txt.value;
-
-  //   let result = document.getElementById("autoUserName");
-  //   result.innerText = txtValue;
-  // }
-
-  const [usernametemp, setusernametemp] = useState('');
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -76,7 +68,7 @@ const Registration = () => {
 
         let data = await res.json();
         console.log(data);
-        if (data.message === "Email exists!") {
+        if (res.status !== 200) {
           setMessage(data.message);
         } else {
           navigate("/emailVerification");
@@ -92,16 +84,6 @@ const Registration = () => {
       }
     }
   };
-
-  // useEffect(()=>{
-  //   let autoEmail = document.getElementById("autoEmail");
-  //   let autoUserName = document.getElementById("autoUserName")
-
-  //   const changeSpan = () =>{
-  //     autoUserName.innerText = autoEmail.value;
-  //   }
-  //   autoEmail.onInput = changeSpan;
-  // })
 
   return (
     <>

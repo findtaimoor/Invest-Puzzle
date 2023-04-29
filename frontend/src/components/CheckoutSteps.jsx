@@ -22,32 +22,32 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         <Nav activeKey="/registration" className="d-flex justify-content-center">
           <div className=" mx-0">{step1 ? <NumberCheck number="1" /> : <NumberUncheck number="1" />}</div>
           {step2 ? (
-            <div className="d-flex col-lg-3 col-2 flex-box"></div>
+            <div className="d-flex col-md-2 col-1 flex-box"></div>
           ) : (
-            <div className="d-flex-2 col-lg-3 col-2 flex-box-2"></div>
+            <div className="d-flex-2 col-md-2 col-1 flex-box-2"></div>
           )}
           <div className=" mx-0">{step2 ? <NumberCheck number="2" /> : <NumberUncheck number="2" />}</div>
           {step3 ? (
-            <div className="d-flex col-lg-3 col-2 flex-box"></div>
+            <div className="d-flex col-md-2 col-1 flex-box"></div>
           ) : (
-            <div className="d-flex-2 col-lg-3 col-2 flex-box-2"></div>
+            <div className="d-flex-2 col-md-2 col-1 flex-box-2"></div>
           )}
           <div className="mx-0">{step3 ? <NumberCheck number="3" /> : <NumberUncheck number="3" />}</div>
           {step4 ? (
-            <div className="d-flex col-lg-3 col-2 flex-box"></div>
+            <div className="d-flex  col-md-2 col-1 flex-box"></div>
           ) : (
-            <div className="d-flex-2 col-lg-3 col-2 flex-box-2"></div>
+            <div className="d-flex-2  col-md-2 col-1 flex-box-2"></div>
           )}
           <div className="mx-0">{step4 ? <NumberCheck number="4" /> : <NumberUncheck number="4" />}</div>
         </Nav>
 
-        <Nav activeKey="/registration" className="d-md-flex justify-content-between d-none d-md-block">
-          <div className="">{step1 ? <StepCheck name="Registration" /> : <StepUncheck name="Registration" />}</div>
-          <div className="">
+        <Nav activeKey="/registration" className="d-md-flex d-none d-md-block">
+          <div className="step1-padding">{step1 ? <StepCheck name="Registration" /> : <StepUncheck name="Registration" />}</div>
+          <div className="step2-padding">
             {step2 ? <StepCheck name="Email Verification" /> : <StepUncheck name="Email Verification" />}
           </div>
-          <div className="">{step3 ? <StepCheck name="Payment" /> : <StepUncheck name="Payment" />}</div>
-          <div className="">
+          <div className="step3-padding">{step3 ? <StepCheck name="Payment"  /> : <StepUncheck name="Payment" />}</div>
+          <div className="step4-padding">
             {step4 ? <StepCheck name="Get the Access Code" /> : <StepUncheck name="Get the Access Code" />}
           </div>
         </Nav>

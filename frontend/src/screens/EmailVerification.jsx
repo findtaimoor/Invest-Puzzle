@@ -34,17 +34,17 @@ const EmailVerification = () => {
       let data = await res.json();
 
       if (
-        data.message !== "Wrong code" &&
-        data.message !== "code must be longer than or equal to 5 characters" &&
-        data.message !== "Wrong authentication token"
+        res.status !== 200
       ) {
+
+        setMessage(data.message.charAt(0).toUpperCase()+ data.message.slice(1));
+        
+      } else {
         navigate("/payment");
 
         localStorage.setItem("jwtbyOtp", data.data.user.jwt);
         localStorage.removeItem("jwt");
         localStorage.removeItem("email");
-      } else {
-        setMessage(data.message.charAt(0).toUpperCase()+ data.message.slice(1));
       }
     } catch (error) {
       console.log(error);
