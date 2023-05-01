@@ -1,17 +1,16 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React from 'react';
 
 const Footer = () => {
   return (
     <>
       <footer>
-        <Container className="footer">
-          <Row>
-            <Col md={6}>&copy; 2023 Invest Puzzle</Col>
-            <Col md={4}>info@investpuzzle.com</Col>
-            <Col md={2}>703-901-3144</Col>
-          </Row>
-        </Container>
+        <div className="container footer text-center">
+          <div className="row">
+            <div className="col-md-4 py-1">&copy; 2023 Invest Puzzle</div>
+            <div className="col-md-4 py-1">info@investpuzzle.com</div>
+            <div className="col-md-4 py-1">703-901-3144</div>
+          </div>
+        </div>
       </footer>
     </>
   );

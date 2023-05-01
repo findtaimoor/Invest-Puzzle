@@ -5,9 +5,9 @@ const Home = () => {
     <>
     <div className="container my-5">
         <div className="row mb-5 video-class">
-        <video controls>
-    <source src="./videos/video-wafflestock-06.mp4" type="video/webm" />
-    </video>
+        <video controls src="./videos/video-wafflestock-06.mp4" type="video/webm" autoPlay/>
+    
+    
         </div>
     </div>
     </>

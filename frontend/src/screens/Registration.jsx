@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FormContainer from "../components/FormContainer";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 import Message from "../components/Message";
@@ -47,8 +47,9 @@ const Registration = () => {
       setMessage("Password not match.");
     } else {
       try {
-        ///"http://wafflestock.com/auth/registerProfessor"
+        
         let res = await fetch("http://localhost:9000/auth/registerProfessor", {
+          // let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
           method: "POST",
           body: JSON.stringify({
             password: password,
@@ -69,7 +70,7 @@ const Registration = () => {
         let data = await res.json();
         console.log(data);
         if (res.status !== 200) {
-          setMessage(data.message);
+          setMessage(data.message.charAt(0).toUpperCase()+ data.message.slice(1));
         } else {
           navigate("/emailVerification");
 
@@ -81,6 +82,7 @@ const Registration = () => {
         }
       } catch (err) {
         console.error(err);
+        
       }
     }
   };

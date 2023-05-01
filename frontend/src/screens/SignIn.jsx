@@ -23,8 +23,9 @@ function SignIn() {
     console.log(email, password);
     try {
 
-      ///http://wafflestock.com/auth/login
-      let res = await fetch("http://localhost:9000/auth/login", {
+   
+      // let res = await fetch("http://localhost:9000/auth/login", {
+        let res = await fetch("http://wafflestock.com/auth/login", {
         method: "POST",
         body: JSON.stringify({
           password: password,
@@ -37,7 +38,7 @@ function SignIn() {
       let data = await res.json();
       console.log(data);
 
-      if(data.status == 400){
+      if(data.status === 400){
         setMessage('Username or password is wrong.')
       }else{
       navigate("/adminDashboard");
@@ -52,7 +53,7 @@ function SignIn() {
     <>
       <div className="container-fluid app-main1">
         <div className="row ">
-          <div className="offset-md-4 col-md-4 column1 ">
+          <div className="offset-lg-4 col-lg-4 column1 ">
           <div className="border-form my-5">
                 <h1 className=" text-center fw-bold font1 mt-3">Sign in to your account</h1>
                 

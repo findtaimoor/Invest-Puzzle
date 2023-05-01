@@ -1,23 +1,24 @@
 import React, { useState } from "react";
 import CheckoutSteps from "../components/CheckoutSteps";
 import FormContainer from "../components/FormContainer";
-import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+
 import Message from "../components/Message";
 
 const AccessCode = () => {
   const [message, setMessage] = useState(null);
 
-  const ACodebyLocalStorage = localStorage.getItem('accessCode');
+  const ACodebyLocalStorage = localStorage.getItem("accessCode");
 
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
 
-  const inputHandler = (event) => {
-    setText(event.target.value);
-  };
+  // const inputHandler = (event) => {
+  //   setText(event.target.value);
+  // };
 
-  const copy = async () => {
-    await navigator.clipboard.writeText(text);
+  const copy = async (e) => {
+    e.preventDefault();
+    await navigator.clipboard.writeText(ACodebyLocalStorage);
     setMessage("Code is copied to clipboard.");
   };
 
@@ -29,7 +30,7 @@ const AccessCode = () => {
           formTitle="Welcome to the WaffleStock"
           formDescription="We are glad to see you in our community"
         >
-          <Form className="col-md-6 offset-md-3">
+          <Form className="col-md-6 offset-md-3" onSubmit={copy}>
             {message ? <Message variant="success">{message}</Message> : null}
             <div className="row pt-5">
               <Form.Group>
@@ -37,32 +38,42 @@ const AccessCode = () => {
                   Here's your universities' unique access code:
                 </Form.Label>
                 <div className="row">
-                  <div className="col-8">
+                  
+                  <div className=" col-md-8 mb-3">
+                    <div className="d-sm-grid">
                     <Form.Control
                       type="text"
-                      
-                      onChange={inputHandler}
+                      onChange={(e) => e.target.value}
                       className="form-cells3"
                       value={ACodebyLocalStorage}
                     />
                   </div>
-                  <div className="col-4">
+                  </div>
+           
+                 
+                <div className="col-md-4">
+                <div className="d-sm-grid ">
                     <Form.Group>
-                      <div className="d-grid">
-                        <Link
-                          to="/accessCode"
-                          className="btn btn5"
-                          type="submit"
-                          onClick={copy}
-                        >
+                      <div className="d-grid ">
+                        <Button className="btn btn5" type="submit" >
                           Copy Code
-                        </Link>
+                        </Button>
                       </div>
                     </Form.Group>
                   </div>
                 </div>
+              
+                </div>
+
+
               </Form.Group>
             </div>
+
+
+           
+
+
+
             <h1 className="checkout-link2 text-center pb-5 mb-5">
               Your students can access WaffleStock by using this code.{" "}
             </h1>

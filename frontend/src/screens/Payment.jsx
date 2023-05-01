@@ -59,6 +59,8 @@ const Payment = () => {
     // alert(process.env.BASE_URL)
     try {
       let res = await fetch("http://localhost:9000/users/chargepayment", {
+
+      // let res = await fetch("http://wafflestock.com/users/chargepayment", {
         method: "POST",
         body: JSON.stringify({
           nameOnCard: cardName,
@@ -79,10 +81,12 @@ const Payment = () => {
       });
 
       let data = await res.json();
+
+
       console.log(data);
 
       if (res.status !== 200) {
-        setMessage(data.message);
+        setMessage("Card details are incorrect.");
       } else {
         navigate("/accessCode");
         localStorage.setItem("accessCode", data.accessCode);

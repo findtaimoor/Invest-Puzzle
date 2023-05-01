@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CheckoutSteps from "../components/CheckoutSteps";
 import FormContainer from "../components/FormContainer";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Message from "../components/Message";
 import { useRef } from "react";
-import axios from "axios";
+
 
 const EmailVerification = () => {
   let Coderef = useRef();
@@ -19,8 +19,9 @@ const EmailVerification = () => {
 
     const jwtbyRegister = localStorage.getItem("jwt");
     try {
-      ///http://wafflestock.com/common/confirmOtp
+      
       let res = await fetch("http://localhost:9000/common/confirmOtp", {
+        // let res = await fetch("http://wafflestock.com/common/confirmOtp", {
         method: "POST",
         body: JSON.stringify({
           code: code,
