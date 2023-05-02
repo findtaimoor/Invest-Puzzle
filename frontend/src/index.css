@@ -192,6 +192,7 @@ body {
 }
 
 
+
 .forget-password {
   color: #000000;
   text-align: center;
@@ -218,7 +219,7 @@ body {
 
 .font1 {
   font-weight: 600;
-  font-size: 26px;
+  font-size: 1.5em;
   padding-top: 1em;
 }
 
@@ -317,6 +318,23 @@ a:hover {
   color: #717171;
   background-color: inherit;
 }
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  font-size: 1rem;
+  top: 13px;
+  right: 15px;
+  position: absolute;
+  color:  #717171;
+}
 
 .checkout-link {
   background-color: #fca446;
@@ -362,6 +380,16 @@ a:hover {
   font-size: 20px;
   color: #ffaa4d;
 }
+.btn7:hover {
+  padding: 12px 30px;
+  gap: 20px;
+  background-color: #fff1e8;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffaa4d;
+}
+
 
 ul {
   list-style: none;
@@ -491,7 +519,7 @@ ul li:before {
 
 .back-img {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   background-image: url(../public/images/puzzel.webp);
   background-position: center center;
   background-repeat: no-repeat;
@@ -500,7 +528,7 @@ ul li:before {
 }
 .cover-img {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   background-color: #52433e;
   opacity: 0.9;
   background-attachment: fixed;
@@ -787,6 +815,123 @@ ul li:before {
     font-size: 1em;
   }
 }
+
+@media (min-width: 765px) and (max-width: 989px) {
+  .step1-padding{
+    padding-left: 3.5em;
+  }
+  .step2-padding{
+    padding-left: 3.5em;
+  }
+  .step3-padding{
+    padding-left: 4em;
+  }
+  .step4-padding{
+    padding-left: 3.2em;
+  }
+  .checkout-link1{
+    font-size: 1em;
+  }
+  .checkout-link4{
+    font-size: 1em;
+  }
+}
+
+
+@media (min-width: 990px) and (max-width: 1024px) {
+  .step1-padding{
+    padding-left: 3em;
+  }
+  .step2-padding{
+    padding-left: 3.5em;
+  }
+  .step3-padding{
+    padding-left: 4em;
+  }
+  .step4-padding{
+    padding-left: 3.2em;
+  }
+  .checkout-link1{
+    font-size: 1em;
+  }
+  .checkout-link4{
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1024px) {
+  .step1-padding{
+    padding-left: 7em;
+  }
+  .step2-padding{
+    padding-left: 5.5em;
+  }
+  .step3-padding{
+    padding-left: 6.8em;
+  }
+  .step4-padding{
+    padding-left: 6em;
+  }
+  .checkout-link1{
+    font-size: 1em;
+  }
+  .checkout-link4{
+    font-size: 1em;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1180px) {
+  .step1-padding{
+    padding-left: 7em;
+  }
+  .step2-padding{
+    padding-left: 5.5em;
+  }
+  .step3-padding{
+    padding-left: 6.8em;
+  }
+  .step4-padding{
+    padding-left: 6em;
+  }
+  .checkout-link1{
+    font-size: 1em;
+  }
+  .checkout-link4{
+    font-size: 1em;
+  }
+}
+@media (min-width: 1181px) and (max-width: 1199px) {
+  .step1-padding{
+    padding-left: 6em;
+  }
+  .step2-padding{
+    padding-left: 5em;
+  }
+  .step3-padding{
+    padding-left: 3.9em;
+  }
+  .step4-padding{
+    padding-left: 5.2em;
+  }
+  
+}
+
+@media (min-width: 1400px) {
+  .step1-padding{
+    padding-left: 12em;
+  }
+  .step2-padding{
+    padding-left: 7.5em;
+  }
+  .step3-padding{
+    padding-left: 8.7em;
+  }
+  .step4-padding{
+    padding-left: 7.2em;
+  }
+  
+}
+
+
 
 @media (min-width: 360px) and (max-width: 740px) {
   .showpass1{

@@ -35,7 +35,7 @@ const NewPassword = () => {
         detail="Please write your new password and confirm it."
       >
         <Form className="signUp-form " onSubmit={submitHandler}>
-          <div className="px-5">
+          <div className="px-3">
             {message ? <Message>{message}</Message> : null}
             <Form.Group className="mb-4 ">
               <Form.Label className="fw-bold fs-6"> Password</Form.Label>

@@ -54,46 +54,53 @@ const Payment = () => {
       studentCountInNumbers
     );
 
-    const jwtbyOtp = localStorage.getItem("jwtbyOtp");
 
-    // alert(process.env.BASE_URL)
-    try {
-      let res = await fetch("http://localhost:9000/users/chargepayment", {
+if(expiryYear < new Date().getFullYear() && expiryMonth < new Date().getMonth()){
+  setMessage('Incorrect Card Details.')
+}else{
+  const jwtbyOtp = localStorage.getItem("jwtbyOtp");
+  try {
+    // let res = await fetch("http://localhost:9000/users/chargepayment", {
 
-      // let res = await fetch("http://wafflestock.com/users/chargepayment", {
-        method: "POST",
-        body: JSON.stringify({
-          nameOnCard: cardName,
-          cardNumber: cardNumber,
-          expiryYear: expiryYear,
-          expiryMonth: expiryMonth,
-          CVC: cvv,
-          billingCycle: billingCycle,
-          planType: plan,
-          studentCount: studentCountInNumbers,
-          amount: priceInNumber,
-        }),
+    let res = await fetch("http://wafflestock.com/users/chargepayment", {
+      method: "POST",
+      body: JSON.stringify({
+        nameOnCard: cardName,
+        cardNumber: cardNumber,
+        expiryYear: expiryYear,
+        expiryMonth: expiryMonth,
+        CVC: cvv,
+        billingCycle: billingCycle,
+        planType: plan,
+        studentCount: studentCountInNumbers,
+        amount: priceInNumber,
+      }),
 
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${jwtbyOtp}`,
-        },
-      });
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${jwtbyOtp}`,
+      },
+    });
 
-      let data = await res.json();
+    let data = await res.json();
 
 
-      console.log(data);
+    console.log(data);
 
-      if (res.status !== 200) {
-        setMessage("Card details are incorrect.");
-      } else {
-        navigate("/accessCode");
-        localStorage.setItem("accessCode", data.accessCode);
-      }
-    } catch (error) {
-      console.log(error);
+    if (res.status !== 200 ) {
+      setMessage("Card details are incorrect.");
+      
+    } else {
+      navigate("/accessCode");
+      localStorage.setItem("accessCode", data.accessCode);
     }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+    
   };
 
   function adjustValues() {
@@ -147,7 +154,7 @@ useEffect(()=>{
   return (
     <>
       <CheckoutSteps step1 step2 step3 />
-      <div className="conatiner px-5">
+      <div className="conatiner px-md-5 px-3">
         {/* <input type="button" value="clicl" onClick={checkValue} /> */}
 
         <FormContainer formTitle="Payment">
@@ -210,11 +217,11 @@ useEffect(()=>{
               <Form.Group className="">
                 <Form.Label className="font2 d-block">Billing Cycle</Form.Label>
 
-                <div className="d-grid">
+                <div className="d-grid select-wrapper">
                   <select
                     type="text"
                     ref={BillingCycleRef}
-                    className="form-cells2 mb-5"
+                    className="form-cells2 mb-5 "
                     onChange={adjustValues}
                     required
                   >
@@ -228,7 +235,7 @@ useEffect(()=>{
                 <Form.Label className="font2 d-block">
                   Choose your plan
                 </Form.Label>
-                <div className="d-grid">
+                <div className="d-grid select-wrapper">
                   <select
                     type="text"
                     ref={PlanRef}
@@ -256,24 +263,28 @@ useEffect(()=>{
               </div>
 
               <hr />
-              <div className="pt-4 pb-5 my-3 ">
+              <div className="pt-4 pb-3 pb-md-5 my-3 ">
                 <h1 className="font5 d-inline">Total/{billingCycleText}</h1>
-                <h1 className="font5 float-end">{price} USD</h1>
+                <h1 className="font5 float-md-end my-2">{price} USD</h1>
               </div>
             </div>
             <hr />
             <div className="container-fluid">
               <div className="row">
-                <div className="col-md-3 col-4 d-grid mt-3 mb-5">
+                <div className="col-md-3 col-12 mt-3">
+                  <div className="d-grid">
                   <Button className="btn btn4" onClick={() => navigate(-1)}>
                     Back
                   </Button>
+                  </div>
                 </div>
 
-                <div className="col-md-3 col-4 d-grid ms-auto mt-3 mb-5">
+                <div className="col-md-3 col-12 ms-auto mt-3 mb-5">
+                  <div className="d-grid">
                   <Button className="btn btn3" type="submit">
                     Pay Now
                   </Button>
+                  </div>
                 </div>
               </div>
             </div>

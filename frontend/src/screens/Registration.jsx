@@ -48,8 +48,8 @@ const Registration = () => {
     } else {
       try {
         
-        let res = await fetch("http://localhost:9000/auth/registerProfessor", {
-          // let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
+        // let res = await fetch("http://localhost:9000/auth/registerProfessor", {
+          let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
           method: "POST",
           body: JSON.stringify({
             password: password,
@@ -90,7 +90,7 @@ const Registration = () => {
   return (
     <>
       <CheckoutSteps step1 />
-      <div className="px-5">
+      <div className="px-3 px-md-5">
         <FormContainer formTitle="Registration">
           <Form
             onSubmit={submitHandler}

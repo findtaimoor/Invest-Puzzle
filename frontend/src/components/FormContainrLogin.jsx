@@ -9,7 +9,7 @@ const FormContainrLogin = ({ title,detail,children }) => {
         <div className="mt-5 mb-4">
         <div className="border-form my-5">
                 <h1 className="text-center fw-bold font1 mt-3">{title}</h1>
-                <p className=" px-5 text-center font">{detail}</p>
+                <p className=" px-4 text-center font">{detail}</p>
         {children}
         
         </div>

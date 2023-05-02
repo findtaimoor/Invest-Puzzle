@@ -11,7 +11,7 @@ const PricingCard = ({ name, pricing, time, users, list }) => {
         <button className="btn btn7">{users}</button>
       </div>
       <div>
-        <ul className="font7 mt-5">
+        <ul className="font7 mt-5 ps-3">
           {list.map((item) => (
             <li key={item}>{item}</li>
           ))}

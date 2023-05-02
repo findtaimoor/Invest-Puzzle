@@ -25,7 +25,7 @@ const AccessCode = () => {
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
-      <div className="px-5">
+      <div className="px-3 px-md-5">
         <FormContainer
           formTitle="Welcome to the WaffleStock"
           formDescription="We are glad to see you in our community"
@@ -46,6 +46,7 @@ const AccessCode = () => {
                       onChange={(e) => e.target.value}
                       className="form-cells3"
                       value={ACodebyLocalStorage}
+                      placeholder="•••••••••"
                     />
                   </div>
                   </div>

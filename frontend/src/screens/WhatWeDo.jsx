@@ -4,9 +4,11 @@ import Footer from '../components/Footer';
 const WhatWeDo = () => {
   return (
     <>
-      <div className="back-img">
+
+
+        <div className="back-img">
         <div className="cover-img">
-          <div className="container center-content">
+          <div className="container-fluid center-content">
             <div className="row">
               <div className="col">
                 <h1 className="heading">Invest Puzzle</h1>
@@ -23,7 +25,9 @@ const WhatWeDo = () => {
             </div>
           </div>
         </div>
-      </div>
+    
+    </div>
+     
       <div className="waffle">
         <div className="container waffle-width ">
           <div className="row">
@@ -55,7 +59,6 @@ const WhatWeDo = () => {
                 portfolios.
               </p>
             </div>
-            {/* <div className="col"></div> */}
             <div className="col-md-6 img-back">
               <img
                 src="./images/mobile.png"

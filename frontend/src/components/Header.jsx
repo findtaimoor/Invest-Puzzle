@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 function Header() {
 
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <Navbar
@@ -11,12 +12,13 @@ function Header() {
       expand="lg"
       fixed="top"
       className="header-main  bg-light "
+      expanded={expanded}
     >
       <Container className="py-3 ">
-        <Navbar.Brand href="/" className=" text-color brand">
-          Invest Puzzle
+        <Navbar.Brand href="/" className=" text-color brand ">
+          <img src="../images/brand.png"/>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav "  onClick={() => setExpanded(expanded ? false : "expanded")} />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto ">
             <Nav.Link href="/" className="text-color pe-5">
@@ -37,14 +39,14 @@ function Header() {
             <Nav.Link as={NavLink} to="/signIn">
               <Button
                 className=" me-4 signUp-button button-color text-light"
-                variant="outline-dark"
+                variant="outline-dark" onClick={() => setExpanded(expanded ? false : "expanded")}
               >
                 Sign In
               </Button>
             </Nav.Link>
 
             <Nav.Link as={NavLink} to="/pricing">
-              <Button className=" me-4 signUp-button" variant="outline-dark">
+              <Button className=" me-4 signUp-button" variant="outline-dark" onClick={() => setExpanded(expanded ? false : "expanded")}>
                 Sign Up
               </Button>
             </Nav.Link>

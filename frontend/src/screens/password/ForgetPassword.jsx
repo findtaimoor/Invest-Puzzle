@@ -14,7 +14,7 @@ const ForgetPassword = () => {
    <Form className="signUp-form ">
               
 
-              <div className="px-5">
+              <div className="px-3">
               
                 <Form.Group className="mb-4 ">
                   <Form.Label className="fw-bold fs-6" >Email</Form.Label>

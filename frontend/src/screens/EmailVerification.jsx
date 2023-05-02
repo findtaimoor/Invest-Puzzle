@@ -20,8 +20,8 @@ const EmailVerification = () => {
     const jwtbyRegister = localStorage.getItem("jwt");
     try {
       
-      let res = await fetch("http://localhost:9000/common/confirmOtp", {
-        // let res = await fetch("http://wafflestock.com/common/confirmOtp", {
+      // let res = await fetch("http://localhost:9000/common/confirmOtp", {
+        let res = await fetch("http://wafflestock.com/common/confirmOtp", {
         method: "POST",
         body: JSON.stringify({
           code: code,
@@ -55,7 +55,7 @@ const EmailVerification = () => {
   return (
     <>
       <CheckoutSteps step1 step2 />
-      <div className="p-5 mb-5">
+      <div className="px-3 px-md-5 mb-5">
         <FormContainer
           formTitle="Email Verification"
           formDescription={`Please enter the verification code sent to you at ${email}`}
@@ -73,19 +73,25 @@ const EmailVerification = () => {
             </Form.Group>
             <hr />
             <div className="container-fluid">
-              <div className="row">
-                <div className="col-3 d-grid mt-3 mb-5">
+              <div className="row ">
+      
+                <div className="col-md-3 col-12 mt-3">
+                  <div className="d-grid ">
                   <Button className="btn btn4" onClick={() => navigate(-1)}>
                     Back
                   </Button>
+                  </div>
                 </div>
 
-                <div className="col-3 d-grid ms-auto mt-3 mb-5">
+                <div className="col-md-3 col-12 ms-auto mt-3">
+                  <div className="d-grid">
                   <Button className="btn btn3" type="submit">
                     Next
                   </Button>
+                  </div>
                 </div>
-              </div>
+                </div>
+            
             </div>
           </Form>
         </FormContainer>

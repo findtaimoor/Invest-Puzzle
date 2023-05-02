@@ -27,7 +27,7 @@ const ValidateEmail = () => {
         detail="If you don't receive email within 2 minutes, please check junk file folder of your mail box."
       >
         <Form className="signUp-form ">
-          <div className="px-5">
+          <div className="px-4">
             <div className="row text-center">
               
               <OTPtimer seconds={300} />
