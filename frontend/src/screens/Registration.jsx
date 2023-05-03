@@ -48,8 +48,8 @@ const Registration = () => {
     } else {
       try {
         
-        // let res = await fetch("http://localhost:9000/auth/registerProfessor", {
-          let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
+        let res = await fetch("http://localhost:9000/auth/registerProfessor", {
+          // let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
           method: "POST",
           body: JSON.stringify({
             password: password,
@@ -81,7 +81,9 @@ const Registration = () => {
           }
         }
       } catch (err) {
+        console.log('Error');
         console.error(err);
+        setMessage('Problem with registration! Contact Customer Support');
         
       }
     }
