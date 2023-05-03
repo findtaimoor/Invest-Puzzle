@@ -5,7 +5,7 @@ const Home = () => {
     <>
       <div className="container my-5">
         <div className="row mb-5 video-class">
-          <video id = 'vid' src="./videos/video.mp4" type="video/mp4"  muted={true} autoPlay controls />
+          <video id = 'vid' src="./videos/video.mp4" type="video/mp4"  muted={true} autoPlay controls playsinline data-wf-ignore="true" />
           
         </div>
 

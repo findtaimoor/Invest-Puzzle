@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
 const Registration = () => {
-  
-   
+
+
 
   let Emailref = useRef();
   let FullNameref = useRef();
@@ -33,7 +33,7 @@ const Registration = () => {
 
   const submitHandler = async (e) => {
 
-     
+
     e.preventDefault();
     let email = Emailref.current.value;
     let fullName = FullNameref.current.value;
@@ -52,13 +52,15 @@ const Registration = () => {
       setMessage("Password not match.");
     } else {
       try {
-        
+
 
         // let res = await fetch("http://localhost:9000/auth/registerProfessor", {
-          // let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
+        // let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
+          console.log(process.env.REACT_APP_BASE_URL);
+        let res = await fetch(process.env.REACT_APP_BASE_URL + "/auth/registerProfessor", {
 
-        let res = await fetch("https://wafflestock.com/auth/registerProfessor", {
-        
+          // let res = await fetch("https://wafflestock.com/auth/registerProfessor", {
+
 
           method: "POST",
           body: JSON.stringify({
@@ -81,9 +83,9 @@ const Registration = () => {
         console.log(data);
         if (res.status !== 200) {
 
-          setMessage(data.message.charAt(0).toUpperCase()+ data.message.slice(1));
+          setMessage(data.message.charAt(0).toUpperCase() + data.message.slice(1));
           console.log(res);
-        
+
         } else {
           navigate("/emailVerification");
 
@@ -97,7 +99,7 @@ const Registration = () => {
         console.log(err);
         console.error(err);
         setMessage('Problem with registration! Contact Customer Support');
-        
+
       }
     }
   };
@@ -107,7 +109,7 @@ const Registration = () => {
       <CheckoutSteps step1 />
       <div className="px-3 px-md-5">
         <FormContainer formTitle="Registration">
-          <h1>Update 3</h1>
+
           <Form
             onSubmit={submitHandler}
             className="col-md-6 offset-md-3"
@@ -132,7 +134,7 @@ const Registration = () => {
                 id="autoEmail"
                 className="form-cells1 mb-5"
                 required
-                
+
                 onChange={(e) => {
                   let unTemp = e.target.value.split("@")[0];
                   setusernametemp(unTemp)
@@ -147,10 +149,10 @@ const Registration = () => {
                 id="autoUserName"
                 className="form-cells1 mb-5"
                 value={usernametemp}
-                
+
               />
             </Form.Group>
-{/* 
+            {/* 
             <input
               type="button"
               value="changeusername"

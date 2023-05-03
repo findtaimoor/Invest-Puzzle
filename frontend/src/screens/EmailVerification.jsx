@@ -20,7 +20,7 @@ const EmailVerification = () => {
     const jwtbyRegister = localStorage.getItem("jwt");
     try {
       
-      let res = await fetch("https://wafflestock.com/common/confirmOtp", {
+      let res = await fetch(process.env.REACT_APP_BASE_URL +"/common/confirmOtp", {
         method: "POST",
         body: JSON.stringify({
           code: code,

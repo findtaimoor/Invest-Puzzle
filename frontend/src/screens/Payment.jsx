@@ -62,7 +62,7 @@ const Payment = () => {
     } else {
       const jwtbyOtp = localStorage.getItem("jwtbyOtp");
       try {
-        let res = await fetch("https://wafflestock.com/users/chargepayment", {
+        let res = await fetch(process.env.REACT_APP_BASE_URL + "/users/chargepayment", {
           method: "POST",
           body: JSON.stringify({
             nameOnCard: cardName,

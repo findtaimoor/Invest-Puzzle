@@ -1,27 +1,37 @@
-import React,{useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 function Header() {
 
   const [expanded, setExpanded] = useState(false);
+  let isLoggedIn = 0;
 
+  let navigate = useNavigate()
+  isLoggedIn = localStorage.getItem('isLoggedIn') != undefined ? localStorage.getItem('isLoggedIn') : 0;
 
+  console.log(isLoggedIn);
+  // if (isLoggedIn == 0){
+  //  navigate('/singin')
+  //  return
+  // }
   let menuRef = useRef();
 
   useEffect(() => {
-    let handler = (e)=>{
-      if(!menuRef.current.contains(e.target)){
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
         setExpanded(false);
-      }      
+      }
     };
 
     document.addEventListener("mousedown", handler);
-    return() =>{
+    return () => {
       document.removeEventListener("mousedown", handler);
     }
   });
- 
+
 
   return (
     <Navbar
@@ -33,7 +43,7 @@ function Header() {
     >
       <Container className="py-3 ">
         <Navbar.Brand href="/" className=" text-color brand ">
-          <img src="../images/brand.png"/>
+          <img src="../images/brand.png" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav " ref={menuRef} onClick={() => setExpanded(expanded ? false : "expanded")} />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -51,23 +61,26 @@ function Header() {
               Plans
             </Nav.Link>
           </Nav>
+          {
+            isLoggedIn == 1 ?
+              '' :
+              <div className="d-flex">
+                <Nav.Link as={NavLink} to="/signIn">
+                  <Button
+                    className=" me-4 btn signUp-button"
+                    onClick={() => setExpanded(expanded)}
+                  >
+                    Sign In
+                  </Button>
+                </Nav.Link>
 
-          <div className="d-flex">
-            <Nav.Link as={NavLink} to="/signIn">
-              <Button
-                className=" me-4 btn signUp-button"
-                 onClick={() => setExpanded(expanded)}
-              >
-                Sign In
-              </Button>
-            </Nav.Link>
-
-            <Nav.Link as={NavLink} to="/pricing">
-              <Button className=" me-4  btn signUp-button1" onClick={() => setExpanded(expanded)}>
-                Sign Up
-              </Button>
-            </Nav.Link>
-          </div>
+                <Nav.Link as={NavLink} to="/registration">
+                  <Button className=" me-4  btn signUp-button1" onClick={() => setExpanded(expanded)}>
+                    Sign Up
+                  </Button>
+                </Nav.Link>
+              </div>
+          }
         </Navbar.Collapse>
       </Container>
     </Navbar>

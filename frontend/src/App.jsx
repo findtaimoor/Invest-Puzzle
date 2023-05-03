@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState}from "react";
 import Header from "./components/Header";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "./screens/SignIn";
 import Registration from "./screens/Registration";
 import Payment from "./screens/Payment";
@@ -14,8 +14,21 @@ import AdminDashboard from "./screens/admin/AdminDashboard";
 import ForgetPassword from "./screens/password/ForgetPassword";
 import ValidateEmail from "./screens/password/ValidateEmail";
 import NewPassword from "./screens/password/NewPassword";
+import { useEffect } from "react";
 
 const App = () => {
+
+  const [isLoggedIn, setisLoggedIn] = useState(false);
+
+  
+  useEffect(() => {
+
+   setisLoggedIn(Number(localStorage.getItem('isLoggedIn') != undefined ? localStorage.getItem('isLoggedIn') : 0));
+    
+  }, []);
+
+  
+ 
   return (
     <>
       <Header />
@@ -30,10 +43,12 @@ const App = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/whatWeDo" element={<WhatWeDo />} />
           <Route path="/aboutUs" element={<AboutUs />} />
-          <Route path="/adminDashboard" element={<AdminDashboard />} />
+          {/* <Route path="/adminDashboard" element={ isLoggedIn? <AdminDashboard /> : <Navigate to = '/signIn'/>} /> */}
+          <Route path="/adminDashboard" element={ <AdminDashboard />} />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/validateEmail" element={<ValidateEmail />} />
           <Route path="/newPassword" element={<NewPassword />} />
+
         </Routes>
       </main>
     </>
