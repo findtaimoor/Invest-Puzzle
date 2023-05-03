@@ -54,53 +54,52 @@ const Payment = () => {
       studentCountInNumbers
     );
 
-
-if(expiryYear < new Date().getFullYear() && expiryMonth < new Date().getMonth()){
-  setMessage('Incorrect Card Details.')
-}else{
-  const jwtbyOtp = localStorage.getItem("jwtbyOtp");
-  try {
-    // let res = await fetch("http://localhost:9000/users/chargepayment", {
-
-    let res = await fetch("http://wafflestock.com/users/chargepayment", {
-      method: "POST",
-      body: JSON.stringify({
-        nameOnCard: cardName,
-        cardNumber: cardNumber,
-        expiryYear: expiryYear,
-        expiryMonth: expiryMonth,
-        CVC: cvv,
-        billingCycle: billingCycle,
-        planType: plan,
-        studentCount: studentCountInNumbers,
-        amount: priceInNumber,
-      }),
-
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${jwtbyOtp}`,
-      },
-    });
-
-    let data = await res.json();
-
-
-    console.log(data);
-
-    if (res.status !== 200 ) {
-      setMessage("Card details are incorrect.");
-      
+    if (
+      expiryYear < new Date().getFullYear() &&
+      expiryMonth < new Date().getMonth()
+    ) {
+      setMessage("Incorrect Card Details.");
     } else {
-      navigate("/accessCode");
-      localStorage.setItem("accessCode", data.accessCode);
+      const jwtbyOtp = localStorage.getItem("jwtbyOtp");
+      try {
+        let res = await fetch("http://wafflestock.com/users/chargepayment", {
+          method: "POST",
+          body: JSON.stringify({
+            nameOnCard: cardName,
+            cardNumber: cardNumber,
+            expiryYear: expiryYear,
+            expiryMonth: expiryMonth,
+            CVC: cvv,
+            billingCycle: billingCycle,
+            planType: plan,
+            studentCount: studentCountInNumbers,
+            amount: priceInNumber,
+          }),
+
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${jwtbyOtp}`,
+          },
+        });
+
+        let data = await res.json();
+
+        console.log(data);
+
+        if (res.status !== 200) {
+          setMessage("Card details are incorrect.");
+        } else {
+          if (data.status == "Successful") {
+            navigate("/accessCode");
+            localStorage.setItem("accessCode", data.accessCode);
+          } else {
+            setMessage("Payment is not successful.");
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-    
   };
 
   function adjustValues() {
@@ -141,15 +140,14 @@ if(expiryYear < new Date().getFullYear() && expiryMonth < new Date().getMonth())
     }
   }
 
-useEffect(()=>{
-  document.querySelectorAll('input[type="number"]').forEach(input => {
-    input.oninput = () =>{
-      if(input.value.length > input.maxLength) input.value = input.value.slice(0, input.maxLength)
-    }
-  })
-})
-
-
+  useEffect(() => {
+    document.querySelectorAll('input[type="number"]').forEach((input) => {
+      input.oninput = () => {
+        if (input.value.length > input.maxLength)
+          input.value = input.value.slice(0, input.maxLength);
+      };
+    });
+  });
 
   return (
     <>
@@ -169,7 +167,6 @@ useEffect(()=>{
                   required
                   ref={CardnameRef}
                   className="form-cells1 mb-5"
-                
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -180,7 +177,6 @@ useEffect(()=>{
                   ref={CardNumberRef}
                   className="form-cells1 mb-5"
                   placeholder="1234 5678 1234 5678"
-                  
                   maxLength={16}
                 />
               </Form.Group>
@@ -208,7 +204,6 @@ useEffect(()=>{
                       ref={CvvRef}
                       className="form-cells1 mb-5"
                       maxLength="3"
-                     
                     />
                   </Form.Group>
                 </div>
@@ -273,17 +268,17 @@ useEffect(()=>{
               <div className="row">
                 <div className="col-md-3 col-12 mt-3">
                   <div className="d-grid">
-                  <Button className="btn btn4" onClick={() => navigate(-1)}>
-                    Back
-                  </Button>
+                    <Button className="btn btn4" onClick={() => navigate(-1)}>
+                      Back
+                    </Button>
                   </div>
                 </div>
 
                 <div className="col-md-3 col-12 ms-auto mt-3 mb-5">
                   <div className="d-grid">
-                  <Button className="btn btn3" type="submit">
-                    Pay Now
-                  </Button>
+                    <Button className="btn btn3" type="submit">
+                      Pay Now
+                    </Button>
                   </div>
                 </div>
               </div>

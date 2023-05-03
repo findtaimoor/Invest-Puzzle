@@ -1,10 +1,27 @@
-import React,{useState} from "react";
+import React,{useEffect, useState, useRef} from "react";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 function Header() {
 
   const [expanded, setExpanded] = useState(false);
+
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e)=>{
+      if(!menuRef.current.contains(e.target)){
+        setExpanded(false);
+      }      
+    };
+
+    document.addEventListener("mousedown", handler);
+    return() =>{
+      document.removeEventListener("mousedown", handler);
+    }
+  });
+ 
 
   return (
     <Navbar
@@ -18,7 +35,7 @@ function Header() {
         <Navbar.Brand href="/" className=" text-color brand ">
           <img src="../images/brand.png"/>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav "  onClick={() => setExpanded(expanded ? false : "expanded")} />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav " ref={menuRef} onClick={() => setExpanded(expanded ? false : "expanded")} />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto ">
             <Nav.Link href="/" className="text-color pe-5">
@@ -38,15 +55,15 @@ function Header() {
           <div className="d-flex">
             <Nav.Link as={NavLink} to="/signIn">
               <Button
-                className=" me-4 signUp-button button-color text-light"
-                variant="outline-dark" onClick={() => setExpanded(expanded ? false : "expanded")}
+                className=" me-4 btn signUp-button"
+                 onClick={() => setExpanded(expanded)}
               >
                 Sign In
               </Button>
             </Nav.Link>
 
             <Nav.Link as={NavLink} to="/pricing">
-              <Button className=" me-4 signUp-button" variant="outline-dark" onClick={() => setExpanded(expanded ? false : "expanded")}>
+              <Button className=" me-4  btn signUp-button1" onClick={() => setExpanded(expanded)}>
                 Sign Up
               </Button>
             </Nav.Link>

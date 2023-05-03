@@ -1,5 +1,6 @@
 import React from 'react';
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
+
 const AboutUs = () => {
   return (
     <>
@@ -44,7 +45,7 @@ const AboutUs = () => {
               Waffle." – says Ano.
             </p>
           </div>
-          <div className="col-md-6 uni-img">
+          <div className="col-md-6 uni-img px-0">
             <img
               src="./images/university.webp"
               alt=""
@@ -53,18 +54,19 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div className="stock-color ">
-        <div className="container stock">
+
+      <div className=" stock-color">
+        <div className="container">
           <div className="row">
-            <div className="col-md-6 stock-img">
+            <div className="col-md-6 uni-img">
               <img
                 src="./images/stock.webp"
                 alt=""
-                className="img-fluid stock-radius"
+                className="img-fluid uni-radius"
               />
             </div>
-            <div className="col-md-6 stock-box pt-5 ">
-              <p className="stock-para">
+            <div className="col-md-6 uni-box pb-5 pt-3 px-4">
+              <p className=" uni-para ">
                 Idea Behind the name of the Mobile App – WaffleStock: The name
                 of WaffleStock comes from the first pancake theory: "The first
                 one turns out messed up because you're out of practice or
@@ -78,7 +80,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

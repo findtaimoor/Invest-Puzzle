@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CheckoutSteps from "../components/CheckoutSteps";
 import FormContainer from "../components/FormContainer";
 import { Form, Button } from "react-bootstrap";
@@ -10,14 +10,23 @@ const AccessCode = () => {
 
   const ACodebyLocalStorage = localStorage.getItem("accessCode");
 
-  // const [text, setText] = useState("");
 
-  // const inputHandler = (event) => {
-  //   setText(event.target.value);
+
+
+  // let textRef = useRef();
+
+  // const copy = async (e) => {
+  //   e.preventDefault();
+  //   let text = textRef.current.value;
+  //   await navigator.clipboard.writeText(text);
+  //   setMessage("Code is copied to clipboard.");
   // };
+
+
 
   const copy = async (e) => {
     e.preventDefault();
+ 
     await navigator.clipboard.writeText(ACodebyLocalStorage);
     setMessage("Code is copied to clipboard.");
   };
@@ -30,7 +39,7 @@ const AccessCode = () => {
           formTitle="Welcome to the WaffleStock"
           formDescription="We are glad to see you in our community"
         >
-          <Form className="col-md-6 offset-md-3" onSubmit={copy}>
+          <Form className="col-md-6 offset-md-3 col-12" onSubmit={copy}>
             {message ? <Message variant="success">{message}</Message> : null}
             <div className="row pt-5">
               <Form.Group>
@@ -43,6 +52,7 @@ const AccessCode = () => {
                     <div className="d-sm-grid">
                     <Form.Control
                       type="text"
+                      // ref={textRef}
                       onChange={(e) => e.target.value}
                       className="form-cells3"
                       value={ACodebyLocalStorage}

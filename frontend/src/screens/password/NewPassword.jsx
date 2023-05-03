@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 import Message from "../../components/Message";
+import SuccessCard from "../../components/SuccessCard";
 
 const NewPassword = () => {
   let Passwordref = useRef();
@@ -23,9 +24,7 @@ const NewPassword = () => {
 
     if (password !== confirmPassword) {
       setMessage("Password not match.");
-    } else {
-      navigate("/successPage");
-    }
+    } 
   };
 
   return (
@@ -35,7 +34,7 @@ const NewPassword = () => {
         detail="Please write your new password and confirm it."
       >
         <Form className="signUp-form " onSubmit={submitHandler}>
-          <div className="px-3">
+          <div className="px-3 px-md-5">
             {message ? <Message>{message}</Message> : null}
             <Form.Group className="mb-4 ">
               <Form.Label className="fw-bold fs-6"> Password</Form.Label>
@@ -85,7 +84,7 @@ const NewPassword = () => {
             </Form.Group>
 
             <div className="d-grid mt-5 mb-3">
-              <Button className="btn btn1" type="submit" >
+              <Button className="btn btn1" type="submit" data-bs-target = "#modal" data-bs-toggle="modal" >
                 Change Password
               </Button>
             </div>
@@ -101,40 +100,19 @@ const NewPassword = () => {
 
 
 
-      {/* <div class="modal fade" id="modal">
-      <div class="modal-dialog modal-lg">
+
+      <div class="modal fade" id="modal">
+      <div class="modal-dialog-centered modal-dialog modal-md">
         <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-title">
-              <h2>NEWSLETTER</h2>
-            </div>
-            <button class="btn-close" data-bs-dismiss="modal"></button>
+          
+
+          <div className="modal-body">
+            <SuccessCard title="Password" titleText="password"/>
           </div>
-          <div class="modal-body">
-            <p class="text-center">
-              Join our mailing list to receive updates on new arrivals and
-              special offers.
-            </p>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter-e-mail"
-              required
-              pattern="you@example.org"
-              class="form-control"
-            />
-          </div>
-          <div class="modal-footer">
-            <button
-              class="subscribe border-0 py-2 px-3"
-              data-bs-dismiss="modal"
-            >
-              Subscribe
-            </button>
-          </div>
+          
         </div>
       </div>
-    </div> */}
+    </div>
 
 
 

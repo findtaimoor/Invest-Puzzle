@@ -24,8 +24,8 @@ function SignIn() {
     try {
 
    
-      let res = await fetch("http://localhost:9000/auth/login", {
-        // let res = await fetch("http://wafflestock.com/auth/login", {
+      // let res = await fetch("http://localhost:9000/auth/login", {
+        let res = await fetch("http://wafflestock.com/auth/login", {
         method: "POST",
         body: JSON.stringify({
           password: password,
@@ -61,7 +61,7 @@ function SignIn() {
             <Form className="signUp-form " onSubmit={submitHandler}>
               
 
-              <div className="px-3 py-4">
+              <div className="px-3 px-md-5 py-4">
               {message ? <Message>{message}</Message> : null}
                 <Form.Group className="mb-3 ">
                   <Form.Label className="fw-bold fs-6" >Email</Form.Label>

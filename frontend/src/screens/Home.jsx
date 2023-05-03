@@ -7,7 +7,7 @@ const Home = () => {
         <div className="row mb-5 video-class">
         <video  src="./videos/video.mp4" type="video/webm"  
     loop={true} 
-     muted={true} autoPlay={true}/>
+     muted={true} autoPlay={true} controls preload= "metadata"/>
     
     
         </div>

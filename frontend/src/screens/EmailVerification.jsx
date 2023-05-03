@@ -20,8 +20,7 @@ const EmailVerification = () => {
     const jwtbyRegister = localStorage.getItem("jwt");
     try {
       
-      // let res = await fetch("http://localhost:9000/common/confirmOtp", {
-        let res = await fetch("http://wafflestock.com/common/confirmOtp", {
+      let res = await fetch("http://wafflestock.com/common/confirmOtp", {
         method: "POST",
         body: JSON.stringify({
           code: code,
