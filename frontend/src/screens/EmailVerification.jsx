@@ -20,7 +20,7 @@ const EmailVerification = () => {
     const jwtbyRegister = localStorage.getItem("jwt");
     try {
       
-      let res = await fetch("http://wafflestock.com/common/confirmOtp", {
+      let res = await fetch("https://wafflestock.com/common/confirmOtp", {
         method: "POST",
         body: JSON.stringify({
           code: code,
@@ -48,6 +48,7 @@ const EmailVerification = () => {
       }
     } catch (error) {
       console.log(error);
+      setMessage('Problem In Verify Email, COntact Customer Support');
     }
   };
   const [code, setCode] = useState(null);

@@ -56,7 +56,7 @@ const AccessCode = () => {
                       onChange={(e) => e.target.value}
                       className="form-cells3"
                       value={ACodebyLocalStorage}
-                      placeholder="•••••••••"
+                      placeholder="•••••••••" disabled
                     />
                   </div>
                   </div>

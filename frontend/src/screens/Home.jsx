@@ -3,15 +3,17 @@ import React from 'react'
 const Home = () => {
   return (
     <>
-    <div className="container my-5">
+      <div className="container my-5">
         <div className="row mb-5 video-class">
-        <video  src="./videos/video.mp4" type="video/webm"  
-    loop={true} 
-     muted={true} autoPlay={true} controls preload= "metadata"/>
-    
-    
+          <video id = 'vid' src="./videos/video.mp4" type="video/mp4"  muted={true} autoPlay controls />
+          
         </div>
-    </div>
+
+        <script>
+          document.getElementById('vid').play();
+        </script>
+
+      </div>
     </>
   )
 }

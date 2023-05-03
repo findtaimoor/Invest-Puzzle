@@ -62,7 +62,7 @@ const Payment = () => {
     } else {
       const jwtbyOtp = localStorage.getItem("jwtbyOtp");
       try {
-        let res = await fetch("http://wafflestock.com/users/chargepayment", {
+        let res = await fetch("https://wafflestock.com/users/chargepayment", {
           method: "POST",
           body: JSON.stringify({
             nameOnCard: cardName,
@@ -94,10 +94,12 @@ const Payment = () => {
             localStorage.setItem("accessCode", data.accessCode);
           } else {
             setMessage("Payment is not successful.");
+           
           }
         }
       } catch (error) {
         console.log(error);
+        setMessage('Payment is not successful, Contact Customer Support');
       }
     }
   };
