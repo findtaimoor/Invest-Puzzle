@@ -1,5 +1,5 @@
-import React from 'react';
-import Footer from '../components/Footer';
+import React from "react";
+import Footer from "../components/Footer";
 
 const AboutUs = () => {
   return (
@@ -8,24 +8,34 @@ const AboutUs = () => {
         <div className="row">
           <div className="col-md-6 about-img ">
             <img
-              src="./images/girl.jpg"
+              src="./images/circle.png"
               alt=""
               className="img-fluid about-radius"
             />
           </div>
-          <div className="col-md-6 about-box pt-5">
-            <h1 className="about-heading pb-2">About Us</h1>
+          <div className="col-md-6 about-box px-4 px-md-0">
+            <h1 className="about-heading pb-2 fs-3 fw-bold">
+              Mission Statement
+            </h1>
             <p className=" about-para">
-              InvestPuzzle LLC was founded by Ano Glonti in 2022. Ano has earned
-              a Bachelor's Degree in Finance from George Mason University and a
-              Master's Degree in Global Finance from Fordham University. Ano has
-              taken multiple Finance Classes, but she particularly distinguishes
-              Student Managed Investment Fund (SMIF) at GMU." The first time I
-              had a real stock market experience was as a Co-President of the
-              Risk Committee at SMIF. Universities provide all the theoretical
-              knowledge we need to succeed in the stock market; however, they do
-              not provide enough practical tools to make students feel what
-              investing in the stock market is like.
+              WaffleStock is an app that creates a healthy competitive
+              environment for SMIF students to practice trading, understand the
+              market, learn from each other and make connections.
+            </p>
+
+            <h1 className="about-heading pb-2 fs-3 fw-bold">Our goal</h1>
+            <p className=" about-para">
+              We strive to make students comfortable in the stock market and
+              have enough practice to make intelligent trading decisions in the
+              real world.
+            </p>
+
+            <h1 className="about-heading pb-2 fs-3 fw-bold">
+              Vision Statement
+            </h1>
+            <p className=" about-para">
+              To create a community of SMIF students that enables them to be a
+              better traders.
             </p>
           </div>
         </div>

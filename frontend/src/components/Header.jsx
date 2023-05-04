@@ -3,16 +3,17 @@ import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
 function Header() {
-
   const [expanded, setExpanded] = useState(false);
   let isLoggedIn = 0;
 
-  let navigate = useNavigate()
-  isLoggedIn = localStorage.getItem('isLoggedIn') != undefined ? localStorage.getItem('isLoggedIn') : 0;
+  let navigate = useNavigate();
+  isLoggedIn =
+    localStorage.getItem("isLoggedIn") != undefined
+      ? localStorage.getItem("isLoggedIn")
+      : 0;
 
-  console.log(isLoggedIn);
+
   // if (isLoggedIn == 0){
   //  navigate('/singin')
   //  return
@@ -29,9 +30,16 @@ function Header() {
     document.addEventListener("mousedown", handler);
     return () => {
       document.removeEventListener("mousedown", handler);
-    }
+    };
   });
 
+
+
+  const handleLogout = () =>{
+    localStorage.clear();
+   navigate('/signIn');
+   
+  }
 
   return (
     <Navbar
@@ -45,7 +53,11 @@ function Header() {
         <Navbar.Brand href="/" className=" text-color brand ">
           <img src="../images/brand.png" />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav " ref={menuRef} onClick={() => setExpanded(expanded ? false : "expanded")} />
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav "
+          ref={menuRef}
+          onClick={() => setExpanded(expanded ? false : "expanded")}
+        />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto ">
             <Nav.Link href="/" className="text-color pe-5">
@@ -57,30 +69,58 @@ function Header() {
             <Nav.Link href="/aboutUs" className="text-color pe-5">
               About Us
             </Nav.Link>
+           
             <Nav.Link href="/pricing" className="text-color">
               Plans
             </Nav.Link>
           </Nav>
-          {
-            isLoggedIn == 1 ?
-              '' :
-              <div className="d-flex">
-                <Nav.Link as={NavLink} to="/signIn">
-                  <Button
-                    className=" me-4 btn signUp-button"
-                    onClick={() => setExpanded(expanded)}
-                  >
-                    Sign In
-                  </Button>
-                </Nav.Link>
+          {isLoggedIn == 1 ? (
+            <div className="d-flex">
+              <Nav.Link as={NavLink} to="/profile">
+                <div >
+                 
+                    <img
+                      src="./images/girl.jpg"
+                      alt="Profile Image"
+                      className="img-fluid img-class"
+                    />
+        
+                </div>
+              </Nav.Link>
 
-                <Nav.Link as={NavLink} to="/registration">
-                  <Button className=" me-4  btn signUp-button1" onClick={() => setExpanded(expanded)}>
-                    Sign Up
-                  </Button>
-                </Nav.Link>
+              <div className="select-wrapper-logout">
+              <select
+                    type="text"
+                    className="form-cells-logout"
+                  >
+                    <option value="account" hidden>Account</option>
+                    <option value="signOut" onClick={handleLogout}>Sign Out</option>
+                    
+                  </select>
               </div>
-          }
+
+            </div>
+          ) : (
+            <div className="d-flex">
+              <Nav.Link as={NavLink} to="/signIn">
+                <Button
+                  className=" me-4 btn signUp-button"
+                  onClick={() => setExpanded(expanded)}
+                >
+                  Sign In
+                </Button>
+              </Nav.Link>
+
+              <Nav.Link as={NavLink} to="/registration">
+                <Button
+                  className=" me-4  btn signUp-button1"
+                  onClick={() => setExpanded(expanded)}
+                >
+                  Sign Up
+                </Button>
+              </Nav.Link>
+            </div>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

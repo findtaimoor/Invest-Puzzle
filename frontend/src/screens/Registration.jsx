@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
 const Registration = () => {
-
-
+  const navigate = useNavigate();
 
   let Emailref = useRef();
   let FullNameref = useRef();
@@ -26,14 +25,9 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(null);
   const [showConfirmPassword, setShowConfirmPassword] = useState(null);
   const [message, setMessage] = useState(null);
-  const [usernametemp, setusernametemp] = useState('');
-
-  const navigate = useNavigate();
-
+  const [usernametemp, setusernametemp] = useState("");
 
   const submitHandler = async (e) => {
-
-
     e.preventDefault();
     let email = Emailref.current.value;
     let fullName = FullNameref.current.value;
@@ -52,107 +46,103 @@ const Registration = () => {
       setMessage("Password not match.");
     } else {
       try {
-
-
         // let res = await fetch("http://localhost:9000/auth/registerProfessor", {
         // let res = await fetch("http://wafflestock.com/auth/registerProfessor", {
-          console.log(process.env.REACT_APP_BASE_URL);
-        let res = await fetch(process.env.REACT_APP_BASE_URL + "/auth/registerProfessor", {
+        console.log(process.env.REACT_APP_BASE_URL);
+        let res = await fetch(
+          process.env.REACT_APP_BASE_URL + "/auth/registerProfessor",
+          {
+            // let res = await fetch("https://wafflestock.com/auth/registerProfessor", {
 
-          // let res = await fetch("https://wafflestock.com/auth/registerProfessor", {
-
-
-          method: "POST",
-          body: JSON.stringify({
-            password: password,
-            userFullName: fullName,
-            email: email,
-            username: userName,
-            userPhone: phone,
-            universityName: universityName,
-            title: title,
-            fundName: fundName,
-            fundsAum: fundAum,
-          }),
-          headers: {
-            "Content-type": "application/json",
-          },
-        });
+            method: "POST",
+            body: JSON.stringify({
+              password: password,
+              userFullName: fullName,
+              email: email,
+              username: userName,
+              userPhone: phone,
+              universityName: universityName,
+              title: title,
+              fundName: fundName,
+              fundsAum: fundAum,
+            }),
+            headers: {
+              "Content-type": "application/json",
+            },
+          }
+        );
 
         let data = await res.json();
+
         console.log(data);
         if (res.status !== 200) {
-
-          setMessage(data.message.charAt(0).toUpperCase() + data.message.slice(1));
+          setMessage(
+            data.message.charAt(0).toUpperCase() + data.message.slice(1)
+          );
           console.log(res);
-
         } else {
           navigate("/emailVerification");
 
           localStorage.setItem("jwt", data.data.jwt);
-
-          {
-            /* <EmailVerification/> */
-          }
         }
       } catch (err) {
         console.log(err);
         console.error(err);
-        setMessage('Problem with registration! Contact Customer Support');
-
+        setMessage("Problem with registration! Contact Customer Support");
       }
     }
   };
 
-  return (
-    <>
-      <CheckoutSteps step1 />
-      <div className="px-3 px-md-5">
-        <FormContainer formTitle="Registration">
+  let isLoggedIn = localStorage.getItem("isLoggedIn");
 
-          <Form
-            onSubmit={submitHandler}
-            className="col-md-6 offset-md-3"
-            id="contactForm"
-          >
-            {message ? <Message>{message}</Message> : null}
+  if (isLoggedIn == 1) {
+    navigate("/adminDashboard");
+  } else {
+    return (
+      <>
+        <CheckoutSteps step1 />
+        <div className="px-3 px-md-5">
+          <FormContainer formTitle="Registration">
+            <Form
+              onSubmit={submitHandler}
+              className="col-md-6 offset-md-3"
+              id="contactForm"
+            >
+              {message ? <Message>{message}</Message> : null}
 
-            <Form.Group className="mb-3">
-              <Form.Label className="font2 mt-5">Full Name*</Form.Label>
-              <Form.Control
-                type="text"
-                ref={FullNameref}
-                className="form-cells1 mb-5"
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">University email*</Form.Label>
-              <Form.Control
-                type="email"
-                ref={Emailref}
-                id="autoEmail"
-                className="form-cells1 mb-5"
-                required
-
-                onChange={(e) => {
-                  let unTemp = e.target.value.split("@")[0];
-                  setusernametemp(unTemp)
-                }}
-
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Username*</Form.Label>
-              <Form.Control
-                type="text"
-                id="autoUserName"
-                className="form-cells1 mb-5"
-                value={usernametemp}
-
-              />
-            </Form.Group>
-            {/* 
+              <Form.Group className="mb-3">
+                <Form.Label className="font2 mt-5">Full Name*</Form.Label>
+                <Form.Control
+                  type="text"
+                  ref={FullNameref}
+                  className="form-cells1 mb-5"
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">University email*</Form.Label>
+                <Form.Control
+                  type="email"
+                  ref={Emailref}
+                  id="autoEmail"
+                  className="form-cells1 mb-5"
+                  required
+                  onChange={(e) => {
+                    let unTemp = e.target.value.split("@")[0];
+                    setusernametemp(unTemp);
+                  }}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Username*</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="autoUserName"
+                  className="form-cells1 mb-5"
+                  value={usernametemp}
+                />
+              </Form.Group>
+              {/* 
             <input
               type="button"
               value="changeusername"
@@ -160,113 +150,114 @@ const Registration = () => {
             />
 
              */}
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Password*</Form.Label>
-              <div className="position-relative">
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Password*</Form.Label>
+                <div className="position-relative">
+                  <Form.Control
+                    ref={Passwordref}
+                    type={showPassword ? "text" : "password"}
+                    className="form-cells1 mb-5"
+                    required
+                    placeholder="Type your password.."
+                  />
+                  <div
+                    className="showpass1 "
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <FontAwesomeIcon icon={faEye} />
+                    ) : (
+                      <FontAwesomeIcon icon={faEyeSlash} />
+                    )}
+                  </div>
+                </div>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Confirm Password*</Form.Label>
+                <div className="position-relative">
+                  <Form.Control
+                    ref={ConfirmPasswordref}
+                    type={showConfirmPassword ? "text" : "password"}
+                    className="form-cells1 mb-5"
+                    required
+                    placeholder="Type your password.."
+                  />
+                  <div
+                    className="showpass1 "
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? (
+                      <FontAwesomeIcon icon={faEye} />
+                    ) : (
+                      <FontAwesomeIcon icon={faEyeSlash} />
+                    )}
+                  </div>
+                </div>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Phone Number*</Form.Label>
                 <Form.Control
-                  ref={Passwordref}
-                  type={showPassword ? "text" : "password"}
+                  type="number"
+                  ref={Phoneref}
                   className="form-cells1 mb-5"
                   required
-                  placeholder="Type your password.."
                 />
-                <div
-                  className="showpass1 "
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <FontAwesomeIcon icon={faEye} />
-                  ) : (
-                    <FontAwesomeIcon icon={faEyeSlash} />
-                  )}
-                </div>
-              </div>
-            </Form.Group>
+              </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Confirm Password*</Form.Label>
-              <div className="position-relative">
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">University Name*</Form.Label>
                 <Form.Control
-                  ref={ConfirmPasswordref}
-                  type={showConfirmPassword ? "text" : "password"}
+                  type="text"
+                  ref={UniversityNameref}
                   className="form-cells1 mb-5"
                   required
-                  placeholder="Type your password.."
                 />
-                <div
-                  className="showpass1 "
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? (
-                    <FontAwesomeIcon icon={faEye} />
-                  ) : (
-                    <FontAwesomeIcon icon={faEyeSlash} />
-                  )}
-                </div>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Title*</Form.Label>
+                <Form.Control
+                  type="text"
+                  ref={Titleref}
+                  className="form-cells1 mb-5"
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Fund Name*</Form.Label>
+                <Form.Control
+                  type="text"
+                  ref={FundNameref}
+                  className="form-cells1 mb-5"
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label className="font2">Fund AUM ($)*</Form.Label>
+                <Form.Control
+                  type="number"
+                  ref={FundsAumref}
+                  className="form-cells1 last-cell"
+                  required
+                />
+              </Form.Group>
+
+              <hr />
+              <div className="d-grid my-4">
+                <Button className="btn btn2" type="submit">
+                  Sign Up
+                </Button>
               </div>
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Phone Number*</Form.Label>
-              <Form.Control
-                type="number"
-                ref={Phoneref}
-                className="form-cells1 mb-5"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">University Name*</Form.Label>
-              <Form.Control
-                type="text"
-                ref={UniversityNameref}
-                className="form-cells1 mb-5"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Title*</Form.Label>
-              <Form.Control
-                type="text"
-                ref={Titleref}
-                className="form-cells1 mb-5"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Fund Name*</Form.Label>
-              <Form.Control
-                type="text"
-                ref={FundNameref}
-                className="form-cells1 mb-5"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label className="font2">Fund AUM ($)*</Form.Label>
-              <Form.Control
-                type="number"
-                ref={FundsAumref}
-                className="form-cells1 last-cell"
-                required
-              />
-            </Form.Group>
-
-            <hr />
-            <div className="d-grid my-4">
-              <Button className="btn btn2" type="submit">
-                Sign Up
-              </Button>
-            </div>
-          </Form>
-        </FormContainer>
-      </div>
-    </>
-  );
+            </Form>
+          </FormContainer>
+        </div>
+      </>
+    );
+  }
 };
 
 export default Registration;

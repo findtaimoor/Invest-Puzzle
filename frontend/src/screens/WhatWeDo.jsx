@@ -1,5 +1,5 @@
-import React from 'react';
-import Footer from '../components/Footer';
+import React from "react";
+import Footer from "../components/Footer";
 
 const WhatWeDo = () => {
   return (
@@ -9,7 +9,7 @@ const WhatWeDo = () => {
           <div className="container center-content pb-5">
             <div className="row">
               <div className="col-12 ">
-                <h1 className="heading text-center">Invest Puzzle</h1>
+                <h1 className="heading text-center fs-1">Invest Puzzle</h1>
                 <p className="fs-5 pt-3 paragraph">
                   It is a company dedicated to increasing Financial Education
                   among students in a fun and interactive way. We have designed
@@ -28,8 +28,20 @@ const WhatWeDo = () => {
       <div className="waffle pt-5">
         <div className="container">
           <div className="row">
-            <div className="col mobile-box text-center">
-              <h2 className="waffle-heading">Using WaffleStock</h2>
+            <div className="col-md-6 pe-md-5 d-flex align-items-center">
+              <div className="mb-4">
+                <img
+                  src="./images/Frame 14280.png"
+                  alt="mobile"
+                  className="img-fluid"
+                />
+              </div>
+            </div>
+
+            <div className="col-md-6 mobile-box text-center text-md-start d-flex">
+              <h2 className="waffle-heading fw-bold fs-3 mt-3">
+                Using <span className="title-color">WaffleStock</span>
+              </h2>
               <p className="waffle-para">
                 Users get 1 million hypothetical dollars to invest however they
                 want. The app will display their returns, portfolio analysis,
@@ -48,20 +60,22 @@ const WhatWeDo = () => {
       <div className="mobile ">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 mobile-box text-center text-md-start">
-              <h1 className="mobile-heading pb-2">What If Scenarios</h1>
+            <div className="col-md-6 mobile-box text-center text-md-start d-flex">
+              <h1 className="waffle-heading fw-bold pb-2 fs-3 ">What If Scenarios</h1>
               <p className=" mobile-para">
                 WaffleStock also offers “What If Scenarios”, where users can
                 create a scenario and test how the outcomes affect people’s
-                portfolios.
+                portfolios. 
               </p>
             </div>
-            <div className="col-md-6 img-back px-md-5">
-              <img
+            <div className="col-md-6 img-back px-md-5 d-flex align-items-center">
+             <div>
+             <img
                 src="./images/mobile.png"
                 alt=""
                 className="img-fluid bord-radius"
               />
+             </div>
             </div>
           </div>
         </div>
@@ -69,21 +83,27 @@ const WhatWeDo = () => {
       <div className="circle">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 img-back ">
+            <div className="col-md-6 img-back d-flex align-items-center">
+              <div>
               <img
-                src="./images/circle.png"
+                src="./images/img-web 1.png"
                 alt=""
                 className="img-fluid bord-radius"
               />
+              </div>
             </div>
-            <div className="col-md-6 mobile-box pt-5 text-center text-md-start">
-              <h1 className="mobile-heading ">Mission Statement</h1>
+            <div className="col-md-6 mobile-box pt-5 text-center text-md-start d-flex">
+              <h1 className="waffle-heading fw-bold fs-3">
+                The Idea Behind the Name - WaffleStock
+              </h1>
               <p className=" mobile-para">
-                We create a healthy competitive environment for SMIF students to
-                practice trading, understand the market, learn from each other
-                and make connections. Our goal is to make students comfortable
-                in the stock market and have enough practice to make intelligent
-                trading decisions in the real world.
+                The name WaffleStock comes from the first pancake theory: “The
+                first one turns out messed up because you’re out of practice or
+                haven’t made pancakes before. The second and following pancakes
+                come out perfectly round and golden.” The same thinking applies
+                to waffles. Making waffles is our metaphor for investing in the
+                stock market, where WaffleStock is the practice place to make
+                profitable investments.
               </p>
             </div>
           </div>
