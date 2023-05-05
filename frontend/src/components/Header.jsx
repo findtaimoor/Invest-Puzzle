@@ -42,16 +42,19 @@ function Header() {
   }
 
   return (
-    <Navbar
+    
+     <Navbar
       collapseOnSelect
       expand="lg"
       fixed="top"
-      className="header-main  bg-light "
+      className="header-main  bg-light  "
       expanded={expanded}
     >
-      <Container className="py-3 ">
+      <Container className="px-md-5 px-3" fluid>
         <Navbar.Brand href="/" className=" text-color brand ">
-          <img src="../images/brand.png" />
+          <div className="brand-img">
+          <img src="../images/brand 2.png"  className="img-fluid"/>
+          </div>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav "
@@ -59,22 +62,25 @@ function Header() {
           onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto ">
-            <Nav.Link href="/" className="text-color pe-5">
+          <Nav className="mx-auto">
+            <Nav.Link href="/" className="text-color fw-bold pe-5">
               Home
             </Nav.Link>
-            <Nav.Link href="/whatWeDo" className="text-color pe-5">
+            <Nav.Link href="/whatWeDo" className="text-color fw-bold pe-5">
               What We Do
             </Nav.Link>
-            <Nav.Link href="/aboutUs" className="text-color pe-5">
+            <Nav.Link href="/aboutUs" className="text-color fw-bold pe-5">
               About Us
+            </Nav.Link> <Nav.Link href="/team" className="text-color fw-bold pe-5">
+              Our Team
             </Nav.Link>
            
-            <Nav.Link href="/pricing" className="text-color">
+            <Nav.Link href="/pricing" className="text-color fw-bold">
               Plans
             </Nav.Link>
           </Nav>
-          {isLoggedIn == 1 ? (
+         <div className="ms-auto">
+         {isLoggedIn == 1 ? (
             <div className="d-flex">
               <Nav.Link as={NavLink} to="/profile">
                 <div >
@@ -93,7 +99,7 @@ function Header() {
                     type="text"
                     className="form-cells-logout"
                   >
-                    <option value="account" hidden>Account</option>
+                    <option value="account" hidden >Account</option>
                     <option value="signOut" onClick={handleLogout}>Sign Out</option>
                     
                   </select>
@@ -121,9 +127,11 @@ function Header() {
               </Nav.Link>
             </div>
           )}
+         </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+     
   );
 }
 

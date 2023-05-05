@@ -60,15 +60,15 @@ const WhatWeDo = () => {
       <div className="mobile ">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 mobile-box text-center text-md-start d-flex">
+            <div className="col-md-7 mobile-box text-center text-md-start d-flex">
               <h1 className="waffle-heading fw-bold pb-2 fs-3 ">What If Scenarios</h1>
-              <p className=" mobile-para">
+              <p className=" mobile-para pe-md-5">
                 WaffleStock also offers “What If Scenarios”, where users can
                 create a scenario and test how the outcomes affect people’s
                 portfolios. 
               </p>
             </div>
-            <div className="col-md-6 img-back px-md-5 d-flex align-items-center">
+            <div className="col-md-5 img-back px-md-5 d-flex align-items-center">
              <div>
              <img
                 src="./images/mobile.png"
@@ -83,7 +83,7 @@ const WhatWeDo = () => {
       <div className="circle">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 img-back d-flex align-items-center">
+            <div className="col-md-5 img-back d-flex align-items-center">
               <div>
               <img
                 src="./images/img-web 1.png"
@@ -92,7 +92,7 @@ const WhatWeDo = () => {
               />
               </div>
             </div>
-            <div className="col-md-6 mobile-box pt-5 text-center text-md-start d-flex">
+            <div className="col-md-7 mobile-box pt-5 text-center text-md-start d-flex ps-md-5">
               <h1 className="waffle-heading fw-bold fs-3">
                 The Idea Behind the Name - WaffleStock
               </h1>

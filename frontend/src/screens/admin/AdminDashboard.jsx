@@ -14,9 +14,15 @@ const AdminDashboard = () => {
 
     return (
       <>
-        <h1 className='admin-main text-center'>
+       <div className="container">
+        <div className="row">
+          <div className="col-12">
+          <h1 className='admin-main text-center mt-5'>
           This is Admin Dashboard.
         </h1>
+          </div>
+        </div>
+       </div>
       </>)
 }
 

@@ -15,6 +15,7 @@ import ForgetPassword from "./screens/password/ForgetPassword";
 import ValidateEmail from "./screens/password/ValidateEmail";
 import NewPassword from "./screens/password/NewPassword";
 import { useEffect } from "react";
+import Team from "./screens/Team";
 
 const App = () => {
 
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/validateEmail" element={<ValidateEmail />} />
           <Route path="/newPassword" element={<NewPassword />} />
+          <Route path="/team" element={<Team/>}/>
 
         </Routes>
       </main>

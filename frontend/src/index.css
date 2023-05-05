@@ -707,10 +707,7 @@ ul li:before {
 .uni-img {
   cursor: pointer;
 }
-.uni-radius {
-  border-radius: 3% !important;
-  -webkit-border-radius: 3% !important;
-}
+
 
 /* stock img */
 
@@ -979,5 +976,23 @@ form-cells-logout:focus{
 .link-1{
   text-decoration: none;
 }
+
+.brand-img{
+  width: 60%;
+}
+
+.team-card{
+  border: 1px solid #CBCBCB;
+}
+
+.img-class-team{
+  height: 23em;
+  width: 100%;
+  
+}
+.job-desc{
+  color: #717171;
+}
+
 
 

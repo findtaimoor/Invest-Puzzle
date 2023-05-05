@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import FormContainrLogin from "../../components/FormContainrLogin";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import OTPtimer from "../../components/OTPtimer";
+import Message from "../../components/Message";
 
 const ValidateEmail = () => {
   const navigate = useNavigate();
+
+  let [message, setMessage] = useState(null);
+
+let otpRef = useRef();
+
+  const recoveryEmail = localStorage.getItem('recoveryEmail');
 
   const [otp, setOtp] = useState(new Array(5).fill(""));
 
@@ -20,14 +27,28 @@ const ValidateEmail = () => {
     }
   };
 
+
+  const submitHandler = (e) =>{
+    e.preventDefault();
+
+    let otp = otpRef.current.value;
+
+    if(otp){
+      navigate('/newPassword')
+    }else{
+      setMessage('OTP is required to validate email.')
+    }
+  }
+
   return (
     <>
       <FormContainrLogin
         title="Validate Email"
         detail="If you don't receive email within 2 minutes, please check junk file folder of your mail box."
       >
-        <Form className="signUp-form ">
+        <Form className="signUp-form " onSubmit={submitHandler}>
           <div className="px-3 px-md-5">
+            {message ? <Message>{message}</Message>: null}
             <div className="row text-center">
               
               <OTPtimer seconds={300} />
@@ -45,6 +66,7 @@ const ValidateEmail = () => {
                         maxLength="1"
                         key={index}
                         value={data}
+                        ref={otpRef}
                         onChange={(e) => handleChange(e.target, index)}
                         onFocus={(e) => e.target.select()}
                       />
@@ -54,12 +76,12 @@ const ValidateEmail = () => {
               </div>
 
               <Form.Label className="mt-3 validate-label">
-                Send to yourmail@mail.com
+                Send to {recoveryEmail}
               </Form.Label>
             </Form.Group>
 
             <div className="d-grid mt-5 mb-3">
-              <Button className="btn btn1" type="submit" onClick={()=> navigate('/newPassword')} >
+              <Button className="btn btn1" type="submit" >
                 Validate
               </Button>
             </div>

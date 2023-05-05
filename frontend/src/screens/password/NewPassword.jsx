@@ -17,14 +17,28 @@ const NewPassword = () => {
   const [showPassword, setShowPassword] = useState(null);
   const [showConfirmPassword, setShowConfirmPassword] = useState(null);
 
+
+  // const [show, setShow] = useState(false);
+  //   const handleClose = () => setShow(false);
+
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
     let password = Passwordref.current.value;
     let confirmPassword = ConfirmPasswordref.current.value;
 
-    if (password !== confirmPassword) {
-      setMessage("Password not match.");
-    } 
+if(password && confirmPassword){
+  if (password !== confirmPassword) {
+    setMessage("Password not match.");
+  }
+
+
+}else{
+  setMessage('Fill all fields.')
+}
+
+
   };
 
   return (
@@ -43,7 +57,7 @@ const NewPassword = () => {
                   type={showPassword ? "text" : "password"}
                   ref={Passwordref}
                   className="form-cells"
-                  required
+                  
                   placeholder="Type your password.."
                 />
                 <div
@@ -66,7 +80,7 @@ const NewPassword = () => {
                   type={showConfirmPassword ? "text" : "password"}
                   ref={ConfirmPasswordref}
                   className="form-cells"
-                  required
+                
                   placeholder="Type your password.."
                 />
 
@@ -84,7 +98,7 @@ const NewPassword = () => {
             </Form.Group>
 
             <div className="d-grid mt-5 mb-3">
-              <Button className="btn btn1" type="submit" data-bs-target = "#modal" data-bs-toggle="modal" >
+              <Button className="btn btn1" type="submit" >
                 Change Password
               </Button>
             </div>
