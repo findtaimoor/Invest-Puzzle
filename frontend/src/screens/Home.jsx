@@ -20,7 +20,7 @@ const Home = () => {
         </div>
 
         <div className="row">
-          <video
+          {/* <video
             id="vid"
             src="./videos/video.mp4"
             type="video/mp4"
@@ -29,7 +29,22 @@ const Home = () => {
             controls
             playsinline
             data-wf-ignore="true"
-          />
+            poster='./images/video-poster.png'
+          /> */}
+
+          {/* <video
+            id='vid'
+            width="100%"
+            height="100%"
+            src="./videos/video.mp4"
+            type="video/mp4"
+            muted={true}
+            controls
+            poster='./images/video-poster.png'
+
+          /> */}
+
+
         </div>
 
         <div className="row">
@@ -59,7 +74,7 @@ const Home = () => {
               <div className="d-flex px-3 px-md-5 my-3 justify-content-center justify-content-lg-start">
                 <div className=" me-md-3 mb-3 ">
 
-                  
+
                   <img src="./images/image 1.png" alt="play store" />
                 </div>
                 <div>
@@ -104,7 +119,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
