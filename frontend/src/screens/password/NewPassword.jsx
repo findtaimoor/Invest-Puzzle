@@ -118,8 +118,6 @@ if(password && confirmPassword){
       <div class="modal fade" id="modal">
       <div class="modal-dialog-centered modal-dialog modal-md">
         <div class="modal-content">
-          
-
           <div className="modal-body">
             <SuccessCard title="Password" titleText="password"/>
           </div>

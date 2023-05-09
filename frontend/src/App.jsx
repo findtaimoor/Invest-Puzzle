@@ -2,20 +2,26 @@ import React, {useState}from "react";
 import Header from "./components/Header";
 import { Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "./screens/SignIn";
-import Registration from "./screens/Registration";
-import Payment from "./screens/Payment";
-import EmailVerification from "./screens/EmailVerification";
-import AccessCode from "./screens/AccessCode";
-import Pricing from "./screens/Pricing";
-import WhatWeDo from "./screens/WhatWeDo";
-import AboutUs from "./screens/AboutUs";
-import Home from "./screens/Home";
+import Registration from "./screens/signup/Registration";
+import Payment from "./screens/signup/Payment";
+import EmailVerification from "./screens/signup/EmailVerification";
+import AccessCode from "./screens/signup/AccessCode";
+import Pricing from "./screens/WebsitePages/Pricing";
+import WhatWeDo from "./screens/WebsitePages/WhatWeDo";
+import AboutUs from "./screens/WebsitePages/AboutUs";
+import Home from "./screens/WebsitePages/Home";
 import AdminDashboard from "./screens/admin/AdminDashboard";
 import ForgetPassword from "./screens/password/ForgetPassword";
 import ValidateEmail from "./screens/password/ValidateEmail";
 import NewPassword from "./screens/password/NewPassword";
 import { useEffect } from "react";
-import Team from "./screens/Team";
+import Team from "./screens/WebsitePages/Team";
+import Profile from "./screens/profile/Profile";
+import ProfileSettings from "./screens/profile/ProfileSettings";
+import ChangeEmail from "./screens/profile/ChangeEmail";
+import ChangeUsername from "./screens/profile/ChangeUsername";
+import ChangePassword from "./screens/profile/ChangePassword";
+import ActivePlan from "./screens/admin/ActivePlan";
 
 const App = () => {
 
@@ -50,6 +56,14 @@ const App = () => {
           <Route path="/validateEmail" element={<ValidateEmail />} />
           <Route path="/newPassword" element={<NewPassword />} />
           <Route path="/team" element={<Team/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profileSettings" element={<ProfileSettings/>}/>
+          <Route path="/changeEmail" element={<ChangeEmail/>}/>
+          <Route path="/changeUsername" element={<ChangeUsername/>}/>
+          <Route path="/changePassword" element={<ChangePassword/>}/>
+          <Route path="/activePlan" element={<ActivePlan/>}/>
+
+
 
         </Routes>
       </main>

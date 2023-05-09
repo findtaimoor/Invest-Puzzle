@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PricingCard = ({ name, pricing, time, users, list }) => {
+
+let isLoggedIn = localStorage.getItem('isLoggedIn')
+
+
+
   return (
     <>
       <div className="px-3">
@@ -18,9 +23,13 @@ const PricingCard = ({ name, pricing, time, users, list }) => {
         </ul>
       </div>
       <div className="ps-3 pe-5 d-grid">
-        <Link to="/registration" className="btn btn3 my-5" type="submit">
+        {
+          isLoggedIn == 1 ? <Link to="/registration" className="btn btn3 mb-md-5 mb-4 mt-3" type="submit">
+          Upgrade
+        </Link> : <Link to="/registration" className="btn btn3 mb-md-5 mb-4 mt-3" type="submit">
           Get Started{" "}
         </Link>
+        }
       </div>
     </>
   );

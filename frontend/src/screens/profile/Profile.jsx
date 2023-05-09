@@ -1,0 +1,159 @@
+import React, { useRef, useState } from "react";
+import Message from "../../components/Message";
+
+import { useNavigate } from "react-router-dom";
+const Profile = () => {
+  let [usernametemp, setusernametemp] = useState("");
+  let [message, setMessage] = useState("");
+
+  let NameRef = useRef();
+  let EmailRef = useRef();
+  let UsernameRef = useRef();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let name = NameRef.current.value;
+    let email = EmailRef.current.value;
+    let username = email.split("@")[0];
+
+    if (!name && !email && !username) {
+      setMessage("Enter complete information.");
+    }
+  };
+
+  const navigate = useNavigate();
+  let isLoggedIn = Number(
+    localStorage.getItem("isLoggedIn") != undefined
+      ? localStorage.getItem("isLoggedIn")
+      : 0
+  );
+
+  if (isLoggedIn == 0) navigate("/signin");
+  else
+    return (
+      <>
+        <div className="container-fluid px-3 px-md-5 py-4 py-md-5">
+          <div className="px-md-5">
+            <div className="row">
+              <div className="col-12">
+                <h1 className="text-color fs-3 fw-bold ">Profile Settings</h1>
+                <h1 className="home-desc fs-4 fw-bold py-4">Active Users</h1>
+              </div>
+            </div>
+            <div className="row">
+              <div className="d-flex mb-md-5">
+                <div>
+                  <img
+                    src="./images/profile 1.png"
+                    alt="profile image"
+                    className="img-fluid profile-img"
+                  />
+                </div>
+                <div className="align-items-center d-flex mx-md-5 px-3">
+                  <button className="btn signUp-button text-light fw-bold ps-2 pe-3 ps-md-2 pe-md-4">
+                    <img src="./images/Vector.svg" className="px-md-2 px-1" />
+                    Upload
+                  </button>
+
+                  <p className="home-desc mx-5 mb-0 d-none d-md-block">
+                    You can upload images up to 256x256.
+                  </p>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-12 d-md-none home-desc text-center py-4">
+                  You can upload images up to 256x256.
+                </div>
+              </div>
+            </div>
+            <hr />
+
+            <div className="row">
+              <div className="col-12">
+                <h1 className="home-desc fs-4 fw-bold pt-4 py-5">
+                  Account Info
+                </h1>
+              </div>
+              <div className="col-12">
+                <form method="post" className="mb-5" onSubmit={submitHandler}>
+                  {message ? (
+                    <div className="mb-5">
+                      <Message>{message}</Message>
+                    </div>
+                  ) : null}
+                  <div className="row">
+                    <div className="col-sm-12 col-md-6">
+                      <div className="mb-3">
+                        <label className="font2 form-label">Full Name</label>
+                        <input
+                          type="text"
+                          ref={NameRef}
+                          className="form-cells1 mb-5 form-control"
+                          placeholder="Charlie Brown Morgan"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-12 col-md-6">
+                      <div className="mb-3">
+                        <label className="font2 form-label">
+                          University Email
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="yourmail@schooldomain.com"
+                          ref={EmailRef}
+                          className="form-cells1 mb-5 form-control"
+                          onChange={(e) => {
+                            let unTemp = e.target.value.split("@")[0];
+                            setusernametemp(unTemp);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-12 col-md-6">
+                      <div className="mb-3">
+                        <label className="font2 form-label">Username</label>
+                        <input
+                          type="text"
+                          ref={UsernameRef}
+                          className="form-cells1 mb-5 form-control"
+                          placeholder="Charlieb"
+                          value={usernametemp}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="btn signUp-button text-light px-5 mb-3 fw-bold"
+                    type="submit"
+                  >
+                    Save
+                  </button>
+                </form>
+                <hr />
+              </div>
+              <div className="col-12 d-flex align-items-center">
+                <p className="home-desc py-5 fw-bold fs-5">
+                  Change username/email/password
+                </p>
+                <div
+                  className="ms-auto"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/profileSettings")}
+                >
+                  <img
+                    src="./images/next arrow.png"
+                    alt="next"
+                    className="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+};
+
+export default Profile;

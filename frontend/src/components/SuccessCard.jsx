@@ -27,7 +27,7 @@ const SuccessCard = ({title, titleText}) => {
         <div className="row">
             <div className="col-12">
                 <div className="d-grid my-4">
-                    <button type="dismiss" className='btn btn1 text-light'>Dismiss</button>
+                    <button type="dismiss" className='btn btn1 text-light' data-bs-dismiss="modal">Dismiss</button>
                 </div>
             </div>
         </div>

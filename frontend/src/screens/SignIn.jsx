@@ -44,6 +44,7 @@ function SignIn() {
         if (res.status == 200) {
           localStorage.removeItem("isLoggedIn");
           localStorage.setItem("isLoggedIn", 1);
+          localStorage.setItem("fullName" , data.data.user.userFullName)
 
           navigate("/adminDashboard");
         } else {

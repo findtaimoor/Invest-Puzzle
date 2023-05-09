@@ -318,6 +318,17 @@ a:hover {
   #A4A4A4;
 }
 
+
+.showpass2 {
+  position: absolute;
+  left: 91.1%;
+  right: 0%;
+  top: 53.64%;
+  bottom: 13.64%;
+  color: 
+  #A4A4A4;
+}
+
 .form-heading {
   font-weight: 600;
   font-size: 32px;
@@ -995,4 +1006,67 @@ form-cells-logout:focus{
 }
 
 
+
+.profile-img{
+  border-radius: 50%;
+}
+
+
+.form-check-input:checked{
+  background-color: #fca446;
+  border-color: #fca446;
+
+}
+
+.form-check-input:focus{
+ 
+  box-shadow: none;
+}
+.NavItem:focus{
+  background-color: inherit !important;
+  color: inherit !important;
+}
+.drop-down::after{
+  margin-left: 1.255em;
+}
+.dropdown-menu{
+  box-shadow: -2px -2px 20px 0px rgba(0, 0, 0, 0.1);
+  color: #57453F;
+
+}
+.home-desc1{
+  color: #484848;
+}
+.btn-admin{
+  background-color: #E6F4EA !important;
+  color: #34A853 !important;
+  border: none;
+}
+.btn-admin:focus{
+  background-color: #E6F4EA !important;
+  color: #34A853 !important;
+  border: none;
+}
+.btn-admin:hover{
+  background-color: #E6F4EA !important;
+  color: #34A853 !important;
+  border: none;
+}
+.btn-admin1{
+  background-color: #FFF1E8;
+  color: #FFAA4D;
+  border: none;
+}
+.btn-admin1:hover{
+  background-color: #FFF1E8;
+  color: #FFAA4D;
+  border: none;
+
+}
+.btn-admin1:focus{
+  background-color: #FFF1E8;
+  color: #FFAA4D;
+  border: none;
+
+}
 
