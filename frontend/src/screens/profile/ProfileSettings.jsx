@@ -20,6 +20,8 @@ const ProfileSettings = () => {
     if (!password) {
       setMessage("Enter Password to validate your account.");
     } else {
+
+
       setMessage("Select an option.");
     }
   };

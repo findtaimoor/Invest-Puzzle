@@ -96,7 +96,7 @@ function Header() {
 
                     <Dropdown.Menu className="dropdown-menu">
                       <Dropdown.Item
-                        onClick={() => navigate("/profile")}
+                        // onClick={() => navigate("/profile")}
                         className="NavItem font6"
                       >
                         <img src="./images/profile icon.svg" className="pe-2" />
@@ -104,7 +104,7 @@ function Header() {
                       </Dropdown.Item>
                       <hr className="my-1"/>
                       <Dropdown.Item
-                        onClick={() => navigate("/profileSettings")}
+                        // onClick={() => navigate("/profileSettings")}
                         className="NavItem font6"
                       >
                         <img

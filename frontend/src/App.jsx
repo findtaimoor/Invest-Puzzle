@@ -22,6 +22,7 @@ import ChangeEmail from "./screens/profile/ChangeEmail";
 import ChangeUsername from "./screens/profile/ChangeUsername";
 import ChangePassword from "./screens/profile/ChangePassword";
 import ActivePlan from "./screens/admin/ActivePlan";
+import Indesign from "./components/Indesign";
 
 const App = () => {
 

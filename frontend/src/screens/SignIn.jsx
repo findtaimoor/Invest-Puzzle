@@ -46,6 +46,7 @@ function SignIn() {
           localStorage.setItem("isLoggedIn", 1);
           localStorage.setItem("fullName" , data.data.user.userFullName)
 
+          navigate("/inDesign");
           navigate("/adminDashboard");
         } else {
           setMessage("User not found.");
@@ -62,6 +63,7 @@ function SignIn() {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn == 1) {
+   
     navigate("/adminDashboard");
   } else {
     return (
