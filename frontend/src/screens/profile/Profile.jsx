@@ -1,157 +1,177 @@
-import React, { useRef, useState } from "react";
-import Message from "../../components/Message";
+import React from "react";
+import { useNavigate } from "react-router";
+import { Dropdown } from "react-bootstrap";
+import Indesign from '../../components/Indesign'
 
-import { useNavigate } from "react-router-dom";
 const Profile = () => {
-  let [usernametemp, setusernametemp] = useState("");
-  let [message, setMessage] = useState("");
-
-  let NameRef = useRef();
-  let EmailRef = useRef();
-  let UsernameRef = useRef();
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    let name = NameRef.current.value;
-    let email = EmailRef.current.value;
-    let username = email.split("@")[0];
-
-    if (!name && !email && !username) {
-      setMessage("Enter complete information.");
-    }
-  };
-
   const navigate = useNavigate();
+
+  let users = [
+    {
+      id: 1,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Activated",
+    },
+    {
+      id: 2,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Activated",
+    },
+    {
+      id: 3,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Pending",
+    },
+    {
+      id: 4,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Activated",
+    },
+    {
+      id: 5,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Pending",
+    },
+    {
+      id: 6,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Activated",
+    },
+    {
+      id: 7,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Activated",
+    },
+    {
+      id: 8,
+      name: "Full Name",
+      email: " user@schoolmail.com",
+      status: "Activated",
+    },
+  ];
+
+
   let isLoggedIn = Number(
     localStorage.getItem("isLoggedIn") != undefined
       ? localStorage.getItem("isLoggedIn")
       : 0
   );
 
+  let userFullName = localStorage.getItem("fullName");
+
+
+
+
+
+
+
+
   if (isLoggedIn == 0) navigate("/signin");
   else
     return (
       <>
-        <div className="container-fluid px-3 px-md-5 py-4 py-md-5">
+        {/* <div className="container-fluid px-3 px-md-5 pt-4 py-md-5">
           <div className="px-md-5">
             <div className="row">
               <div className="col-12">
-                <h1 className="text-color fs-3 fw-bold ">Profile Settings</h1>
-                <h1 className="home-desc fs-4 fw-bold py-4">Active Users</h1>
-              </div>
-            </div>
-            <div className="row">
-              <div className="d-flex mb-md-5">
-                <div>
-                  <img
-                    src="./images/profile 1.png"
-                    alt="profile image"
-                    className="img-fluid profile-img"
-                  />
-                </div>
-                <div className="align-items-center d-flex mx-md-5 px-3">
-                  <button className="btn signUp-button text-light fw-bold ps-2 pe-3 ps-md-2 pe-md-4">
-                    <img src="./images/Vector.svg" className="px-md-2 px-1" />
-                    Upload
-                  </button>
+                <div className="d-flex">
+                  <h1 className="fs-1 fw-bold pb-3">{userFullName}</h1>
 
-                  <p className="home-desc mx-5 mb-0 d-none d-md-block">
-                    You can upload images up to 256x256.
-                  </p>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-12 d-md-none home-desc text-center py-4">
-                  You can upload images up to 256x256.
-                </div>
-              </div>
-            </div>
-            <hr />
-
-            <div className="row">
-              <div className="col-12">
-                <h1 className="home-desc fs-4 fw-bold pt-4 py-5">
-                  Account Info
-                </h1>
-              </div>
-              <div className="col-12">
-                <form method="post" className="mb-5" onSubmit={submitHandler}>
-                  {message ? (
-                    <div className="mb-5">
-                      <Message>{message}</Message>
-                    </div>
-                  ) : null}
-                  <div className="row">
-                    <div className="col-sm-12 col-md-6">
-                      <div className="mb-3">
-                        <label className="font2 form-label">Full Name</label>
-                        <input
-                          type="text"
-                          ref={NameRef}
-                          className="form-cells1 mb-5 form-control"
-                          placeholder="Charlie Brown Morgan"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className="mb-3">
-                        <label className="font2 form-label">
-                          University Email
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="yourmail@schooldomain.com"
-                          ref={EmailRef}
-                          className="form-cells1 mb-5 form-control"
-                          onChange={(e) => {
-                            let unTemp = e.target.value.split("@")[0];
-                            setusernametemp(unTemp);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                      <div className="mb-3">
-                        <label className="font2 form-label">Username</label>
-                        <input
-                          type="text"
-                          ref={UsernameRef}
-                          className="form-cells1 mb-5 form-control"
-                          placeholder="Charlieb"
-                          value={usernametemp}
-                        />
-                      </div>
-                    </div>
+                  <div className="ps-3">
+                    <button
+                      type="submit"
+                      className="btn btn-profile1 fw-light "
+                      onClick={() => navigate("/activePlan")}
+                    >
+                      Change plan
+                    </button>
                   </div>
+                </div>
+
+                <div className="d-md-flex justify-content-between pt-md-5 pt-3 pb-4">
+                  <h1 className="fs-4 home-desc1 fw-bold d-flex align-items-center">
+                    Small Cap
+                  </h1>
+                  <h1 className="fs-5 home-desc py-2 py-md-0 d-flex align-items-center">
+                    Billed semester • 15 users
+                  </h1>
                   <button
-                    className="btn signUp-button text-light px-5 mb-3 fw-bold"
                     type="submit"
+                    className="btn signUp-button text-light fw-bold"
                   >
-                    Save
+                    Add a user
                   </button>
-                </form>
+                </div>
+
                 <hr />
-              </div>
-              <div className="col-12 d-flex align-items-center">
-                <p className="home-desc py-5 fw-bold fs-5">
-                  Change username/email/password
-                </p>
-                <div
-                  className="ms-auto"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => navigate("/profileSettings")}
-                >
-                  <img
-                    src="./images/next arrow.png"
-                    alt="next"
-                    className="img-fluid"
-                  />
+
+                <h1 className="fs-5 py-4 home-desc fw-bold">Users added</h1>
+
+                <div className="row">
+                  {users.map((user) => (
+                    <>
+                      <div
+                        className="col-md-3 d-flex align-items-center pb-3"
+                        key={user.id}
+                      >
+                        <h1 className="fs-6 home-desc fw-light">{user.name}</h1>
+                      </div>
+                      <div className=" col-md-5 d-flex align-items-center pb-3 justify-content-md-center">
+                        <h1 className="fs-6 home-desc fw-light">
+                          {user.email}
+                        </h1>
+                      </div>
+
+                      <div className="col-md-4 d-flex justify-content-md-between pb-3">
+                        <div className="col-4 ">
+                          {user.status == "Activated" ? (
+                            <button className="btn btn-profile px-md-4">
+                              {user.status}
+                            </button>
+                          ) : (
+                            <Dropdown className="d-inline">
+                              <Dropdown.Toggle
+                                className="d-flex align-items-center border-0 btn btn-profile2 px-md-4"
+                                variant="bg-light"
+                              >
+                                {user.status}
+
+                                <Dropdown.Menu className="dropdown-menu py-0">
+                                  <Dropdown.Item className="NavItem text-center border-bottom py-2">
+                                    Accept
+                                  </Dropdown.Item>
+
+                                  <Dropdown.Item className="NavItem text-center py-2">
+                                    Deny
+                                  </Dropdown.Item>
+                                </Dropdown.Menu>
+                              </Dropdown.Toggle>
+                            </Dropdown>
+                          )}
+                        </div>
+
+                        <div className="col-1  d-flex align-items-center">
+                          <img src="./images/delete icon.svg" />
+                        </div>
+                      </div>
+                      <hr className="d-md-none" />
+                    </>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+
+
+        <Indesign/>
       </>
     );
 };

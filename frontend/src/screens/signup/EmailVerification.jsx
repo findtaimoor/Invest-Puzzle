@@ -38,6 +38,7 @@ const EmailVerification = () => {
       let data = await res.json();
 
       if (res.status !== 200) {
+        window.scrollTo(0,0)
         setMessage(
           data.message.charAt(0).toUpperCase() + data.message.slice(1)
         );
@@ -50,6 +51,7 @@ const EmailVerification = () => {
       }
     } catch (error) {
       console.log(error);
+      window.scrollTo(0,0)
       setMessage("Problem In Verify Email, COntact Customer Support");
     }
   };
@@ -64,7 +66,7 @@ const EmailVerification = () => {
 
 
   if (isLoggedIn == 1) {
-    navigate("/adminDashboard");
+    navigate("/profile");
   } else {
     if (isLoggedIn == 0) {
       navigate("/registration");
@@ -90,7 +92,7 @@ const EmailVerification = () => {
                 </Form.Group>
                 <hr />
                 <div className="container-fluid">
-                  <div className="row ">
+                  <div className="row d-flex flex-md-row flex-column-reverse">
                     <div className="col-md-3 col-12 mt-3">
                       <div className="d-grid ">
                         <Button

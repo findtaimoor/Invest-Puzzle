@@ -36,7 +36,7 @@ const ActivePlan = () => {
               <div className="ps-3">
                 <button
                   type="submit"
-                  className="btn btn-admin1 fw-light "
+                  className="btn btn-profile1 fw-light "
                   
                 >
                   Change plan

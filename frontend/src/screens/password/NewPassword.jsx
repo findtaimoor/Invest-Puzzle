@@ -3,11 +3,17 @@ import FormContainrLogin from "../../components/FormContainrLogin";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
+import {
+  faEyeSlash,
+  faEye,
+  faCircleXmark,
+} from "@fortawesome/free-regular-svg-icons";
 import Message from "../../components/Message";
 import SuccessCard from "../../components/SuccessCard";
 
+import Modal from "react-bootstrap/Modal";
 const NewPassword = () => {
+
   let Passwordref = useRef();
   let ConfirmPasswordref = useRef();
 
@@ -16,29 +22,26 @@ const NewPassword = () => {
   const [message, setMessage] = useState(null);
   const [showPassword, setShowPassword] = useState(null);
   const [showConfirmPassword, setShowConfirmPassword] = useState(null);
+  const [show, setShow] = useState(false);
 
-
-  // const [show, setShow] = useState(false);
-  //   const handleClose = () => setShow(false);
-
-
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     let password = Passwordref.current.value;
     let confirmPassword = ConfirmPasswordref.current.value;
 
-if(password && confirmPassword){
-  if (password !== confirmPassword) {
-    setMessage("Password not match.");
-  }
 
-
-}else{
-  setMessage('Fill all fields.')
-}
-
-
+    if(password && confirmPassword){
+      if(password !== confirmPassword){
+        setMessage("Password not match.")
+      }else{
+        handleShow();
+      }
+    }else if(!password || !confirmPassword){
+      setMessage('Fill all fields.')
+    }
   };
 
   return (
@@ -57,11 +60,10 @@ if(password && confirmPassword){
                   type={showPassword ? "text" : "password"}
                   ref={Passwordref}
                   className="form-cells"
-                  
                   placeholder="Type your password.."
                 />
                 <div
-                  className="showpass"
+                  className="position-absolute top-0 end-0 pe-4 pt-3 showpass"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
@@ -80,12 +82,11 @@ if(password && confirmPassword){
                   type={showConfirmPassword ? "text" : "password"}
                   ref={ConfirmPasswordref}
                   className="form-cells"
-                
                   placeholder="Type your password.."
                 />
 
                 <div
-                  className="showpass "
+                  className="position-absolute top-0 end-0 pe-4 pt-3 showpass "
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? (
@@ -98,7 +99,7 @@ if(password && confirmPassword){
             </Form.Group>
 
             <div className="d-grid mt-5 mb-3">
-              <Button className="btn btn1" type="submit" >
+              <Button className="btn btn1" type="submit">
                 Change Password
               </Button>
             </div>
@@ -112,23 +113,25 @@ if(password && confirmPassword){
         </Form>
       </FormContainrLogin>
 
-
-
-
-      <div class="modal fade" id="modal">
-      <div class="modal-dialog-centered modal-dialog modal-md">
-        <div class="modal-content">
-          <div className="modal-body">
-            <SuccessCard title="Password" titleText="password"/>
+      <Modal show={show} onHide={handleClose} backdrop="static" centered>
+        <Modal.Body>
+          <div
+            className=" d-flex justify-content-end"
+            onClick={handleClose}
+            style={{ cursor: "pointer" }}
+          >
+            <FontAwesomeIcon icon={faCircleXmark} size="2xl" />
           </div>
-          
-        </div>
-      </div>
-    </div>
 
+          <SuccessCard title="Password" titleText="password" />
 
-
-
+          <div className="d-grid m-4">
+            <button className="btn btn1 text-light" onClick={handleClose}>
+              Dismiss
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

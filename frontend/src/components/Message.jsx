@@ -5,6 +5,7 @@ const Message = ({ children, variant = "danger" }) => {
   return (
     <Alert variant={variant} className="text-center">
       {children}
+      
     </Alert>
   );
 };

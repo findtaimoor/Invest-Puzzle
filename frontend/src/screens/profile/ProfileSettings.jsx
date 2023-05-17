@@ -1,160 +1,160 @@
 import React, { useRef, useState } from "react";
 import Message from "../../components/Message";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 
 import { useNavigate } from "react-router-dom";
-
 const ProfileSettings = () => {
-  const navigate = useNavigate();
-  let [message, setMessage] = useState();
-  const [showPassword, setShowPassword] = useState(null);
+  let [usernametemp, setusernametemp] = useState("");
+  let [message, setMessage] = useState("");
 
-  let PasswordRef = useRef();
+  let NameRef = useRef();
+  let EmailRef = useRef();
+  let UsernameRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
+    let name = NameRef.current.value;
+    let email = EmailRef.current.value;
+    let username = email.split("@")[0];
 
-    let password = PasswordRef.current.value;
-
-    if (!password) {
-      setMessage("Enter Password to validate your account.");
-    } else {
-
-
-      setMessage("Select an option.");
+    if (!name && !email && !username) {
+      window.scrollTo(0,0)
+      setMessage("Enter complete information.");
     }
   };
 
-  return (
-    <>
-      <div className="container-fluid px-3 px-md-5 py-4 py-md-5">
-        <div className="px-md-5">
-          <div className="row">
-            <div className="col-12 d-flex">
-              <div style={{ cursor: "pointer" }} onClick={() => navigate(-1)}>
-                <img
-                  src="./images/back arrow.png"
-                  alt="back"
-                  className="pe-3 mt-1"
-                />
-              </div>
-              <h1 className="text-color fs-3 fw-bold ">Profile Settings</h1>
-            </div>
-          </div>
-          <div className="row py-5">
-            <div className="col-12">
-              <h1 className="fs-5 fw-bold home-desc">
-                Change username/email/password
-              </h1>
-              <p className="home-desc py-1">
-                For security write your current password to validate.
-              </p>
+  const navigate = useNavigate();
+  let isLoggedIn = Number(
+    localStorage.getItem("isLoggedIn") != undefined
+      ? localStorage.getItem("isLoggedIn")
+      : 0
+  );
 
-              <div className="row pt-3 pb-md-3">
-                <form method="post" onSubmit={submitHandler} id="formId">
+  if (isLoggedIn == 0) navigate("/signin");
+  else
+    return (
+      <>
+        <div className="container-fluid px-3 px-md-5 py-4 py-md-5">
+          <div className="px-md-5">
+            <div className="row">
+              <div className="col-12">
+                <h1 className="text-color fs-3 fw-bold ">Profile Settings</h1>
+                <h1 className="home-desc fs-4 fw-bold py-4">Active Users</h1>
+              </div>
+            </div>
+            <div className="row">
+              <div className="d-flex mb-md-5">
+                <div>
+                  <img
+                    src="./images/profile 1.png"
+                    alt="profile image"
+                    className="img-fluid profile-img"
+                  />
+                </div>
+                <div className="align-items-center d-flex mx-md-5 px-3">
+                  <button className="btn signUp-button text-light fw-bold ps-2 pe-3 ps-md-2 pe-md-4">
+                    <img src="./images/Vector.svg" className="px-md-2 px-1" />
+                    Upload
+                  </button>
+
+                  <p className="home-desc mx-5 mb-0 d-none d-md-block">
+                    You can upload images up to 256x256.
+                  </p>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-12 d-md-none home-desc text-center py-4">
+                  You can upload images up to 256x256.
+                </div>
+              </div>
+            </div>
+            <hr />
+
+            <div className="row">
+              <div className="col-12">
+                <h1 className="home-desc fs-4 fw-bold pt-4 py-5">
+                  Account Info
+                </h1>
+              </div>
+              <div className="col-12">
+                <form method="post" className="mb-5" onSubmit={submitHandler}>
                   {message ? (
                     <div className="mb-5">
                       <Message>{message}</Message>
                     </div>
                   ) : null}
-                  <div className="col-12 col-md-6">
-                    <div className="mb-3 position-relative">
-                      <label className="font2 fw-bold form-label">
-                        Password
-                      </label>
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        ref={PasswordRef}
-                        className="form-cells1 mb-5 form-control"
-                        placeholder="Type your password"
-                      />
-                      <div
-                        className=" showpass2 "
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? (
-                          <FontAwesomeIcon icon={faEye} />
-                        ) : (
-                          <FontAwesomeIcon icon={faEyeSlash} />
-                        )}
+                  <div className="row">
+                    <div className="col-sm-12 col-md-6">
+                      <div className="mb-3">
+                        <label className="font2 form-label">Full Name</label>
+                        <input
+                          type="text"
+                          ref={NameRef}
+                          className="form-cells1 mb-5 form-control"
+                          placeholder="Charlie Brown Morgan"
+                        />
                       </div>
                     </div>
-
-                    <div className="row">
-                      <div className="col-12">
-                        <p className="home-desc fs-6">
-                          Please select which information do you want to change
-                          it:
-                        </p>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-check my-4">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="change"
-                            id="username"
-                          />
-                          <label
-                            className="form-check-label fs-6 fw-bold"
-                            for="username"
-                          >
-                            Change Username
-                          </label>
-                        </div>
-                        <div className="form-check my-4">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="change"
-                            id="email"
-                          />
-                          <label
-                            className="form-check-label fs-6 fw-bold"
-                            for="email"
-                          >
-                            Change Email
-                          </label>
-                        </div>
-                        <div className="form-check my-4">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="change"
-                            id="password"
-                          />
-                          <label
-                            className="form-check-label fs-6 fw-bold"
-                            for="password"
-                          >
-                            Change Password
-                          </label>
-                        </div>
+                    <div className="col-sm-12 col-md-6">
+                      <div className="mb-3">
+                        <label className="font2 form-label">
+                          University Email
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="yourmail@schooldomain.com"
+                          ref={EmailRef}
+                          className="form-cells1 mb-5 form-control"
+                          onChange={(e) => {
+                            let unTemp = e.target.value.split("@")[0];
+                            setusernametemp(unTemp);
+                          }}
+                        />
                       </div>
                     </div>
-
-                    <div className="row my-4">
-                      <div className="col-12">
-                        <div className="d-grid">
-                          <button
-                            className="btn signUp-button text-light fw-bold"
-                            type="submit"
-                          >
-                            Continue
-                          </button>
-                        </div>
+                    <div className="col-sm-12 col-md-6">
+                      <div className="mb-3">
+                        <label className="font2 form-label">Username</label>
+                        <input
+                          type="text"
+                          ref={UsernameRef}
+                          className="form-cells1 mb-5 form-control"
+                          placeholder="Charlieb"
+                          value={usernametemp}
+                        />
                       </div>
                     </div>
                   </div>
+                  <button
+                    className="btn signUp-button text-light px-5 mb-3 fw-bold"
+                    type="submit"
+                  >
+                    Save
+                  </button>
                 </form>
+                <hr />
+              </div>
+              <div className="col-12 d-flex align-items-center">
+                <p className="home-desc py-5 fw-bold fs-5">
+                  Change username/email/password
+                </p>
+                <div
+                  className="ms-auto"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/changeSettings")}
+                >
+                  <img
+                    src="./images/next arrow.png"
+                    alt="next"
+                    className="img-fluid"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
 };
 
 export default ProfileSettings;

@@ -40,14 +40,17 @@ function SignIn() {
 
       if (res.status === 400) {
         setMessage("Username or password is wrong.");
-      } else {
-        if (res.status == 200) {
+      } else if(data.message === 'Please verify Payment source'){
+        setMessage(`${data.message}.`)
+      } else if (data.message === 'Email verification code has been sent to your email account'){
+        setMessage('Your email has not verified.')
+      }else {
+        if (res.status === 200) {
           localStorage.removeItem("isLoggedIn");
           localStorage.setItem("isLoggedIn", 1);
           localStorage.setItem("fullName" , data.data.user.userFullName)
 
-          navigate("/inDesign");
-          navigate("/adminDashboard");
+          navigate("/profile");
         } else {
           setMessage("User not found.");
           localStorage.removeItem("isLoggedIn");
@@ -64,7 +67,7 @@ function SignIn() {
 
   if (isLoggedIn == 1) {
    
-    navigate("/adminDashboard");
+    navigate("/profile");
   } else {
     return (
       <>
@@ -101,7 +104,7 @@ function SignIn() {
                           required
                         />
                         <div
-                          className=" showpass "
+                          className="position-absolute top-0 end-0 pe-4 pt-3 showpass"
                           onClick={() => setShowPassword(!showPassword)}
                         >
                           {showPassword ? (

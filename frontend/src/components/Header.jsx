@@ -4,7 +4,40 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
-  const [expanded, setExpanded] = useState(false);
+  let NavItems = [
+    {
+      id: 1,
+      icon: "./images/homeNav icon.svg",
+      linkto: "/",
+      item: "Home",
+    },
+    {
+      id: 2,
+      icon: "./images/whatwedoNav icon.svg",
+      linkto: "/whatWeDo",
+      item: "What We Do",
+    },
+    {
+      id: 3,
+      icon: "./images/aboutusNav icon.svg",
+      linkto: "/aboutUs",
+      item: "About Us",
+    },
+    {
+      id: 4,
+      icon: "./images/teamNav icon.svg",
+      linkto: "/team",
+      item: "Our Team",
+    },
+    {
+      id: 5,
+      icon: "./images/planNav icon.svg",
+      linkto: "/pricing",
+      item: "Plans",
+    },
+  ];
+
+  // const [expanded, setExpanded] = useState(false);
   let isLoggedIn = 0;
 
   let navigate = useNavigate();
@@ -13,38 +46,35 @@ function Header() {
       ? localStorage.getItem("isLoggedIn")
       : 0;
 
-  // if (isLoggedIn == 0){
-  //  navigate('/singin')
-  //  return
-  // }
-  let menuRef = useRef();
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setExpanded(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
-
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
-    localStorage.setItem("isLoggedIn", 0)
+    localStorage.setItem("isLoggedIn", 0);
     navigate("/signIn");
   };
+
+
+// useEffect(()=>{
+// let navId = document.querySelectorAll("#navId");
+// let parentId = document.querySelector('#parentId')
+// parentId.addEventListener('click', function(e){
+//   let click = e.target.closest('#navId')
+//   if(!click) return
+//   navId.forEach((t)=>{
+//     t.classList.remove('class-active')
+//   })
+//   click.classList.add('class-active');
+// })
+// },[])
+
+
 
   return (
     <Navbar
       collapseOnSelect
       expand="lg"
-      fixed="top"
+     fixed="top"
       className="header-main  bg-light  "
-      expanded={expanded}
+      // expanded={expanded}
     >
       <Container className="px-md-5 px-3" fluid>
         <Navbar.Brand href="/" className=" text-color brand ">
@@ -52,28 +82,29 @@ function Header() {
             <img src="../images/brand 2.png" className="img-fluid" />
           </div>
         </Navbar.Brand>
-        <Navbar.Toggle
+        <Navbar.Toggle className="navbar-toggle"
           aria-controls="responsive-navbar-nav "
-          ref={menuRef}
-          onClick={() => setExpanded(expanded ? false : "expanded")}
+          // ref={menuRef}
+          // onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto">
-            <Nav.Link href="/" className="text-color fw-bold pe-5">
-              Home
-            </Nav.Link>
-            <Nav.Link href="/whatWeDo" className="text-color fw-bold pe-5">
-              What We Do
-            </Nav.Link>
-            <Nav.Link href="/aboutUs" className="text-color fw-bold pe-5">
-              About Us
-            </Nav.Link>{" "}
-            <Nav.Link href="/team" className="text-color fw-bold pe-5">
-              Our Team
-            </Nav.Link>
-            <Nav.Link href="/pricing" className="text-color fw-bold">
-              Plans
-            </Nav.Link>
+          <Nav className="mx-auto my-4 my-md-2">
+            {NavItems.map((item) => (
+              <div key={item.id}>
+                <Nav.Link
+                  href={item.linkto}
+                  className="text-color fw-bold pe-md-5 pb-3 pb-lg-1 nav-item"
+                  
+                >
+                  <img
+                    src={item.icon}
+                    alt=""
+                    className="d-inline d-lg-none pe-3 align-items-end"
+                  />
+                  {item.item}
+                </Nav.Link>
+              </div>
+            ))}
           </Nav>
           <div className="ms-auto">
             {isLoggedIn == 1 ? (
@@ -81,7 +112,7 @@ function Header() {
                 <div className="select-wrapper-logout">
                   <Dropdown className="d-flex ">
                     <Dropdown.Toggle
-                      className="d-flex align-items-center border-0 drop-down fw-bold"
+                      className="d-flex align-items-center border-0 drop-down fw-bold ps-0 pt-0"
                       variant="bg-light"
                     >
                       <div className="pe-4">
@@ -89,23 +120,24 @@ function Header() {
                           src="./images/profile.png"
                           alt="Profile Image"
                           className="img-fluid img-class"
+                          // onClick={() => setExpanded(expanded ? false : "expanded")}
                         />
                       </div>
                       Account{" "}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu className="dropdown-menu">
+                    <Dropdown.Menu className="dropdown-menu py-0" sty>
                       <Dropdown.Item
-                        // onClick={() => navigate("/profile")}
-                        className="NavItem font6"
+                        onClick={() => navigate("/profile")}
+                        className="NavItem font6 py-2 border-bottom"
                       >
-                        <img src="./images/profile icon.svg" className="pe-2" />
+                        <img src="./images/profile icon.svg" className="pe-2 " />
                         Profile
                       </Dropdown.Item>
-                      <hr className="my-1"/>
+                      
                       <Dropdown.Item
                         // onClick={() => navigate("/profileSettings")}
-                        className="NavItem font6"
+                        className="NavItem font6 py-2 border-bottom"
                       >
                         <img
                           src="./images/settings icon.svg"
@@ -113,9 +145,12 @@ function Header() {
                         />
                         Profile settings
                       </Dropdown.Item>
-                      <hr className="my-1"/>
+                    
 
-                      <Dropdown.Item onClick={handleLogout} className="NavItem font6">
+                      <Dropdown.Item
+                        onClick={handleLogout}
+                        className="NavItem font6 py-2"
+                      >
                         <img src="./images/signout icon.svg" className="pe-2" />
                         Sign out
                       </Dropdown.Item>
@@ -125,19 +160,19 @@ function Header() {
               </div>
             ) : (
               <div className="d-flex">
-                <Nav.Link as={NavLink} to="/signIn">
+                <Nav.Link  href="/signIn">
                   <Button
                     className=" me-4 btn signUp-button"
-                    onClick={() => setExpanded(expanded)}
+                    // onClick={() => setExpanded(expanded)}
                   >
                     Sign In
                   </Button>
                 </Nav.Link>
 
-                <Nav.Link as={NavLink} to="/registration">
+                <Nav.Link href="/registration">
                   <Button
                     className=" me-4  btn signUp-button1"
-                    onClick={() => setExpanded(expanded)}
+                    // onClick={() => setExpanded(expanded)}
                   >
                     Sign Up
                   </Button>

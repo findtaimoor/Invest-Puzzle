@@ -32,7 +32,7 @@ const AccessCode = () => {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn == 1) {
-    navigate("/adminDashboard");
+    navigate("/profile");
   } else {
     if (isLoggedIn == 0) {
       navigate("/registration");

@@ -4,10 +4,10 @@ const SuccessCard = ({title, titleText}) => {
   return (
     <>
 
-    <div className="container px-3">
+    <div className="container">
         <div className="row">
-            <div className="col-12 my-3">
-                <div>
+            <div className="col-12 my-3 ">
+                <div style={{height: '15em'}} className='d-flex justify-content-center'>
                     <img src="./images/success.png" className='img-fluid' alt="success"/>
                 </div>
             </div>
@@ -24,13 +24,7 @@ const SuccessCard = ({title, titleText}) => {
                 </h1>
             </div>
         </div>
-        <div className="row">
-            <div className="col-12">
-                <div className="d-grid my-4">
-                    <button type="dismiss" className='btn btn1 text-light' data-bs-dismiss="modal">Dismiss</button>
-                </div>
-            </div>
-        </div>
+       
     </div>
 
     </>

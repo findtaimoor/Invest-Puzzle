@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom'
+import privacyPdf from '../pdfs/InvestPuzzle Privacy policy.pdf'
+import tncPdf from '../pdfs/InvestPuzzle LLC Terms and condition.pdf'
 
 const Footer = () => {
   return (
@@ -30,8 +32,10 @@ const Footer = () => {
 
               <hr />
               <div className=" d-md-flex align-items-center mt-4 ">
-                <div className=" pe-5 pb-2">Privacy Policy</div>
-                <div className=" pe-5 pb-2">Terms and Conditions</div>
+                <div className=" pe-5 pb-2">
+                  <Link to={privacyPdf} target="_blank" className="pdf">Privacy Policy</Link>
+                </div>
+                <div className=" pe-5 pb-2"><Link to={tncPdf} target="_blank" className="pdf">Terms and Conditions </Link></div>
                 <div className=" pe-5 pb-2">info@investpuzzle.com</div>
                 <div className=" pe-5 pb-2">703-901-3144</div>
                 <div className="ms-auto pb-2">InvestPuzzle, LLC</div>

@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Modal from "react-bootstrap/Modal";
 import Message from "./Message";
 import SuccessCard from "../components/SuccessCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const ProfileSettingCard = ({
   pageTitle,
@@ -17,6 +19,11 @@ const ProfileSettingCard = ({
   const navigate = useNavigate();
   let [message, setMessage] = useState();
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let inputRef = useRef();
   let confirmInputRef = useRef();
 
@@ -27,10 +34,12 @@ const ProfileSettingCard = ({
 
     if (input && confirmInput) {
       if (input !== confirmInput) {
-        setMessage("Fields are not same.");
+        setMessage("Fields not match.");
+      } else {
+        handleShow();
       }
-    } else {
-      setMessage("Enter new credentials.");
+    } else if (!input || !confirmInput) {
+      setMessage("Enter all credentials.");
     }
   };
 
@@ -113,15 +122,24 @@ const ProfileSettingCard = ({
         </div>
       </div>
 
-      <div class="modal fade" id="modal">
-        <div class="modal-dialog-centered modal-dialog modal-md">
-          <div class="modal-content">
-            <div className="modal-body">
-              <SuccessCard title={successTitle} titleText={successTitletext} />
-            </div>
+      <Modal show={show} onHide={handleClose} backdrop="static" centered>
+        <Modal.Body>
+          <div
+            className=" d-flex justify-content-end"
+            onClick={handleClose}
+            style={{ cursor: "pointer" }}
+          >
+            <FontAwesomeIcon icon={faCircleXmark} size="2xl" />
           </div>
-        </div>
-      </div>
+          <SuccessCard title={successTitle} titleText={successTitletext} />
+
+          <div className="d-grid m-4">
+            <button className="btn btn1 text-light" onClick={handleClose}>
+              Dismiss
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

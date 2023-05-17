@@ -14,8 +14,8 @@ const Home = () => {
           </h1>
           <p className="home-desc mt-3 fs-5 lh-sm px-3 px-md-5">
             <span className="fw-bold">WaffleStock</span> is an app designed for
-            SMIF students to practice trading, interect with each other, and
-            compete for the highest ranking.
+            SMIF students to practice trading, interact with each other, and
+            compete for the highest rankings.
           </p>
         </div>
 
@@ -51,14 +51,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="col-lg-6 ps-3 ps-md-5 d-flex align-items-center home-heading">
+          <div className="col-lg-6 ps-3 ps-md-5 d-flex align-items-center justify-content-center home-heading">
             <div className="align-items-center text-center text-lg-start">
               <h1 className="fs-3 fw-bold px-0 px-md-5">
-                JOIN SIMF'S COMMUNITY Download WaffleStack
+                JOIN SIMF'S COMMUNITY <br/>Download WaffleStack
               </h1>
 
               <div className="d-flex px-3 px-md-5 my-3 justify-content-center justify-content-lg-start">
-                <div className=" me-md-3 mb-3 ">
+                <div className=" me-3 mb-3 ">
 
                   
                   <img src="./images/image 1.png" alt="play store" />
@@ -89,8 +89,8 @@ const Home = () => {
               <img src="./images/image 3.png" alt="research image" />
             </div>
 
-            <Link to="www.facset.com" className="link-1">
-              <h1 className="fs-6 home-links">www.facset.com</h1>
+            <Link to="https://www.factset.com" className="link-1" target="_blank">
+              <h1 className="fs-6 home-links">www.factset.com</h1>
             </Link>
           </div>
           <div className="col-md-6 pe-lg-5">
@@ -99,7 +99,7 @@ const Home = () => {
               <img src="./images/image 5.png" alt="research image" />
             </div>
 
-            <Link to="site.financialmodelingprep.com" className="link-1">
+            <Link to="https://site.financialmodelingprep.com" className="link-1" target="_blank">
               <h1 className="fs-6 home-links">site.financialmodelingprep.com</h1>
             </Link>
           </div>

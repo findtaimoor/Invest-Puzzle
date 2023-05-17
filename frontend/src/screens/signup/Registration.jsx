@@ -43,6 +43,7 @@ const Registration = () => {
     localStorage.setItem("email", email);
 
     if (password !== confirmPassword) {
+      window.scrollTo(0,0);
       setMessage("Password not match.");
     } else {
       try {
@@ -76,6 +77,7 @@ const Registration = () => {
 
         console.log(data);
         if (res.status !== 200) {
+          window.scrollTo(0,0);
           setMessage(
             data.message.charAt(0).toUpperCase() + data.message.slice(1)
           );
@@ -87,8 +89,7 @@ const Registration = () => {
           localStorage.setItem("jwt", data.data.jwt);
         }
       } catch (err) {
-        console.log(err);
-        console.error(err);
+        window.scrollTo(0,0);
         setMessage("Problem with registration! Contact Customer Support");
       }
     }
@@ -97,7 +98,7 @@ const Registration = () => {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn == 1) {
-    navigate("/adminDashboard");
+    navigate("/profile");
   } else {
     return (
       <>
@@ -162,7 +163,7 @@ const Registration = () => {
                     placeholder="Type your password.."
                   />
                   <div
-                    className="showpass1 "
+                    className="position-absolute top-0 end-0 pe-4 pt-3 showpass"
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
@@ -185,7 +186,7 @@ const Registration = () => {
                     placeholder="Type your password.."
                   />
                   <div
-                    className="showpass1 "
+                    className="position-absolute top-0 end-0 pe-4 pt-3 showpass"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     {showConfirmPassword ? (

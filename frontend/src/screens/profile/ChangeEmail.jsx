@@ -16,11 +16,6 @@ const ChangeEmail = () => {
         successTitletext="email"
        
       />
-
-
-
-
-
     </>
   );
 };

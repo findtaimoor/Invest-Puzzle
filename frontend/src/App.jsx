@@ -10,19 +10,18 @@ import Pricing from "./screens/WebsitePages/Pricing";
 import WhatWeDo from "./screens/WebsitePages/WhatWeDo";
 import AboutUs from "./screens/WebsitePages/AboutUs";
 import Home from "./screens/WebsitePages/Home";
-import AdminDashboard from "./screens/admin/AdminDashboard";
 import ForgetPassword from "./screens/password/ForgetPassword";
 import ValidateEmail from "./screens/password/ValidateEmail";
 import NewPassword from "./screens/password/NewPassword";
 import { useEffect } from "react";
 import Team from "./screens/WebsitePages/Team";
 import Profile from "./screens/profile/Profile";
-import ProfileSettings from "./screens/profile/ProfileSettings";
 import ChangeEmail from "./screens/profile/ChangeEmail";
 import ChangeUsername from "./screens/profile/ChangeUsername";
 import ChangePassword from "./screens/profile/ChangePassword";
-import ActivePlan from "./screens/admin/ActivePlan";
-import Indesign from "./components/Indesign";
+import ActivePlan from "./screens/profile/ActivePlan";
+import ChangeSettings from "./screens/profile/ChangeSettings";
+import ProfileSettings from "./screens/profile/ProfileSettings";
 
 const App = () => {
 
@@ -51,14 +50,15 @@ const App = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/whatWeDo" element={<WhatWeDo />} />
           <Route path="/aboutUs" element={<AboutUs />} />
-          {/* <Route path="/adminDashboard" element={ isLoggedIn? <AdminDashboard /> : <Navigate to = '/signIn'/>} /> */}
-          <Route path="/adminDashboard" element={ <AdminDashboard />} />
+          {/* <Route path="/profile" element={ isLoggedIn? <profileDashboard /> : <Navigate to = '/signIn'/>} /> */}
+          {/* <Route path="/profile" element={ <profileDashboard />} /> */}
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/validateEmail" element={<ValidateEmail />} />
           <Route path="/newPassword" element={<NewPassword />} />
           <Route path="/team" element={<Team/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/profileSettings" element={<ProfileSettings/>}/>
+          <Route path="/changeSettings" element={<ChangeSettings/>}/>
           <Route path="/changeEmail" element={<ChangeEmail/>}/>
           <Route path="/changeUsername" element={<ChangeUsername/>}/>
           <Route path="/changePassword" element={<ChangePassword/>}/>

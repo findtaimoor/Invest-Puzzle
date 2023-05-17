@@ -58,6 +58,7 @@ const Payment = () => {
       expiryYear < new Date().getFullYear() &&
       expiryMonth < new Date().getMonth()
     ) {
+      window.scrollTo(0,0)
       setMessage("Incorrect Card Details.");
     } else {
       const jwtbyOtp = localStorage.getItem("jwtbyOtp");
@@ -90,17 +91,20 @@ const Payment = () => {
         console.log(data);
 
         if (res.status !== 200) {
+          window.scrollTo(0,0)
           setMessage("Card details are incorrect.");
         } else {
           if (data.status === "Successful") {
             navigate("/accessCode");
             localStorage.setItem("accessCode", data.accessCode);
           } else {
+            window.scrollTo(0,0)
             setMessage("Payment is not successful.");
           }
         }
       } catch (error) {
         console.log(error);
+        window.scrollTo(0,0)
         setMessage("Payment is not successful, Contact Customer Support");
       }
     }
@@ -156,7 +160,7 @@ const Payment = () => {
   let isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn == 1) {
-    navigate("/adminDashboard");
+    navigate("/profile");
   } else {
     if (isLoggedIn == 0 ) {
       navigate("/registration");
@@ -283,8 +287,8 @@ const Payment = () => {
                 </div>
                 <hr />
                 <div className="container-fluid">
-                  <div className="row">
-                    <div className="col-md-3 col-12 mt-3">
+                  <div className="row d-flex flex-md-row flex-column-reverse">
+                    <div className="col-md-3 col-12 mt-3 mb-5 mb-md-0">
                       <div className="d-grid">
                         <Button
                           className="btn btn4"
@@ -295,7 +299,7 @@ const Payment = () => {
                       </div>
                     </div>
 
-                    <div className="col-md-3 col-12 ms-auto mt-3 mb-5">
+                    <div className="col-md-3 col-12 ms-auto mt-3 mb-md-5">
                       <div className="d-grid">
                         <Button className="btn btn3" type="submit">
                           Pay Now
