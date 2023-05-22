@@ -85,6 +85,7 @@ const Registration = () => {
         } else {
           localStorage.removeItem('isLoggedIn')
           navigate("/emailVerification");
+          window.scrollTo(0,0)
 
           localStorage.setItem("jwt", data.data.jwt);
         }
@@ -99,6 +100,7 @@ const Registration = () => {
 
   if (isLoggedIn == 1) {
     navigate("/profile");
+    window.scrollTo(0,0)
   } else {
     return (
       <>

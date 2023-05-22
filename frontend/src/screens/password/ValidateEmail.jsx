@@ -35,6 +35,7 @@ let otpRef = useRef();
 
     if(otp){
       navigate('/newPassword')
+      window.scrollTo(0,0)
     }else{
       setMessage('OTP is required to validate email.')
     }
@@ -91,7 +92,7 @@ let otpRef = useRef();
             </div>
 
             <div className="d-grid mb-5">
-              <Button className="btn btn15" onClick={() => navigate(-1)}>
+              <Button className="btn btn15" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                 Back
               </Button>
             </div>

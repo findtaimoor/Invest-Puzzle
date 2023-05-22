@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Dropdown } from "react-bootstrap";
-import Indesign from '../../components/Indesign'
+import Indesign from "../../components/Indesign";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -57,7 +57,6 @@ const Profile = () => {
     },
   ];
 
-
   let isLoggedIn = Number(
     localStorage.getItem("isLoggedIn") != undefined
       ? localStorage.getItem("isLoggedIn")
@@ -68,12 +67,7 @@ const Profile = () => {
 
 
 
-
-
-
-
-
-  if (isLoggedIn == 0) navigate("/signin");
+  if (isLoggedIn == 0) {navigate("/signin"); window.scrollTo(0,0)}
   else
     return (
       <>
@@ -88,7 +82,7 @@ const Profile = () => {
                     <button
                       type="submit"
                       className="btn btn-profile1 fw-light "
-                      onClick={() => navigate("/activePlan")}
+                      onClick={() => {navigate("/activePlan"); window.scrollTo(0,0)}}
                     >
                       Change plan
                     </button>
@@ -144,13 +138,15 @@ const Profile = () => {
                                 {user.status}
 
                                 <Dropdown.Menu className="dropdown-menu py-0">
-                                  <Dropdown.Item className="NavItem text-center border-bottom py-2">
-                                    Accept
+                                                                      
+                                     <Dropdown.Item className="NavItem text-center border-bottom py-2"> 
+                                    Accept 
                                   </Dropdown.Item>
 
                                   <Dropdown.Item className="NavItem text-center py-2">
                                     Deny
                                   </Dropdown.Item>
+                                  
                                 </Dropdown.Menu>
                               </Dropdown.Toggle>
                             </Dropdown>
@@ -169,7 +165,6 @@ const Profile = () => {
             </div>
           </div>
         </div> */}
-
 
         <Indesign/>
       </>

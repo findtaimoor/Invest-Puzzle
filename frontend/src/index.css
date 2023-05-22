@@ -812,15 +812,13 @@ ul li:before {
   width: 60%;
 }
 
-.team-card{
-  border: 1px solid #CBCBCB;
-}
 
 .img-class-team{
-  height: 23em;
+  height: 12.75em;
   width: 100%;
   
 }
+
 .job-desc{
   color: #717171;
 }
@@ -860,10 +858,14 @@ ul li:before {
 
 @media (max-width: 770px) {
   .dropdown-menu{
-    
     --bs-dropdown-min-width: 6.5rem
-  
   }
+  
+.img-class-team{
+  height: 15.75em;
+  width: 100%;
+  
+}
 }
 
 

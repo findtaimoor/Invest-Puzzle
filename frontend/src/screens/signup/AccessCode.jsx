@@ -33,9 +33,11 @@ const AccessCode = () => {
 
   if (isLoggedIn == 1) {
     navigate("/profile");
+    window.scrollTo(0,0)
   } else {
     if (isLoggedIn == 0) {
       navigate("/registration");
+      window.scrollTo(0,0)
     } else
     
     {

@@ -51,6 +51,7 @@ function SignIn() {
           localStorage.setItem("fullName" , data.data.user.userFullName)
 
           navigate("/profile");
+          window.scrollTo(0,0)
         } else {
           setMessage("User not found.");
           localStorage.removeItem("isLoggedIn");
@@ -68,6 +69,7 @@ function SignIn() {
   if (isLoggedIn == 1) {
    
     navigate("/profile");
+    window.scrollTo(0,0)
   } else {
     return (
       <>
@@ -122,7 +124,8 @@ function SignIn() {
                       </Button>
                     </div>
                     <div className="forget-password text-center">
-                      <Link to="/forgetPassword">Forget Password?</Link>
+                      {/* <Link to="/forgetPassword">Forget Password?</Link> */}
+                      <Link to="/signIn">Forget Password?</Link>
                     </div>
                     <p className="text-center font mt-4">
                       Don't have an account?{" "}

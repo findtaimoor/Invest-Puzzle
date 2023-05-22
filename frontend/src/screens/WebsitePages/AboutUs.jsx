@@ -2,6 +2,27 @@ import React from "react";
 import Footer from "../../components/Footer";
 
 const AboutUs = () => {
+  let statements = [
+    {
+      id: 1,
+      heading: "Mission Statement",
+      paragrapgh:
+        "We create a healthy competitive environment for SMIF students to practice trading, understand the market, learn from each other and make connections.",
+    },
+    {
+      id: 2,
+      heading: "Our goal",
+      paragrapgh:
+        "We strive to make students comfortable in the stock market and have enough practice to make intelligent trading decisions in the real world.",
+    },
+    {
+      id: 3,
+      heading: "Vision Statement",
+      paragrapgh:
+        "To create a community of SMIF students that enables them to be better traders.",
+    },
+  ];
+
   return (
     <>
       <div className="container about">
@@ -14,29 +35,12 @@ const AboutUs = () => {
             />
           </div>
           <div className="col-md-6 about-box px-4 px-md-0 mt-md-5">
-            <h1 className="about-heading pb-2 fs-3 fw-bold">
-              Mission Statement
-            </h1>
-            <p className=" about-para">
-              We create a healthy competitive environment for SMIF students to
-              practice trading, understand the market, learn from each other and
-              make connections.
-            </p>
-
-            <h1 className="about-heading pb-2 fs-3 fw-bold">Our goal</h1>
-            <p className=" about-para">
-              We strive to make students comfortable in the stock market and
-              have enough practice to make intelligent trading decisions in the
-              real world.
-            </p>
-
-            <h1 className="about-heading pb-2 fs-3 fw-bold">
-              Vision Statement
-            </h1>
-            <p className=" about-para">
-              To create a community of SMIF students that enables them to be
-              better traders.
-            </p>
+            {statements.map((s) => (
+              <div key={s.id}>
+                <h1 className="about-heading pb-2 fs-3 fw-bold">{s.heading}</h1>
+                <p className=" about-para">{s.paragrapgh}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

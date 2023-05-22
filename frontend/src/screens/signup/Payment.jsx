@@ -96,6 +96,7 @@ const Payment = () => {
         } else {
           if (data.status === "Successful") {
             navigate("/accessCode");
+            window.scrollTo(0,0)
             localStorage.setItem("accessCode", data.accessCode);
           } else {
             window.scrollTo(0,0)
@@ -161,9 +162,11 @@ const Payment = () => {
 
   if (isLoggedIn == 1) {
     navigate("/profile");
+    window.scrollTo(0,0)
   } else {
     if (isLoggedIn == 0 ) {
       navigate("/registration");
+      window.scrollTo(0,0)
     } else {
 
 
@@ -292,7 +295,7 @@ const Payment = () => {
                       <div className="d-grid">
                         <Button
                           className="btn btn4"
-                          onClick={() => navigate(-1)}
+                          onClick={() => {navigate(-1);window.scrollTo(0,0)}}
                         >
                           Back
                         </Button>

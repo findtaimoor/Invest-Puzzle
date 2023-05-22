@@ -25,7 +25,7 @@ const ActivePlan = () => {
         <div className="px-md-5">
           <div className="row">
             <div className="col-12 d-flex">
-              <div style={{ cursor: "pointer" }} className="d-flex align-items-center" onClick={() => navigate(-1)}>
+              <div style={{ cursor: "pointer" }} className="d-flex align-items-center" onClick={() => {navigate (-1); window.scrollTo(0,0)}}>
                 <img
                   src="./images/back arrow.png"
                   alt="back"

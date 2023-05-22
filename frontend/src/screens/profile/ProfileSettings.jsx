@@ -29,7 +29,7 @@ const ProfileSettings = () => {
       : 0
   );
 
-  if (isLoggedIn == 0) navigate("/signin");
+  if (isLoggedIn == 0) {navigate("/signin");window.scrollTo(0,0)}
   else
     return (
       <>
@@ -50,8 +50,8 @@ const ProfileSettings = () => {
                     className="img-fluid profile-img"
                   />
                 </div>
-                <div className="align-items-center d-flex mx-md-5 px-3">
-                  <button className="btn signUp-button text-light fw-bold ps-2 pe-3 ps-md-2 pe-md-4">
+                <div className="align-items-center d-flex mx-lg-5 mx-md-3 px-md-3 px-4">
+                  <button className="btn signUp-button text-light fw-bold px-2 pe-md-3 ps-lg-2 pe-lg-4">
                     <img src="./images/Vector.svg" className="px-md-2 px-1" />
                     Upload
                   </button>
@@ -141,7 +141,7 @@ const ProfileSettings = () => {
                 <div
                   className="ms-auto"
                   style={{ cursor: "pointer" }}
-                  onClick={() => navigate("/changeSettings")}
+                  // onClick={() => {navigate("/changeSettings"); window.scrollTo(0,0)}}
                 >
                   <img
                     src="./images/next arrow.png"

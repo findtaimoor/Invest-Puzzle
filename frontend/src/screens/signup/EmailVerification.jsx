@@ -44,7 +44,7 @@ const EmailVerification = () => {
         );
       } else {
         navigate("/payment");
-
+        window.scrollTo(0,0)
         localStorage.setItem("jwtbyOtp", data.data.user.jwt);
         localStorage.removeItem("jwt");
         localStorage.removeItem("email");
@@ -67,9 +67,11 @@ const EmailVerification = () => {
 
   if (isLoggedIn == 1) {
     navigate("/profile");
+    window.scrollTo(0,0)
   } else {
     if (isLoggedIn == 0) {
       navigate("/registration");
+      window.scrollTo(0,0)
     } else {
       return (
         <>

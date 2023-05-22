@@ -24,7 +24,7 @@ const ActivePlanCard = ({ name, pricing, time, users, list }) => {
           <div className="d-grid">
             <Link
               className="btn btn4 my-3 "
-              onClick={() => navigate(-1)}
+              onClick={() => {navigate(-1); window.scrollTo(0,0)}}
               type="submit"
             >
               Cancel Plan
@@ -65,7 +65,7 @@ const ActivePlanCard = ({ name, pricing, time, users, list }) => {
         <div className=" px-3 d-grid">
           <Link
             className="btn btn4 my-3 "
-            onClick={() => navigate(-1)}
+            onClick={() => {navigate(-1); window.scrollTo(0,0)}}
             type="submit"
           >
             Cancel Plan

@@ -50,6 +50,7 @@ function Header() {
     localStorage.removeItem("isLoggedIn");
     localStorage.setItem("isLoggedIn", 0);
     navigate("/signIn");
+    window.scrollTo(0,0);
   };
 
 
@@ -128,7 +129,7 @@ function Header() {
 
                     <Dropdown.Menu className="dropdown-menu py-0" sty>
                       <Dropdown.Item
-                        onClick={() => navigate("/profile")}
+                        onClick={() => {navigate("/profile") ; window.scrollTo(0,0)} }
                         className="NavItem font6 py-2 border-bottom"
                       >
                         <img src="./images/profile icon.svg" className="pe-2 " />
@@ -136,7 +137,7 @@ function Header() {
                       </Dropdown.Item>
                       
                       <Dropdown.Item
-                        // onClick={() => navigate("/profileSettings")}
+                        onClick={() => {navigate("/profileSettings"); window.scrollTo(0,0)}}
                         className="NavItem font6 py-2 border-bottom"
                       >
                         <img

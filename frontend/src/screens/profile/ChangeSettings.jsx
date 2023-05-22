@@ -25,10 +25,13 @@ const ChangeSettings = () => {
       setMessage("Enter Password to validate your account.");
     } else if (option === "username") {
       navigate("/changeUsername");
+      window.scrollTo(0,0)
     } else if (option === "email") {
       navigate("/changeEmail");
+      window.scrollTo(0,0)
     } else if (option === "password") {
       navigate("/changePassword");
+      window.scrollTo(0,0)
     } else {
       window.scrollTo(0, 0);
       setMessage("Select an option.");
@@ -41,7 +44,7 @@ const ChangeSettings = () => {
         <div className="px-md-5">
           <div className="row">
             <div className="col-12 d-flex">
-              <div style={{ cursor: "pointer" }} onClick={() => navigate(-1)}>
+              <div style={{ cursor: "pointer" }} onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                 <img
                   src="./images/back arrow.png"
                   alt="back"

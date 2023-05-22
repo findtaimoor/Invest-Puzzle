@@ -18,6 +18,7 @@ const ForgetPassword = () => {
     console.log(email)
     if(email){
       navigate('/validateEmail')
+      window.scrollTo(0,0);
       localStorage.setItem('recoveryEmail', email);
     }else{
       setMessage('Enter Email to recover password.')
@@ -53,7 +54,7 @@ const ForgetPassword = () => {
                 </div>
 
                 <div className="d-grid mb-5">
-                  <Button className="btn btn14" onClick={() => navigate(-1)}>
+                  <Button className="btn btn14" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                     Back
                   </Button>
                 </div>

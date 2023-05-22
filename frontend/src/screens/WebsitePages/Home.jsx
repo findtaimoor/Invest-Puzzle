@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from '../../components/Footer'
-
+import Footer from "../../components/Footer";
 
 const Home = () => {
   return (
@@ -20,33 +19,32 @@ const Home = () => {
         </div>
 
         <div className="row">
-        <video
-            id='vid'
+          <video
+            id="vid"
             width="100%"
             height="100%"
             src="./videos/video.mp4"
             type="video/mp4"
-            muted={true}
+            muted={true}   
+            playsInline     
             controls
-            poster='./images/video-poster.png'
-
+            autoPlay
+            poster="./images/video-poster.png"
           />
+         
         </div>
 
-        <div className="row">
-          <div className="col-md-6 d-md-flex align-items-center">
-            <div className="row">
-              <div className="col-lg-6 text-center pe-lg-0">
-                <div>
-                  <img src="./images/Frame 14272.png" alt="mobile 1" />
-                </div>
+
+        <div className="row d-md-flex justify-content-center">
+          <div className="col-md-6 d-md-flex align-items-center justify-content-center">
+            <div className="row text-center">
+              <div>
+                <img src="./images/Frame 14272.png" alt="mobile 1" />
               </div>
             </div>
-            <div className="row">
-              <div className="col-lg-6 text-center pt-lg-5 ps-lg-0">
-                <div className="pt-lg-5">
-                  <img src="./images/Frame 14277.png" alt="mobile 2" />
-                </div>
+            <div className="row text-center">
+              <div className="pt-lg-5 mt-lg-5">
+                <img src="./images/Frame 14277.png" alt="mobile 2" />
               </div>
             </div>
           </div>
@@ -54,13 +52,12 @@ const Home = () => {
           <div className="col-lg-6 ps-3 ps-md-5 d-flex align-items-center justify-content-center home-heading">
             <div className="align-items-center text-center text-lg-start">
               <h1 className="fs-3 fw-bold px-0 px-md-5">
-                JOIN SIMF'S COMMUNITY <br/>Download WaffleStack
+                JOIN SIMF'S COMMUNITY <br />
+                Download WaffleStack
               </h1>
 
               <div className="d-flex px-3 px-md-5 my-3 justify-content-center justify-content-lg-start">
                 <div className=" me-3 mb-3 ">
-
-                  
                   <img src="./images/image 1.png" alt="play store" />
                 </div>
                 <div>
@@ -70,10 +67,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* <script>
-          document.getElementById('vid').play();
-        </script> */}
       </div>
 
       <div className="container-fluid home-container-2 py-3 py-md-5 my-5">
@@ -89,7 +82,11 @@ const Home = () => {
               <img src="./images/image 3.png" alt="research image" />
             </div>
 
-            <Link to="https://www.factset.com" className="link-1" target="_blank">
+            <Link
+              to="https://www.factset.com"
+              className="link-1"
+              target="_blank"
+            >
               <h1 className="fs-6 home-links">www.factset.com</h1>
             </Link>
           </div>
@@ -99,13 +96,19 @@ const Home = () => {
               <img src="./images/image 5.png" alt="research image" />
             </div>
 
-            <Link to="https://site.financialmodelingprep.com" className="link-1" target="_blank">
-              <h1 className="fs-6 home-links">site.financialmodelingprep.com</h1>
+            <Link
+              to="https://site.financialmodelingprep.com"
+              className="link-1"
+              target="_blank"
+            >
+              <h1 className="fs-6 home-links">
+                site.financialmodelingprep.com
+              </h1>
             </Link>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -49,7 +49,7 @@ const ProfileSettingCard = ({
         <div className="px-md-5">
           <div className="row">
             <div className="col-12 d-flex">
-              <div style={{ cursor: "pointer" }} onClick={() => navigate(-1)}>
+              <div style={{ cursor: "pointer" }} onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                 <img
                   src="./images/back arrow.png"
                   alt="back"

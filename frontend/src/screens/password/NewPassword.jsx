@@ -105,7 +105,7 @@ const NewPassword = () => {
             </div>
 
             <div className="d-grid mb-5">
-              <Button className="btn btn14" onClick={() => navigate(-1)}>
+              <Button className="btn btn14" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                 Back
               </Button>
             </div>

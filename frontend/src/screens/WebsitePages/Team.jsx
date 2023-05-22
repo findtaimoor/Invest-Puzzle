@@ -1,51 +1,63 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
+                                
 const Team = () => {
   const members = [
     {
       id: 1,
       name: "Ano Glonti",
       jobDesc: "Founder and CEO",
-      image: "./images/girl.JPG",
-      linkdin: "/someLink"
+      image: "./images/team/ano.png",
+      linkdin: "https://www.linkedin.com/in/ano-glonti-11b93970"
     },
-    // {
-    //   id: 2,
-    //   name: "Name",
-    //   jobDesc: "Job Description",
-    //   image: "./images/Rectangle 3.png",
-    //   linkdin: "/someLink"
-    // },
-    // {
-    //   id: 3,
-    //   name: "Name",
-    //   jobDesc: "Job Description",
-    //   image: "./images/Rectangle 3.png",
-    //   linkdin: "/someLink"
-    // },
-    // {
-    //   id: 4,
-    //   name: "Name",
-    //   jobDesc: "Job Description",
-    //   image: "./images/Rectangle 3.png",
-    //   linkdin: "/someLink"
-    // },
-    // {
-    //   id: 5,
-    //   name: "Name",
-    //   jobDesc: "Job Description",
-    //   image: "./images/Rectangle 3.png",
-    //   linkdin: "/someLink"
-    // },
-    // {
-    //   id: 6,
-    //   name: "Name",
-    //   jobDesc: "Job Description",
-    //   image: "./images/Rectangle 3.png",
-    //   linkdin: "/someLink"
-    // },
+    {
+      id: 2,
+      name: "Tata Tavdishvili",
+      jobDesc: "Chief Marketing Officer ",
+      image: "./images/team/tata2.png",
+      linkdin: "https://www.linkedin.com/in/tata-tavdishvili-757bb0142"
+    },
+    {
+      id: 3,
+      name: "Eduardo Aquino",
+      jobDesc: "Creative Director",
+      image: "./images/team/eduardo.png",
+      linkdin: "https://www.linkedin.com/in/eduardo-aquino-a0472736"
+    },
+    {
+      id: 4,
+      name: "Mariam Giorgadze",
+      jobDesc: "Digital Strategist",
+      image: "./images/team/mariam.png",
+      linkdin: "https://www.linkedin.com/in/mariam-giorgadze-392778211"
+    },
+    {
+      id: 5,
+      name: "Zhen Shijun",
+      jobDesc: "iOS Developer",
+      image: "./images/team/zhen.png",
+      linkdin: "https://www.linkedin.com/in/zhen-shijun-a80a5b1a8"
+    },
+    {
+      id: 6,
+      name: "Viktor Kostic",
+      jobDesc: "Android Developer",
+      image: "./images/team/viktor.png",
+      linkdin: "https://www.linkedin.com/in/viktor-kostic-770a8b236"
+    },{
+      id: 7,
+      name: "Hongwei Zhao",
+      jobDesc: "Backend Developer",
+      image: "./images/team/hongwei.png",
+      linkdin: "https://www.linkedin.com/in/hongwei-zhao-2255b6160/"
+    },{
+      id: 8,
+      name: "Usman Hussain",
+      jobDesc: "Front End Developer",
+      image: "./images/team/usman.png",
+      linkdin: "https://www.linkedin.com/in/findusman"
+    },
   ];
 
   return (
@@ -65,20 +77,20 @@ const Team = () => {
 
         <div className="row mt-4">
           {members.map((member) => (
-            <div className="col-md-4 my-2 my-md-4 " key={member.id}>
-              <div className="team-card p-3 p-md-4 rounded-3">
+            <div className="col-md-4 col-lg-3 my-2 my-md-4 " key={member.id}>
+              <div className=" p-3 px-4 px-md-2 p-md-4">
                 <div className="img-class-team">
                   <img
                     src={member.image}
                     alt="team"
-                    className="img-fluid rounded-3 img-class-team"
+                    className="img-fluid rounded-3 px-3 px-md-0 img-class-team"
                   />
                 </div>
                 <div className="mt-4 mx-1">
                   <h1 className="fs-6 job-desc my-3 fw-bold">{member.name}</h1>
                   <h1 className="fs-6 job-desc mb-3 fw-light">{member.jobDesc}</h1>
                   <div>
-                  <Link to={member.linkdin}>
+                  <Link to={member.linkdin} target="_blank">
                     <img
                       src="./images/linkdin.png"
                       alt="linkdin"

@@ -30,7 +30,7 @@ const Pricing = () => {
                 <div className="col-12 d-flex">
                   <div
                     style={{ cursor: "pointer" }}
-                    onClick={() => navigate(-1)} className="d-flex align-items-center"
+                    onClick={() => {navigate(-1); window.scrollTo(0,0)}} className="d-flex align-items-center"
                   >
                     <img
                       src="./images/back arrow.png"
