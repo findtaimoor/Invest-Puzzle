@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import FormContainrLogin from "../../components/FormContainrLogin";
-import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import OTPtimer from "../../components/OTPtimer";
 import Message from "../../components/Message";
@@ -47,7 +46,7 @@ let otpRef = useRef();
         title="Validate Email"
         detail="If you don't receive email within 2 minutes, please check junk file folder of your mail box."
       >
-        <Form className="signUp-form " onSubmit={submitHandler}>
+        <form className="signUp-form " onSubmit={submitHandler}>
           <div className="px-3 px-md-5">
             {message ? <Message>{message}</Message>: null}
             <div className="row text-center">
@@ -55,7 +54,7 @@ let otpRef = useRef();
               <OTPtimer seconds={300} />
              
             </div>
-            <Form.Group className="mb-4 text-center">
+            <div className="form-group mb-4 text-center">
               <div className="row">
                 <div className="d-flex justify-content-between">
                   {otp.map((data, index) => {
@@ -76,28 +75,28 @@ let otpRef = useRef();
                 </div>
               </div>
 
-              <Form.Label className="mt-3 validate-label">
+              <label className="form-label mt-3 validate-label">
                 Send to {recoveryEmail}
-              </Form.Label>
-            </Form.Group>
+              </label>
+            </div>
 
             <div className="d-grid mt-5 mb-3">
-              <Button className="btn btn1" type="submit" >
+              <button className="btn btn1 text-light" type="submit" >
                 Validate
-              </Button>
+              </button>
             </div>
 
             <div className="d-grid mb-3">
-              <Button className="btn btn14">Resend code</Button>
+              <button className="btn btn14">Resend code</button>
             </div>
 
             <div className="d-grid mb-5">
-              <Button className="btn btn15" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
+              <button className="btn btn15" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                 Back
-              </Button>
+              </button>
             </div>
           </div>
-        </Form>
+        </form>
       </FormContainrLogin>
     </>
   );

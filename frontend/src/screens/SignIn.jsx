@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
@@ -9,7 +9,7 @@ import Message from "../components/Message";
 function SignIn() {
   const [showPassword, setShowPassword] = useState(null);
   const [message, setMessage] = useState(null);
-
+  localStorage.clear();
   let Emailref = useRef();
   let Passwordref = useRef();
 
@@ -22,6 +22,7 @@ function SignIn() {
 
     console.log(email, password);
     try {
+      
       // let res = await fetch("http://localhost:9000/auth/login", {
       let res = await fetch(process.env.REACT_APP_BASE_URL + "/auth/login", {
         method: "POST",
@@ -41,9 +42,22 @@ function SignIn() {
       if (res.status === 400) {
         setMessage("Username or password is wrong.");
       } else if(data.message === 'Please verify Payment source'){
-        setMessage(`${data.message}.`)
+
+localStorage.setItem('jwtbyOtp', data.user.jwt)
+
+
+        // setMessage(`${data.message}.`)
+        navigate('/payment')
       } else if (data.message === 'Email verification code has been sent to your email account'){
-        setMessage('Your email has not verified.')
+        // setMessage('Your email has not verified.')
+
+
+        localStorage.setItem("jwt", data.data.jwt);
+        localStorage.setItem('email', email)
+
+
+
+        navigate('/emailVerification')
       }else {
         if (res.status === 200) {
           localStorage.removeItem("isLoggedIn");
@@ -75,33 +89,33 @@ function SignIn() {
       <>
         <div className="container-fluid app-main1">
           <div className="row ">
-            <div className="offset-lg-4 col-lg-4 col-12 column1 ">
+            <div className="offset-xl-4 col-xl-4 col-md-6 offset-md-3 col-12 column1 ">
               <div className="border-form my-5">
                 <h1 className=" text-center fw-bold font1 mt-3">
                   Sign in to your account
                 </h1>
 
-                <Form className="signUp-form " onSubmit={submitHandler}>
+                <form className="signUp-form " onSubmit={submitHandler}>
                   <div className="px-3 px-md-5 py-4">
                     {message ? <Message>{message}</Message> : null}
-                    <Form.Group className="mb-3 ">
-                      <Form.Label className="fw-bold fs-6">Email</Form.Label>
-                      <Form.Control
+                    <div className="form-group mb-3 ">
+                      <label className="form-label fw-bold fs-6">Email</label>
+                      <input
                         type="email"
                         ref={Emailref}
-                        className="form-cells"
+                        className="form-control form-cells"
                         required
                         placeholder="yourmail@mail.com"
                       />
-                    </Form.Group>
+                    </div>
 
-                    <Form.Group className="mb-3">
-                      <Form.Label className="fw-bold fs-6">Password</Form.Label>
+                    <div className="form-group mb-3">
+                      <label className="form-label fw-bold fs-6">Password</label>
                       <div className="position-relative">
-                        <Form.Control
+                        <input
                           ref={Passwordref}
                           type={showPassword ? "text" : "password"}
-                          className="form-cells"
+                          className="form-control form-cells"
                           placeholder="Type your password.."
                           required
                         />
@@ -116,12 +130,12 @@ function SignIn() {
                           )}
                         </div>
                       </div>
-                    </Form.Group>
+                    </div>
 
                     <div className="d-grid my-4">
-                      <Button className="btn btn1" type="submit">
+                      <button className="btn btn1 text-light" type="submit">
                         Sign In
-                      </Button>
+                      </button>
                     </div>
                     <div className="forget-password text-center">
                       {/* <Link to="/forgetPassword">Forget Password?</Link> */}
@@ -134,7 +148,7 @@ function SignIn() {
                       </span>
                     </p>
                   </div>
-                </Form>
+                </form>
               </div>
             </div>
           </div>

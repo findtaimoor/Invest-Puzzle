@@ -23,7 +23,7 @@ const Footer = () => {
                       </Link>
                     </div>
                     <div className=" me-3 mb-3 ">
-                      <Link to="https://www.instagram.com/invest_puzzle/" target="_blank"> 
+                      <Link to="https://www.instagram.com/invest.puzzle/" target="_blank"> 
                         <img src="./images/Vector (1).png" alt="instagram" />
                       </Link>
                     </div>

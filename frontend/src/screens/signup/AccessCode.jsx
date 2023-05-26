@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CheckoutSteps from "../../components/CheckoutSteps";
 import FormContainer from "../../components/FormContainer";
-import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import Message from "../../components/Message";
@@ -49,23 +48,23 @@ const AccessCode = () => {
               formTitle="Welcome to the WaffleStock"
               formDescription="We are glad to see you in our community"
             >
-              <Form className="col-md-6 offset-md-3 col-12" onSubmit={copy}>
+              <form className="col-md-6 offset-md-3 col-12" onSubmit={copy}>
                 {message ? (
                   <Message variant="success">{message}</Message>
                 ) : null}
                 <div className="row pt-5">
-                  <Form.Group>
-                    <Form.Label className="checkout-link2 pb-3">
+                  <div className="form-group">
+                    <label className="form-label checkout-link2 pb-3">
                       Here's your universities' unique access code:
-                    </Form.Label>
+                    </label>
                     <div className="row">
                       <div className=" col-md-8 mb-3">
                         <div className="d-sm-grid">
-                          <Form.Control
+                          <input
                             type="text"
                             // ref={textRef}
                             onChange={(e) => e.target.value}
-                            className="form-cells3"
+                            className="form-control form-cells3"
                             value={ACodebyLocalStorage}
                             placeholder="•••••••••"
                             disabled
@@ -75,23 +74,23 @@ const AccessCode = () => {
 
                       <div className="col-md-4">
                         <div className="d-sm-grid ">
-                          <Form.Group>
+                          <div className="form-group">
                             <div className="d-grid ">
-                              <Button className="btn btn5" type="submit">
+                              <button className="btn btn5 text-light" type="submit">
                                 Copy Code
-                              </Button>
+                              </button>
                             </div>
-                          </Form.Group>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </Form.Group>
+                  </div>
                 </div>
 
                 <h1 className="checkout-link2 text-center pb-5 mb-5">
                   Your students can access WaffleStock by using this code.{" "}
                 </h1>
-              </Form>
+              </form>
             </FormContainer>
           </div>
         </>

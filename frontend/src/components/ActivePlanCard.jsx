@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ActivePlanCard = ({ name, pricing, time, users, list }) => {
   const navigate = useNavigate();

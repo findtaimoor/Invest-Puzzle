@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 
 const Home = () => {
+
+
+
+
+
+
   return (
     <>
       <div className="container my-5">
@@ -17,7 +23,6 @@ const Home = () => {
             compete for the highest rankings.
           </p>
         </div>
-
         <div className="row">
           <video
             id="vid"
@@ -25,26 +30,24 @@ const Home = () => {
             height="100%"
             src="./videos/video.mp4"
             type="video/mp4"
-            muted={true}   
-            playsInline     
+            muted={true}
             controls
-            autoPlay
+            autoPlay={true}
             poster="./images/video-poster.png"
           />
-         
         </div>
 
 
         <div className="row d-md-flex justify-content-center">
-          <div className="col-md-6 d-md-flex align-items-center justify-content-center">
+          <div className="col-lg-6 col-md-12 d-md-flex align-items-center justify-content-center">
             <div className="row text-center">
               <div>
-                <img src="./images/Frame 14272.png" alt="mobile 1" />
+                <img src="./images/Frame 14272.png" alt="mobile 1"  className="img-fluid mt-5 mt-md-0" style={{height: "30em"}}/>
               </div>
             </div>
             <div className="row text-center">
-              <div className="pt-lg-5 mt-lg-5">
-                <img src="./images/Frame 14277.png" alt="mobile 2" />
+              <div className="pt-lg-5 mt-lg-5 ps-md-5">
+                <img src="./images/Frame 14277.png" alt="mobile 2"  className="img-fluid my-5" style={{height: "30em"}}/>
               </div>
             </div>
           </div>
@@ -58,7 +61,7 @@ const Home = () => {
 
               <div className="d-flex px-3 px-md-5 my-3 justify-content-center justify-content-lg-start">
                 <div className=" me-3 mb-3 ">
-                  <img src="./images/image 1.png" alt="play store" />
+                  <Link to="https://apps.apple.com/us/app/wafflestock/id6444378316" target="_blank"><img src="./images/image 1.png" alt="play store" /></Link>
                 </div>
                 <div>
                   <img src="./images/image 2.png" alt="play store" />
@@ -70,12 +73,13 @@ const Home = () => {
       </div>
 
       <div className="container-fluid home-container-2 py-3 py-md-5 my-5">
+        <div className="container">
         <div className="row pt-5 pb-4 pb-md-5">
           <div className="col-12 text-center">
             <h1 className="fs-2 fw-bold">Our Data Providers</h1>
           </div>
         </div>
-        <div className="row text-center px-0 px-lg-5">
+        <div className="row text-center px-0 px-lg-5 pb-4">
           <div className="col-md-6 ps-lg-5">
             <h1 className="fs-5 fw-bold mb-4">FactSet Research System Inc</h1>
             <div className="mb-4">
@@ -87,7 +91,7 @@ const Home = () => {
               className="link-1"
               target="_blank"
             >
-              <h1 className="fs-6 home-links">www.factset.com</h1>
+              <h1 className="fs-6 home-links mb-4 mb-md-0">www.factset.com</h1>
             </Link>
           </div>
           <div className="col-md-6 pe-lg-5">
@@ -106,6 +110,7 @@ const Home = () => {
               </h1>
             </Link>
           </div>
+        </div>
         </div>
       </div>
       <Footer />

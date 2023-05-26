@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import FormContainer from "../../components/FormContainer";
-import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 import Message from "../../components/Message";
@@ -107,45 +106,45 @@ const Registration = () => {
         <CheckoutSteps step1 />
         <div className="px-3 px-md-5">
           <FormContainer formTitle="Registration">
-            <Form
+            <form
               onSubmit={submitHandler}
               className="col-md-6 offset-md-3"
               id="contactForm"
             >
               {message ? <Message>{message}</Message> : null}
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2 mt-5">Full Name*</Form.Label>
-                <Form.Control
+              <div className="form-group mb-3">
+                <label className="form-label font2 mt-5">Full Name*</label>
+                <input
                   type="text"
                   ref={FullNameref}
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   required
                 />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">University email*</Form.Label>
-                <Form.Control
+              </div>
+              <div className="form-group mb-3">
+                <label className="form-label font2">University email*</label>
+                <input
                   type="email"
                   ref={Emailref}
                   id="autoEmail"
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   required
                   onChange={(e) => {
                     let unTemp = e.target.value.split("@")[0];
                     setusernametemp(unTemp);
                   }}
                 />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Username*</Form.Label>
-                <Form.Control
+              </div>
+              <div className="form-group mb-3">
+                <label className="form-label font2">Username*</label>
+                <input
                   type="text"
                   id="autoUserName"
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   value={usernametemp}
                 />
-              </Form.Group>
+              </div>
               {/* 
             <input
               type="button"
@@ -154,13 +153,13 @@ const Registration = () => {
             />
 
              */}
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Password*</Form.Label>
+              <div className="form-group mb-3">
+                <label className="form-label font2">Password*</label>
                 <div className="position-relative">
-                  <Form.Control
+                  <input
                     ref={Passwordref}
                     type={showPassword ? "text" : "password"}
-                    className="form-cells1 mb-5"
+                    className="form-control form-cells1 mb-5"
                     required
                     placeholder="Type your password.."
                   />
@@ -175,15 +174,15 @@ const Registration = () => {
                     )}
                   </div>
                 </div>
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Confirm Password*</Form.Label>
+              <div className="form-group mb-3">
+                <label className="form-label font2">Confirm Password*</label>
                 <div className="position-relative">
-                  <Form.Control
+                  <input
                     ref={ConfirmPasswordref}
                     type={showConfirmPassword ? "text" : "password"}
-                    className="form-cells1 mb-5"
+                    className="form-control form-cells1 mb-5"
                     required
                     placeholder="Type your password.."
                   />
@@ -198,65 +197,65 @@ const Registration = () => {
                     )}
                   </div>
                 </div>
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Phone Number*</Form.Label>
-                <Form.Control
+              <div className="form-group mb-3">
+                <label className="form-label font2">Phone Number*</label>
+                <input
                   type="number"
                   ref={Phoneref}
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   required
                 />
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">University Name*</Form.Label>
-                <Form.Control
+              <div className="form-group mb-3">
+                <label className="form-label font2">University Name*</label>
+                <input
                   type="text"
                   ref={UniversityNameref}
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   required
                 />
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Title*</Form.Label>
-                <Form.Control
+              <div className="form-group mb-3">
+                <label className="form-label font2">Title*</label>
+                <input 
                   type="text"
                   ref={Titleref}
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   required
                 />
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Fund Name*</Form.Label>
-                <Form.Control
+              <div className="form-group mb-3">
+                <label className="form-label font2">Fund Name*</label>
+                <input
                   type="text"
                   ref={FundNameref}
-                  className="form-cells1 mb-5"
+                  className="form-control form-cells1 mb-5"
                   required
                 />
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label className="font2">Fund AUM ($)*</Form.Label>
-                <Form.Control
+              <div className="form-group mb-3">
+                <label className="form-label font2">Fund AUM ($)*</label>
+                <input
                   type="number"
                   ref={FundsAumref}
-                  className="form-cells1 last-cell"
+                  className="form-control form-cells1 last-cell"
                   required
                 />
-              </Form.Group>
+              </div>
 
               <hr />
               <div className="d-grid my-4">
-                <Button className="btn btn2" type="submit">
+                <button className="btn btn2 text-light" type="submit">
                   Sign Up
-                </Button>
+                </button>
               </div>
-            </Form>
+            </form>
           </FormContainer>
         </div>
       </>

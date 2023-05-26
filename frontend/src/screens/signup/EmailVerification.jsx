@@ -1,7 +1,6 @@
-import React, {useEffect, useState } from "react";
+import React, { useState } from "react";
 import CheckoutSteps from "../../components/CheckoutSteps";
 import FormContainer from "../../components/FormContainer";
-import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Message from "../../components/Message";
 import { useRef } from "react";
@@ -20,6 +19,7 @@ const EmailVerification = () => {
     let code = Coderef.current.value;
 
     const jwtbyRegister = localStorage.getItem("jwt");
+
     try {
       let res = await fetch(
         process.env.REACT_APP_BASE_URL + "/common/confirmOtp",
@@ -81,41 +81,41 @@ const EmailVerification = () => {
               formTitle="Email Verification"
               formDescription={`Please enter the verification code sent to you at ${email}`}
             >
-              <Form onSubmit={submitHandler}>
-                <Form.Group className="mb-3 col-md-6 offset-md-3">
+              <form onSubmit={submitHandler}>
+                <div className="form-group mb-3 col-md-6 offset-md-3">
                   {message ? <Message>{message}</Message> : null}
-                  <Form.Label className="font2 mt-5">Code</Form.Label>
-                  <Form.Control
+                  <label className="form-label font2 mt-5">Code</label>
+                  <input
                     type="text"
                     ref={Coderef}
-                    className="form-cells1 mb-5"
+                    className="form-control form-cells1 mb-5"
                   
                   />
-                </Form.Group>
+                </div>
                 <hr />
                 <div className="container-fluid">
                   <div className="row d-flex flex-md-row flex-column-reverse">
                     <div className="col-md-3 col-12 mt-3">
                       <div className="d-grid ">
-                        <Button
+                        <button
                           className="btn btn4"
                           onClick={() => navigate(-1)}
                         >
                           Back
-                        </Button>
+                        </button>
                       </div>
                     </div>
 
                     <div className="col-md-3 col-12 ms-auto mt-3">
                       <div className="d-grid">
-                        <Button className="btn btn3" type="submit">
+                        <button className="btn btn3" type="submit">
                           Next
-                        </Button>
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </Form>
+              </form>
             </FormContainer>
           </div>
         </>

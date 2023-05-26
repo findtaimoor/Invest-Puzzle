@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import FormContainrLogin from "../../components/FormContainrLogin";
-import { Button, Form } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,7 +11,7 @@ import {
 import Message from "../../components/Message";
 import SuccessCard from "../../components/SuccessCard";
 
-import Modal from "react-bootstrap/Modal";
+
 const NewPassword = () => {
 
   let Passwordref = useRef();
@@ -50,16 +50,16 @@ const NewPassword = () => {
         title="New Password"
         detail="Please write your new password and confirm it."
       >
-        <Form className="signUp-form " onSubmit={submitHandler}>
+        <form className="signUp-form " onSubmit={submitHandler}>
           <div className="px-3 px-md-5">
             {message ? <Message>{message}</Message> : null}
-            <Form.Group className="mb-4 ">
-              <Form.Label className="fw-bold fs-6"> Password</Form.Label>
+            <div className="form-group mb-4 ">
+              <label className="form-label fw-bold fs-6"> Password</label>
               <div className="position-relative">
-                <Form.Control
+                <input
                   type={showPassword ? "text" : "password"}
                   ref={Passwordref}
-                  className="form-cells"
+                  className="form-control form-cells"
                   placeholder="Type your password.."
                 />
                 <div
@@ -73,15 +73,15 @@ const NewPassword = () => {
                   )}
                 </div>
               </div>
-            </Form.Group>
+            </div>
 
-            <Form.Group className="mb-4 ">
-              <Form.Label className="fw-bold fs-6">Confirm Password</Form.Label>
+            <div className="form-group mb-4 ">
+              <label className="form-label fw-bold fs-6">Confirm Password</label>
               <div className="position-relative">
-                <Form.Control
+                <input
                   type={showConfirmPassword ? "text" : "password"}
                   ref={ConfirmPasswordref}
-                  className="form-cells"
+                  className="form-control form-cells"
                   placeholder="Type your password.."
                 />
 
@@ -96,21 +96,21 @@ const NewPassword = () => {
                   )}
                 </div>
               </div>
-            </Form.Group>
+            </div>
 
             <div className="d-grid mt-5 mb-3">
-              <Button className="btn btn1" type="submit">
+              <button className="btn btn1 text-light" type="submit">
                 Change Password
-              </Button>
+              </button>
             </div>
 
             <div className="d-grid mb-5">
-              <Button className="btn btn14" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
+              <button className="btn btn14" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
                 Back
-              </Button>
+              </button>
             </div>
           </div>
-        </Form>
+        </form>
       </FormContainrLogin>
 
       <Modal show={show} onHide={handleClose} backdrop="static" centered>

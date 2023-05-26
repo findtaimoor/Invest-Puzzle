@@ -19,7 +19,7 @@ const SemesterPricing = () => {
     <>
       <div className="container my-5">
         <div className="row">
-          <div className="col-md-6 col-lg-4 col-sm-12">
+          <div className="col-md-6 col-xl-4 col-sm-12">
             <div className=" m-3 border rounded-5">
               <div className="py-3 ps-4">
                 <PricingCard
@@ -32,7 +32,7 @@ const SemesterPricing = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4 col-sm-12">
+          <div className="col-md-6 col-xl-4 col-sm-12">
             <div className=" m-3 border rounded-5">
               <div className="py-3 ps-4">
                 <PricingCard
@@ -45,7 +45,7 @@ const SemesterPricing = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4 col-sm-12">
+          <div className="col-md-6 col-xl-4 col-sm-12">
             <div className=" m-3 border rounded-5">
               <div className="py-3 ps-4">
                 <PricingCard

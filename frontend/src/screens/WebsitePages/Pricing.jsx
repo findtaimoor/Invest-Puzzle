@@ -84,7 +84,7 @@ const Pricing = () => {
                       className="btn btn9 bg-light py-3 px-2"
                       onClick={ToggleData}
                     >
-                      Yearly <span className="font3">Save 20%</span>
+                      Yearly <span className="font3 save">Save 20%</span>
                     </button>
                   </div>
                 </div>

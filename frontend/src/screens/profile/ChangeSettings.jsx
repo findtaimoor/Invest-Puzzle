@@ -100,7 +100,12 @@ const ChangeSettings = () => {
                           it:
                         </p>
                       </div>
+                  
+
+
                       <div className="col-12">
+
+                        
                         <div className="form-check my-4">
                           <input
                             className="form-check-input"

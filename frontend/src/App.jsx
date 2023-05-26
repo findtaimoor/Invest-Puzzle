@@ -1,6 +1,6 @@
-import React, {useState}from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SignIn from "./screens/SignIn";
 import Registration from "./screens/signup/Registration";
 import Payment from "./screens/signup/Payment";
@@ -24,18 +24,35 @@ import ChangeSettings from "./screens/profile/ChangeSettings";
 import ProfileSettings from "./screens/profile/ProfileSettings";
 
 const App = () => {
-
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
-  
   useEffect(() => {
+    setisLoggedIn(
+      Number(
+        localStorage.getItem("isLoggedIn") != undefined
+          ? localStorage.getItem("isLoggedIn")
+          : 0
+      )
+    );
 
-   setisLoggedIn(Number(localStorage.getItem('isLoggedIn') != undefined ? localStorage.getItem('isLoggedIn') : 0));
-    
+    window.addEventListener("error", (e) => {
+      if (e.message === "ResizeObserver loop limit exceeded") {
+        const resizeObserverErrDiv = document.getElementById(
+          "webpack-dev-server-client-overlay-div"
+        );
+        const resizeObserverErr = document.getElementById(
+          "webpack-dev-server-client-overlay"
+        );
+        if (resizeObserverErr) {
+          resizeObserverErr.setAttribute("style", "display: none");
+        }
+        if (resizeObserverErrDiv) {
+          resizeObserverErrDiv.setAttribute("style", "display: none");
+        }
+      }
+    });
   }, []);
 
-  
- 
   return (
     <>
       <Header />
@@ -55,17 +72,14 @@ const App = () => {
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/validateEmail" element={<ValidateEmail />} />
           <Route path="/newPassword" element={<NewPassword />} />
-          <Route path="/team" element={<Team/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/profileSettings" element={<ProfileSettings/>}/>
-          <Route path="/changeSettings" element={<ChangeSettings/>}/>
-          <Route path="/changeEmail" element={<ChangeEmail/>}/>
-          <Route path="/changeUsername" element={<ChangeUsername/>}/>
-          <Route path="/changePassword" element={<ChangePassword/>}/>
-          <Route path="/activePlan" element={<ActivePlan/>}/>
-
-
-
+          <Route path="/team" element={<Team />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profileSettings" element={<ProfileSettings />} />
+          <Route path="/changeSettings" element={<ChangeSettings />} />
+          <Route path="/changeEmail" element={<ChangeEmail />} />
+          <Route path="/changeUsername" element={<ChangeUsername />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
+          <Route path="/activePlan" element={<ActivePlan />} />
         </Routes>
       </main>
     </>

@@ -11,7 +11,7 @@ const WhatWeDo = () => {
             <div className="row">
               <div className="col-12 ">
                 <h1 className="heading text-center fs-1">InvestPuzzle</h1>
-                <p className="fs-5 pt-3 paragraph">
+                <p className="fs-5 pt-3 paragraph ">
                   It is a company dedicated to increasing Financial Education
                   among students in a fun and interactive way. We have designed
                   a mobile application, "WaffleStock”, especially for the
@@ -32,7 +32,7 @@ const WhatWeDo = () => {
             <div className="col-md-6 pe-md-5 d-flex align-items-center">
               <div className="mb-4">
                 <img
-                  src="./images/Frame 14280.png"
+                  src="./images/wwd-mobile.png"
                   alt="mobile"
                   className="img-fluid"
                 />
@@ -74,7 +74,7 @@ const WhatWeDo = () => {
             <div className="col-md-5 img-back px-md-5 d-flex align-items-center">
               <div>
                 <img
-                  src="./images/mobile.png"
+                  src="./images/what-if-scenarios.png"
                   alt=""
                   className="img-fluid bord-radius"
                 />

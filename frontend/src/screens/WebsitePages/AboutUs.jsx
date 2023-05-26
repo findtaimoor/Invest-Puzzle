@@ -27,11 +27,12 @@ const AboutUs = () => {
     <>
       <div className="container about">
         <div className="row mt-md-5">
-          <div className="col-md-6 about-img d-flex align-items-center">
+          <div className="col-md-6 about-img d-flex align-items-center justify-content-center">
             <img
               src="./images/circle.png"
               alt=""
-              className="img-fluid about-radius"
+              className="img-fluid about-radius my-5 my-lg-3"
+              style={{height:"18em", width: "18em"}}
             />
           </div>
           <div className="col-md-6 about-box px-4 px-md-0 mt-md-5">
@@ -68,7 +69,7 @@ const AboutUs = () => {
                 <img
                   src="./images/Frame 14310.png"
                   alt=""
-                  className="img-fluid uni-radius"
+                  className="img-fluid uni-radius px-4 px-md-0 px-lg-4"
                 />
               </div>
             </div>
@@ -78,12 +79,13 @@ const AboutUs = () => {
 
       <div className="container">
         <div className=" row d-flex flex-md-row flex-column-reverse">
-          <div className="col-md-5 uni-img text-center d-flex align-items-center">
+          <div className="col-md-5 uni-img text-center d-flex align-items-center justify-content-center">
             <div>
               <img
                 src="./images/aboutUs mobile.png"
                 alt=""
                 className="img-fluid"
+                style={{height:"35em"}}
               />
             </div>
           </div>

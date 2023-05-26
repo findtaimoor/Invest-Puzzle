@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import FormContainer from "../../components/FormContainer";
-import { Form, Button } from "react-bootstrap";
 import CheckoutSteps from "../../components/CheckoutSteps";
 import { useNavigate } from "react-router-dom";
 import Message from "../../components/Message";
@@ -179,69 +178,72 @@ const Payment = () => {
             {/* <input type="button" value="clicl" onClick={checkValue} /> */}
 
             <FormContainer formTitle="Payment">
-              <Form onSubmit={submitHandler}>
+              <form onSubmit={submitHandler}>
                 <div className="col-md-6 offset-md-3">
                   {message ? <Message>{message}</Message> : null}
 
-                  <Form.Group className="mb-3">
-                    <Form.Label className="font2 mt-5">Name of Card</Form.Label>
-                    <Form.Control
+                  <div className="form-group mb-3">
+                    <label className="form-label font2 mt-5">Name of Card</label>
+                    <input 
                       type="text"
                       required
                       ref={CardnameRef}
-                      className="form-cells1 mb-5"
+                      className="form-control form-cells1 mb-5"
                     />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Label className="font2">Card Number</Form.Label>
-                    <Form.Control
+                    <div className="invalid-feedback">
+                      Please fill this
+                    </div>
+                  </div>
+                  <div className="form-group mb-3">
+                    <label className="form-label font2">Card Number</label>
+                    <input 
                       type="number"
                       required
                       ref={CardNumberRef}
-                      className="form-cells1 mb-5"
+                      className="form-control form-cells1 mb-5"
                       placeholder="1234 5678 1234 5678"
                       maxLength={16}
                     />
-                  </Form.Group>
+                  </div>
 
                   <div className="row">
                     <div className="col-sm-12 col-md-6">
-                      <Form.Group className="mb-3">
-                        <Form.Label className="font2">Expiry Date</Form.Label>
-                        <Form.Control
+                      <div className="form-group mb-3">
+                        <label className="form-label font2">Expiry Date</label>
+                        <input 
                           type="month"
                           required
                           ref={ExpiryDateRef}
-                          className="form-cells1 mb-5"
+                          className="form-control form-cells1 mb-5"
                           placeholder="mm/yy"
                         />
-                      </Form.Group>
+                      </div>
                     </div>
                     <div className="col-sm-12 col-md-6">
-                      <Form.Group className="mb-3">
-                        <Form.Label className="font2">CVV</Form.Label>
-                        <Form.Control
+                      <div className="form-group mb-3">
+                        <label className="form-label font2">CVV</label>
+                        <input 
                           type="number"
                           placeholder="•••"
                           required
                           ref={CvvRef}
-                          className="form-cells1 mb-5"
+                          className="form-control form-cells1 mb-5"
                           maxLength="3"
                         />
-                      </Form.Group>
+                      </div>
                     </div>
                   </div>
 
-                  <Form.Group className="">
-                    <Form.Label className="font2 d-block">
+                  <div className="form-group">
+                    <label className="form-label font2 d-block">
                       Billing Cycle
-                    </Form.Label>
+                    </label>
 
-                    <div className="d-grid select-wrapper">
+                    <div className="input-group">
                       <select
                         type="text"
                         ref={BillingCycleRef}
-                        className="form-cells2 mb-5 "
+                        className="form-select form-cells2 mb-5 "
                         onChange={adjustValues}
                         required
                       >
@@ -249,18 +251,19 @@ const Payment = () => {
                         <option value="Yearly">Yearly</option>
                       </select>
                     </div>
-                  </Form.Group>
+                  </div>
 
-                  <Form.Group className="mb-3">
-                    <Form.Label className="font2 d-block">
+ 
+                  <div className="form-group mb-3">
+                    <label className="form-label font2 d-block">
                       Choose your plan
-                    </Form.Label>
-                    <div className="d-grid select-wrapper">
+                    </label>
+                    <div className="input-group">
                       <select
                         type="text"
                         ref={PlanRef}
                         onChange={adjustValues}
-                        className="form-cells2 mb-5"
+                        className="form-select form-cells2 mb-5"
                         required
                       >
                         <option value="Small Cap">Small Cap</option>
@@ -268,7 +271,7 @@ const Payment = () => {
                         <option value="Large Cap">Large Cap</option>
                       </select>
                     </div>
-                  </Form.Group>
+                  </div>
 
                   <hr />
                   <div className="py-4 my-3 ">
@@ -293,25 +296,25 @@ const Payment = () => {
                   <div className="row d-flex flex-md-row flex-column-reverse">
                     <div className="col-md-3 col-12 mt-3 mb-5 mb-md-0">
                       <div className="d-grid">
-                        <Button
+                        <button
                           className="btn btn4"
                           onClick={() => {navigate(-1);window.scrollTo(0,0)}}
                         >
                           Back
-                        </Button>
+                        </button>
                       </div>
                     </div>
 
                     <div className="col-md-3 col-12 ms-auto mt-3 mb-md-5">
                       <div className="d-grid">
-                        <Button className="btn btn3" type="submit">
+                        <button className="btn btn3 text-light" type="submit">
                           Pay Now
-                        </Button>
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </Form>
+              </form>
             </FormContainer>
           </div>
         </>

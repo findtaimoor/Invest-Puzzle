@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import {Modal} from "react-bootstrap";
 import Message from "./Message";
 import SuccessCard from "../components/SuccessCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

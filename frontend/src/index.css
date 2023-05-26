@@ -143,7 +143,7 @@ body {
   font-size: 20px;
   color: #ffaa4d;
 }
-.btn8, .btn8:hover {
+.btn8, .btn8:hover, .btn8:disabled {
   background-color: #ffaa4d;
   border: none;
   /* padding: 16px ; */
@@ -374,9 +374,7 @@ ul li:before {
   margin-left: -0.5em;
 }
 
-.btn8:disabled {
-  color: white;
-}
+
 
 .btn10:disabled {
   color: white;
@@ -406,7 +404,7 @@ ul li:before {
 .back-img {
   height: 100%;
   width: 100%;
-  background-image: url(../public/images/puzzel.webp);
+  background-image: url(../public/images/puzzle.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -415,7 +413,7 @@ ul li:before {
 .cover-img {
   height: 100%;
   width: 100%;
-  background-color: #52433e;
+  background-color: #57453F;
   opacity: 0.9;
   background-attachment: fixed;
 }
@@ -468,13 +466,13 @@ ul li:before {
 .img-back {
   cursor: pointer;
 }
-.img-back img {
+/* .img-back img {
   transition: transform 0.5s, filter 1.5s ease-in-out;
 }
 
 .img-back :hover {
   transform: scale(1.1);
-}
+} */
 .bord-radius {
   border-radius: 3% !important;
   -webkit-border-radius: 3% !important;
@@ -836,6 +834,8 @@ ul li:before {
 
 }
 
+
+
 .form-check-input:focus{
  
   box-shadow: none;
@@ -866,6 +866,40 @@ ul li:before {
   width: 100%;
   
 }
+
+
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .btn8, .btn8:hover, .btn8:disabled, .btn11, .btn11:hover, .btn10, .btn10:hover, .btn10:disabled, .btn9, .btn9:hover{
+    font-size: 1em
+  }
+  .signUp-button, .signUp-button:hover, .signUp-button1, .signUp-button1:hover{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+@media (max-width: 990px) {
+  .btn8, .btn8:hover, .btn8:disabled, .btn11, .btn11:hover, .btn10, .btn10:hover, .btn10:disabled, .btn9, .btn9:hover{
+    font-size: 1.1em
+  }
+
+}
+
+
+/* 
+.save{
+  font-size: 0.9em;
+} */
+
+
+@media (max-width: 350px) {
+  .btn8, .btn8:hover, .save, .btn8:disabled, .btn11, .btn11:hover, .btn10, .btn10:hover, .btn10:disabled, .btn9, .btn9:hover{
+    font-size: 0.7em
+  }
+
 }
 
 
@@ -891,8 +925,9 @@ ul li:before {
   border: none;
 }
 
-.nav-item:hover, .nav-item:focus{
+.nav-item:hover, .nav-item:focus, .nav-item:active{
 color: #fca446;
+text-decoration: none;
 }
 
 .btn:focus:active{

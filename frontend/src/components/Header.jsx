@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Container, Nav, Navbar, Button, Dropdown } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { Container, Nav, Navbar, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
@@ -47,43 +46,33 @@ function Header() {
       : 0;
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    // localStorage.removeItem("isLoggedIn");
+    localStorage.clear();
     localStorage.setItem("isLoggedIn", 0);
     navigate("/signIn");
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
-
-
-// useEffect(()=>{
-// let navId = document.querySelectorAll("#navId");
-// let parentId = document.querySelector('#parentId')
-// parentId.addEventListener('click', function(e){
-//   let click = e.target.closest('#navId')
-//   if(!click) return
-//   navId.forEach((t)=>{
-//     t.classList.remove('class-active')
-//   })
-//   click.classList.add('class-active');
-// })
-// },[])
-
-
 
   return (
     <Navbar
       collapseOnSelect
       expand="lg"
-     fixed="top"
+      fixed="top"
       className="header-main  bg-light  "
       // expanded={expanded}
     >
       <Container className="px-md-5 px-3" fluid>
         <Navbar.Brand href="/" className=" text-color brand ">
           <div className="brand-img">
-            <img src="../images/brand 2.png" className="img-fluid" />
+            <img
+              src="../images/brand 2.png"
+              className="img-fluid"
+              alt="brand-logo"
+            />
           </div>
         </Navbar.Brand>
-        <Navbar.Toggle className="navbar-toggle"
+        <Navbar.Toggle
+          className="navbar-toggle"
           aria-controls="responsive-navbar-nav "
           // ref={menuRef}
           // onClick={() => setExpanded(expanded ? false : "expanded")}
@@ -94,8 +83,7 @@ function Header() {
               <div key={item.id}>
                 <Nav.Link
                   href={item.linkto}
-                  className="text-color fw-bold pe-md-5 pb-3 pb-lg-1 nav-item"
-                  
+                  className="text-color fw-bold pe-md-3 pe-xl-5 pb-3 pb-lg-1 nav-item"
                 >
                   <img
                     src={item.icon}
@@ -129,30 +117,44 @@ function Header() {
 
                     <Dropdown.Menu className="dropdown-menu py-0" sty>
                       <Dropdown.Item
-                        onClick={() => {navigate("/profile") ; window.scrollTo(0,0)} }
+                        onClick={() => {
+                          navigate("/profile");
+                          window.scrollTo(0, 0);
+                        }}
                         className="NavItem font6 py-2 border-bottom"
                       >
-                        <img src="./images/profile icon.svg" className="pe-2 " />
+                        <img
+                          src="./images/profile icon.svg"
+                          className="pe-2 "
+                          alt="profile"
+                        />
                         Profile
                       </Dropdown.Item>
-                      
+
                       <Dropdown.Item
-                        onClick={() => {navigate("/profileSettings"); window.scrollTo(0,0)}}
+                        onClick={() => {
+                          navigate("/profileSettings");
+                          window.scrollTo(0, 0);
+                        }}
                         className="NavItem font6 py-2 border-bottom"
                       >
                         <img
                           src="./images/settings icon.svg"
                           className="pe-2"
+                          alt="settings"
                         />
                         Profile settings
                       </Dropdown.Item>
-                    
 
                       <Dropdown.Item
                         onClick={handleLogout}
                         className="NavItem font6 py-2"
                       >
-                        <img src="./images/signout icon.svg" className="pe-2" />
+                        <img
+                          src="./images/signout icon.svg"
+                          className="pe-2"
+                          alt="signout"
+                        />
                         Sign out
                       </Dropdown.Item>
                     </Dropdown.Menu>
@@ -161,22 +163,22 @@ function Header() {
               </div>
             ) : (
               <div className="d-flex">
-                <Nav.Link  href="/signIn">
-                  <Button
-                    className=" me-4 btn signUp-button"
+                <Nav.Link href="/signIn">
+                  <button
+                    className=" me-4 btn signUp-button text-light "
                     // onClick={() => setExpanded(expanded)}
                   >
                     Sign In
-                  </Button>
+                  </button>
                 </Nav.Link>
 
                 <Nav.Link href="/registration">
-                  <Button
-                    className=" me-4  btn signUp-button1"
+                  <button
+                    className=" me-4  btn signUp-button1 "
                     // onClick={() => setExpanded(expanded)}
                   >
                     Sign Up
-                  </Button>
+                  </button>
                 </Nav.Link>
               </div>
             )}

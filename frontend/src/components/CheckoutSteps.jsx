@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Nav } from "react-bootstrap";
 import NumberCheck from "./NumberCheck";
 import NumberUncheck from "./NumberUncheck";
 import StepCheck from "./StepCheck";
@@ -8,7 +7,7 @@ import StepUncheck from "./StepUncheck";
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
   return (
     <div className="container">
-      <Row className="justify-content-md-center">
+      <div className="row justify-content-md-center">
         <div className="my-5">
           <h1 className="form-heading text-center">Get Access to WaffleStock for your Class</h1>
           <h1 className="font6 text-center">Join our SIMF Network</h1>
@@ -19,7 +18,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
   <h1>Steps</h1>
 </div>
 
-        <Nav activeKey="/registration" className="d-flex justify-content-center">
+        <div activeKey="/registration" className="nav d-flex justify-content-center">
           <div className=" mx-0">{step1 ? <NumberCheck number="1" /> : <NumberUncheck number="1" />}</div>
           {step2 ? (
             <div className="d-flex col-md-2 col-1 flex-box"></div>
@@ -39,9 +38,9 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
             <div className="d-flex-2  col-md-2 col-1 flex-box-2"></div>
           )}
           <div className="mx-0">{step4 ? <NumberCheck number="4" /> : <NumberUncheck number="4" />}</div>
-        </Nav>
+        </div>
 
-        <Nav activeKey="/registration" className="d-md-flex d-none d-md-block">
+        <div activeKey="/registration" className="nav d-md-flex d-none d-md-block">
           <div className="step1-padding">{step1 ? <StepCheck name="Registration" /> : <StepUncheck name="Registration" />}</div>
           <div className="step2-padding">
             {step2 ? <StepCheck name="Email Verification" /> : <StepUncheck name="Email Verification" />}
@@ -50,8 +49,8 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
           <div className="step4-padding">
             {step4 ? <StepCheck name="Get the Access Code" /> : <StepUncheck name="Get the Access Code" />}
           </div>
-        </Nav>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };
