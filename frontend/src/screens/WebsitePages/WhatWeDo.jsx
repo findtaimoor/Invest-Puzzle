@@ -5,6 +5,9 @@ import Footer from "../../components/Footer";
 const WhatWeDo = () => {
   return (
     <>
+  <div className="main_div">
+
+
       <div className="back-img">
         <div className="cover-img">
           <div className="container center-content pb-5">
@@ -41,7 +44,7 @@ const WhatWeDo = () => {
 
             <div className="col-md-6 mobile-box text-center text-md-start d-flex">
               <h2 className="waffle-heading fw-bold fs-3 mt-3">
-                Using <span className="title-color">WaffleStock</span>
+                Using <span className="title-color">WaffleStock</span> <span className="fw-light">&trade;</span>
               </h2>
               <p className="waffle-para">
                 Users get 1 million hypothetical dollars to invest however they
@@ -89,8 +92,8 @@ const WhatWeDo = () => {
             <div className="col-md-5 img-back d-flex align-items-center">
               <div>
                 <img
-                  src="./images/img-web 1.png"
-                  alt=""
+                  src="./images/brand3.jpg"
+                  alt="logo"
                   className="img-fluid bord-radius"
                 />
               </div>
@@ -112,7 +115,9 @@ const WhatWeDo = () => {
           </div>
         </div>
       </div>
+      
       <Footer />
+      </div>
     </>
 
 

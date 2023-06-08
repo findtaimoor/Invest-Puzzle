@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 import Message from "../../components/Message";
 import CheckoutSteps from "../../components/CheckoutSteps";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
 const Registration = () => {
@@ -81,7 +81,10 @@ const Registration = () => {
             data.message.charAt(0).toUpperCase() + data.message.slice(1)
           );
           console.log(res);
-        } else {
+        } 
+        
+        
+        else {
           localStorage.removeItem('isLoggedIn')
           navigate("/emailVerification");
           window.scrollTo(0,0)

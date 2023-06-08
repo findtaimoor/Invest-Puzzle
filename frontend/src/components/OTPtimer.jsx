@@ -6,8 +6,7 @@ const formatTime = (time) => {
     let minutes = Math.floor(time / 60)
     let seconds = Math.floor(time - minutes * 60)
 
-    if(minutes <= 10) minutes =  minutes;
-    if (seconds <= 10) seconds = '0' + seconds;
+    if (seconds <= 9) seconds = '0' + seconds;
      return minutes + ':' + seconds;
 }
 
@@ -27,7 +26,12 @@ const OTPtimer = ({seconds}) => {
 
   return (
     <>
-    <h2 className='fs-5 py-3'>{formatTime(countdown)}</h2>
+    {countdown > 0 ? (
+        <h2 className='fs-5 py-3'>{formatTime(countdown)}</h2>
+      ) : (
+        <h2 className='fs-5 py-3'>0:00</h2>
+      )}
+    
     </>
   )
 }

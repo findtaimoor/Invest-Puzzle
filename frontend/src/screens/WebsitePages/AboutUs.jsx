@@ -25,8 +25,13 @@ const AboutUs = () => {
 
   return (
     <>
+   
+  <div className="main_div">
+
+  
+    
       <div className="container about">
-        <div className="row mt-md-5">
+        <div className="row mb-5">
           <div className="col-md-6 about-img d-flex align-items-center justify-content-center">
             <img
               src="./images/circle.png"
@@ -47,7 +52,7 @@ const AboutUs = () => {
       </div>
 
       <div className="home-container-2">
-        <div className="container  py-1 py-md-5 my-5">
+        <div className="container py-1 my-md-5">
           <div className="row uni">
             <div className="col-md-7 uni-box pb-5 pb-md-0 px-3">
               <p className=" uni-para ">
@@ -77,8 +82,8 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div className=" row d-flex flex-md-row flex-column-reverse">
+      <div className="container mt-5">
+        <div className=" row d-flex flex-md-row flex-column-reverse mt-md-5">
           <div className="col-md-5 uni-img text-center d-flex align-items-center justify-content-center">
             <div>
               <img
@@ -107,7 +112,18 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <Footer />
+
+     
+<Footer />
+
+
+</div>
+
+
+
+
+
+      
     </>
   );
 };

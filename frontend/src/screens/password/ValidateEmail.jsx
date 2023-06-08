@@ -3,42 +3,71 @@ import FormContainrLogin from "../../components/FormContainrLogin";
 import { useNavigate } from "react-router-dom";
 import OTPtimer from "../../components/OTPtimer";
 import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 
 const ValidateEmail = () => {
   const navigate = useNavigate();
 
   let [message, setMessage] = useState(null);
+  let [loading, setLoading] = useState(false);
 
-let otpRef = useRef();
 
-  const recoveryEmail = localStorage.getItem('recoveryEmail');
+  const recoveryEmail = localStorage.getItem("recoveryEmail");
 
-  const [otp, setOtp] = useState(new Array(5).fill(""));
+  const [otpDigits, setOtpDigits] = useState(["", "", "", "", ""]);
+  const inputRefs = useRef([]);
 
-  const handleChange = (element, index) => {
-    if (isNaN(element.value)) return false;
+  const handleInputChange = (e, index) => {
+    const updatedOtpDigits = [...otpDigits];
+    updatedOtpDigits[index] = e.target.value;
+    setOtpDigits(updatedOtpDigits);
 
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-    //Focus next input
-    if (element.nextSibling) {
-      element.nextSibling.focus();
+    if (e.target.value && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus();
     }
   };
 
-
-  const submitHandler = (e) =>{
+  const submitHandler = async (e) => {
     e.preventDefault();
+    const otp = otpDigits.join("");
+    console.log(otp);
+    const jwtbyForgetPassword = localStorage.getItem("jwtbyForgetPassword");
 
-    let otp = otpRef.current.value;
-
-    if(otp){
-      navigate('/newPassword')
-      window.scrollTo(0,0)
-    }else{
-      setMessage('OTP is required to validate email.')
+    try {
+      setLoading(true);
+      let res = await fetch(
+        process.env.REACT_APP_BASE_URL + "/common/confirmOtp",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            code: otp,
+            type: "1",
+          }),
+          headers: {
+            Authorization: `Bearer ${jwtbyForgetPassword}`,
+            "Content-type": "application/json",
+          },
+        }
+      );
+      let data = await res.json();
+      if (res.status !== 200) {
+        window.scrollTo(0, 0);
+        setLoading(false);
+        setMessage(
+          data.message.charAt(0).toUpperCase() + data.message.slice(1)
+        );
+      } else {
+        setLoading(false);
+        navigate("/newPassword");
+        localStorage.setItem('codebyPasswordOtp', otp)
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      window.scrollTo(0, 0);
+      setMessage("Problem In Verify Email, contact Customer Support.");
     }
-  }
+  };
 
   return (
     <>
@@ -48,30 +77,26 @@ let otpRef = useRef();
       >
         <form className="signUp-form " onSubmit={submitHandler}>
           <div className="px-3 px-md-5">
-            {message ? <Message>{message}</Message>: null}
+            {message ? <Message>{message}</Message> : null}
+            {loading ? <Loader>{loading}</Loader> : null}
             <div className="row text-center">
-              
               <OTPtimer seconds={300} />
-             
             </div>
             <div className="form-group mb-4 text-center">
               <div className="row">
                 <div className="d-flex justify-content-between">
-                  {otp.map((data, index) => {
-                    return (
-                      <input
-                        className="text-center otp-input shadow-none fw-bold "
-                        type="text"
-                        name="otp"
-                        maxLength="1"
-                        key={index}
-                        value={data}
-                        ref={otpRef}
-                        onChange={(e) => handleChange(e.target, index)}
-                        onFocus={(e) => e.target.select()}
-                      />
-                    );
-                  })}
+                  {otpDigits.map((digit, index) => (
+                    <input
+                      className="text-center otp-input shadow-none fw-bold "
+                      type="text"
+                      name="otp"
+                      maxLength="1"
+                      key={index}
+                      value={digit}
+                      onChange={(e) => handleInputChange(e, index)}
+                      ref={(el) => (inputRefs.current[index] = el)}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -81,7 +106,7 @@ let otpRef = useRef();
             </div>
 
             <div className="d-grid mt-5 mb-3">
-              <button className="btn btn1 text-light" type="submit" >
+              <button className="btn btn1 text-light" type="submit">
                 Validate
               </button>
             </div>
@@ -91,7 +116,13 @@ let otpRef = useRef();
             </div>
 
             <div className="d-grid mb-5">
-              <button className="btn btn15" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
+              <button
+                className="btn btn15"
+                onClick={() => {
+                  navigate(-1);
+                  window.scrollTo(0, 0);
+                }}
+              >
                 Back
               </button>
             </div>

@@ -62,12 +62,13 @@ function Header() {
       // expanded={expanded}
     >
       <Container className="px-md-5 px-3" fluid>
-        <Navbar.Brand href="/" className=" text-color brand ">
+        <Navbar.Brand href="/" className=" text-color brand">
           <div className="brand-img">
             <img
-              src="../images/brand 2.png"
-              className="img-fluid"
-              alt="brand-logo"
+              // src="../images/brand 2.png"
+              src="../images/brandimg.png"
+              className="img-fluid fw-light fs-6"
+              alt="brand"
             />
           </div>
         </Navbar.Brand>
@@ -78,7 +79,7 @@ function Header() {
           // onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto my-4 my-md-2">
+          <Nav className="ms-auto my-4 my-md-2">
             {NavItems.map((item) => (
               <div key={item.id}>
                 <Nav.Link
@@ -106,7 +107,7 @@ function Header() {
                     >
                       <div className="pe-4">
                         <img
-                          src="./images/profile.png"
+                          src="../images/profile.png"
                           alt="Profile Image"
                           className="img-fluid img-class"
                           // onClick={() => setExpanded(expanded ? false : "expanded")}
@@ -124,7 +125,7 @@ function Header() {
                         className="NavItem font6 py-2 border-bottom"
                       >
                         <img
-                          src="./images/profile icon.svg"
+                          src="../images/profile icon.svg"
                           className="pe-2 "
                           alt="profile"
                         />
@@ -139,7 +140,7 @@ function Header() {
                         className="NavItem font6 py-2 border-bottom"
                       >
                         <img
-                          src="./images/settings icon.svg"
+                          src="../images/settings icon.svg"
                           className="pe-2"
                           alt="settings"
                         />
@@ -151,7 +152,7 @@ function Header() {
                         className="NavItem font6 py-2"
                       >
                         <img
-                          src="./images/signout icon.svg"
+                          src="../images/signout icon.svg"
                           className="pe-2"
                           alt="signout"
                         />

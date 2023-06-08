@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Message from "../../components/Message";
 
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ const ProfileSettings = () => {
     let username = email.split("@")[0];
 
     if (!name && !email && !username) {
-      window.scrollTo(0,0)
+      window.scrollTo(0, 0);
       setMessage("Enter complete information.");
     }
   };
@@ -29,8 +29,10 @@ const ProfileSettings = () => {
       : 0
   );
 
-  if (isLoggedIn == 0) {navigate("/signin");window.scrollTo(0,0)}
-  else
+  if (isLoggedIn == 0) {
+    navigate("/signin");
+    window.scrollTo(0, 0);
+  } else
     return (
       <>
         <div className="container-fluid px-3 px-md-5 py-4 py-md-5">
@@ -50,10 +52,11 @@ const ProfileSettings = () => {
                     className="img-fluid profile-img"
                   />
                 </div>
-                <div className="align-items-center d-flex mx-lg-5 mx-md-3 px-md-3 px-4">
-                  <button className="btn signUp-button text-light fw-bold px-2 pe-md-3 ps-lg-2 pe-lg-4">
+                <div className="align-items-center d-flex mx-lg-5 mx-md-3 px-md-3 px-4 upload">
+                  <button className="btn signUp-button text-light fw-bold px-2 pe-md-3 ps-lg-2 pe-lg-4 btn-warning1">
                     <img src="./images/Vector.svg" className="px-md-2 px-1" />
                     Upload
+                    <input type="file" />
                   </button>
 
                   <p className="home-desc mx-5 mb-0 d-none d-md-block">
@@ -61,6 +64,7 @@ const ProfileSettings = () => {
                   </p>
                 </div>
               </div>
+
 
               <div className="row">
                 <div className="col-12 d-md-none home-desc text-center py-4">
@@ -141,7 +145,7 @@ const ProfileSettings = () => {
                 <div
                   className="ms-auto"
                   style={{ cursor: "pointer" }}
-                  // onClick={() => {navigate("/changeSettings"); window.scrollTo(0,0)}}
+                  onClick={() => {navigate("/changeSettings"); window.scrollTo(0,0)}}
                 >
                   <img
                     src="./images/next arrow.png"

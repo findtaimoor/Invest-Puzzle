@@ -10,10 +10,9 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import Message from "../../components/Message";
 import SuccessCard from "../../components/SuccessCard";
-
+import Loader from "../../components/Loader";
 
 const NewPassword = () => {
-
   let Passwordref = useRef();
   let ConfirmPasswordref = useRef();
 
@@ -23,6 +22,7 @@ const NewPassword = () => {
   const [showPassword, setShowPassword] = useState(null);
   const [showConfirmPassword, setShowConfirmPassword] = useState(null);
   const [show, setShow] = useState(false);
+  let [loading, setLoading] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,16 +31,53 @@ const NewPassword = () => {
     e.preventDefault();
     let password = Passwordref.current.value;
     let confirmPassword = ConfirmPasswordref.current.value;
+    let email = localStorage.getItem("recoveryEmail");
+    let code = localStorage.getItem("codebyPasswordOtp");
 
-
-    if(password && confirmPassword){
-      if(password !== confirmPassword){
-        setMessage("Password not match.")
-      }else{
-        handleShow();
+    if (password && confirmPassword) {
+      if (password !== confirmPassword) {
+        setLoading(false);
+        setMessage("Password not match.");
+      } else {
+        try {
+          setLoading(true);
+          let res = await fetch(
+            process.env.REACT_APP_BASE_URL + "/auth/resetPassword",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                email: email,
+                password: password,
+                code: code,
+                type: "1",
+              }),
+              headers: {
+                // Authorization: `Bearer ${}`,
+                "Content-type": "application/json",
+              },
+            }
+          );
+          let data = await res.json();
+          if (res.status !== 200) {
+            window.scrollTo(0, 0);
+            setLoading(false);
+            setMessage(
+              data.message.charAt(0).toUpperCase() + data.message.slice(1)
+            );
+          } else {
+            setLoading(false);
+            handleShow();
+          }
+        } catch (error) {
+          setLoading(false);
+          console.log(error);
+          window.scrollTo(0, 0);
+          setMessage("Problem In Verify Email, COntact Customer Support");
+        }
       }
-    }else if(!password || !confirmPassword){
-      setMessage('Fill all fields.')
+    } else if (!password || !confirmPassword) {
+      setLoading(false);
+      setMessage("Fill all fields.");
     }
   };
 
@@ -53,6 +90,7 @@ const NewPassword = () => {
         <form className="signUp-form " onSubmit={submitHandler}>
           <div className="px-3 px-md-5">
             {message ? <Message>{message}</Message> : null}
+            {loading ? <Loader>{loading}</Loader> : null}
             <div className="form-group mb-4 ">
               <label className="form-label fw-bold fs-6"> Password</label>
               <div className="position-relative">
@@ -76,7 +114,9 @@ const NewPassword = () => {
             </div>
 
             <div className="form-group mb-4 ">
-              <label className="form-label fw-bold fs-6">Confirm Password</label>
+              <label className="form-label fw-bold fs-6">
+                Confirm Password
+              </label>
               <div className="position-relative">
                 <input
                   type={showConfirmPassword ? "text" : "password"}
@@ -105,7 +145,13 @@ const NewPassword = () => {
             </div>
 
             <div className="d-grid mb-5">
-              <button className="btn btn14" onClick={() => {navigate(-1); window.scrollTo(0,0)}}>
+              <button
+                className="btn btn14"
+                onClick={() => {
+                  navigate(-1);
+                  window.scrollTo(0, 0);
+                }}
+              >
                 Back
               </button>
             </div>

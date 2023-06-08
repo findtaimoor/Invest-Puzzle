@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
@@ -20,7 +19,7 @@ function SignIn() {
     let email = Emailref.current.value;
     let password = Passwordref.current.value;
 
-    console.log(email, password);
+    // console.log(email, password);
     try {
       
       // let res = await fetch("http://localhost:9000/auth/login", {
@@ -63,7 +62,7 @@ localStorage.setItem('jwtbyOtp', data.user.jwt)
           localStorage.removeItem("isLoggedIn");
           localStorage.setItem("isLoggedIn", 1);
           localStorage.setItem("fullName" , data.data.user.userFullName)
-
+          localStorage.setItem("studentsAmount" , data.data.user.totalSubscribedNumberOfStudents)
           navigate("/profile");
           window.scrollTo(0,0)
         } else {
@@ -138,8 +137,8 @@ localStorage.setItem('jwtbyOtp', data.user.jwt)
                       </button>
                     </div>
                     <div className="forget-password text-center">
-                      {/* <Link to="/forgetPassword">Forget Password?</Link> */}
-                      <Link to="/signIn">Forget Password?</Link>
+                      <Link to="/forgetPassword">Forget Password?</Link>
+                      {/* <Link to="/signIn">Forget Password?</Link> */}
                     </div>
                     <p className="text-center font mt-4">
                       Don't have an account?{" "}

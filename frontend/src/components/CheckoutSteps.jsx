@@ -57,14 +57,3 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 
 export default CheckoutSteps;
 
-// import React from 'react';
-// import Steps from './Steps';
-// const CheckoutSteps = () => {
-//   return (
-//     <div className="d-flex flex-col gap-10 text-center justify-content-center">
-//       <Steps />
-//     </div>
-//   );
-// };
-
-// export default CheckoutSteps;

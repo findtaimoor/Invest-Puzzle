@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import SignIn from "./screens/SignIn";
 import Registration from "./screens/signup/Registration";
 import Payment from "./screens/signup/Payment";
@@ -13,7 +13,6 @@ import Home from "./screens/WebsitePages/Home";
 import ForgetPassword from "./screens/password/ForgetPassword";
 import ValidateEmail from "./screens/password/ValidateEmail";
 import NewPassword from "./screens/password/NewPassword";
-import { useEffect } from "react";
 import Team from "./screens/WebsitePages/Team";
 import Profile from "./screens/profile/Profile";
 import ChangeEmail from "./screens/profile/ChangeEmail";
@@ -22,6 +21,8 @@ import ChangePassword from "./screens/profile/ChangePassword";
 import ActivePlan from "./screens/profile/ActivePlan";
 import ChangeSettings from "./screens/profile/ChangeSettings";
 import ProfileSettings from "./screens/profile/ProfileSettings";
+import Indesign from "./components/Indesign";
+
 
 const App = () => {
   const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -58,6 +59,7 @@ const App = () => {
       <Header />
       <main className="app-main">
         <Routes>
+          <Route path="*" element={<h1 className="text-center pt-5 h3">This page does not exist.</h1>} />
           <Route path="/" element={<Home />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/registration" element={<Registration />} />
@@ -67,13 +69,12 @@ const App = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/whatWeDo" element={<WhatWeDo />} />
           <Route path="/aboutUs" element={<AboutUs />} />
-          {/* <Route path="/profile" element={ isLoggedIn? <profileDashboard /> : <Navigate to = '/signIn'/>} /> */}
-          {/* <Route path="/profile" element={ <profileDashboard />} /> */}
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/validateEmail" element={<ValidateEmail />} />
           <Route path="/newPassword" element={<NewPassword />} />
           <Route path="/team" element={<Team />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profileSettings" element={<ProfileSettings />} />
           <Route path="/changeSettings" element={<ChangeSettings />} />
           <Route path="/changeEmail" element={<ChangeEmail />} />
@@ -81,7 +82,9 @@ const App = () => {
           <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="/activePlan" element={<ActivePlan />} />
         </Routes>
+
       </main>
+     
     </>
   );
 };

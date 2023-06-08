@@ -6,7 +6,7 @@ import tncPdf from "../pdfs/InvestPuzzle LLC Terms and condition.pdf";
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className="footer1">
         <div className="container-fluid footer mt-md-5 px-md-5">
           <div className="col-12">
             <div className="px-5  fw-bold">

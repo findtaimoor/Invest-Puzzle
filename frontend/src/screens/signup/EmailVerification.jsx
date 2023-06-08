@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Message from "../../components/Message";
 import { useRef } from "react";
 
-
 const EmailVerification = () => {
   let Coderef = useRef();
 
@@ -13,7 +12,6 @@ const EmailVerification = () => {
   const [message, setMessage] = useState(null);
   const email = localStorage.getItem("email");
 
-  
   const submitHandler = async (e) => {
     e.preventDefault();
     let code = Coderef.current.value;
@@ -38,40 +36,33 @@ const EmailVerification = () => {
       let data = await res.json();
 
       if (res.status !== 200) {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0);
         setMessage(
           data.message.charAt(0).toUpperCase() + data.message.slice(1)
         );
       } else {
         navigate("/payment");
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0);
         localStorage.setItem("jwtbyOtp", data.data.user.jwt);
-        localStorage.removeItem("jwt");
+        // localStorage.removeItem("jwt");
         localStorage.removeItem("email");
       }
     } catch (error) {
       console.log(error);
-      window.scrollTo(0,0)
+      window.scrollTo(0, 0);
       setMessage("Problem In Verify Email, COntact Customer Support");
     }
   };
 
-
   let isLoggedIn = localStorage.getItem("isLoggedIn");
-
-
-
-
-
-
 
   if (isLoggedIn == 1) {
     navigate("/profile");
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   } else {
     if (isLoggedIn == 0) {
       navigate("/registration");
-      window.scrollTo(0,0)
+      window.scrollTo(0, 0);
     } else {
       return (
         <>
@@ -89,7 +80,6 @@ const EmailVerification = () => {
                     type="text"
                     ref={Coderef}
                     className="form-control form-cells1 mb-5"
-                  
                   />
                 </div>
                 <hr />
@@ -120,7 +110,7 @@ const EmailVerification = () => {
           </div>
         </>
       );
-      }
+    }
   }
 };
 

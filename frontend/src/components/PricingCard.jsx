@@ -24,7 +24,7 @@ let isLoggedIn = localStorage.getItem('isLoggedIn')
       </div>
       <div className="ps-3 pe-5 d-grid">
         {
-          isLoggedIn == 1 ? <Link to="/registration" className="btn btn3 mb-md-5 mb-4 mt-3" type="submit">
+          isLoggedIn == 1 ? <Link to="/payment" className="btn btn3 mb-md-5 mb-4 mt-3" type="submit">
           Upgrade
         </Link> : <Link to="/registration" className="btn btn3 mb-md-5 mb-4 mt-3" type="submit">
           Get Started{" "}

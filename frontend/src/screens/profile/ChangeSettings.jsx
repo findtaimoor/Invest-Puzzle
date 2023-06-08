@@ -70,7 +70,7 @@ const ChangeSettings = () => {
                       <Message>{message}</Message>
                     </div>
                   ) : null}
-                  <div className="col-12 col-md-6">
+                  <div className="col-12 col-lg-6">
                     <div className="mb-3 position-relative">
                       <label className="font2 fw-bold form-label">
                         Password
